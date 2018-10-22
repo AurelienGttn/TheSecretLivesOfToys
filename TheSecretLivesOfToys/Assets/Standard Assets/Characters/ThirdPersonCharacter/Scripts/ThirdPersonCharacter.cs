@@ -29,6 +29,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
 
+        public bool m_PushPull = false;
+
 
 		void Start()
 		{
@@ -75,6 +77,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			UpdateAnimator(move);
 		}
 
+        // ScaleCapsule lors du Jump
+        void ScaleCapsuleForJump()
+        {
+            m_Capsule.height = 1.291744f;
+            m_Capsule.center = new Vector3(m_Capsule.center.x, 0.9f, m_Capsule.center.z);
+        }
 
 		void ScaleCapsuleForCrouching(bool crouch)
 		{
@@ -85,7 +93,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_Capsule.center = m_Capsule.center / 2f;
 				m_Crouching = true;
 			}
-			else
+			else if (!m_IsGrounded)
+            {
+                return;
+            }else
 			{
 				Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
 				float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
@@ -173,15 +184,19 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_IsGrounded = false;
 				m_Animator.applyRootMotion = false;
 				m_GroundCheckDistance = 0.1f;
+                ScaleCapsuleForJump();
 			}
 		}
 
-		void ApplyExtraTurnRotation()
-		{
-			// help the character turn faster (this is in addition to root rotation in the animation)
-			float turnSpeed = Mathf.Lerp(m_StationaryTurnSpeed, m_MovingTurnSpeed, m_ForwardAmount);
-			transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
-		}
+        void ApplyExtraTurnRotation()
+        {
+            if (!m_PushPull)
+            {
+                // help the character turn faster (this is in addition to root rotation in the animation)
+                float turnSpeed = Mathf.Lerp(m_StationaryTurnSpeed, m_MovingTurnSpeed, m_ForwardAmount);
+                transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
+            }
+        }
 
 
 		public void OnAnimatorMove()

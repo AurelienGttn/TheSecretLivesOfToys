@@ -40,6 +40,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
         }
+        
 
 
         // Fixed update is called in sync with physics
