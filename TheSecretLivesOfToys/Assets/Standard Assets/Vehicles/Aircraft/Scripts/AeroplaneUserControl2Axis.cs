@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
+
 namespace UnityStandardAssets.Vehicles.Aeroplane
 {
     [RequireComponent(typeof (AeroplaneController))]
@@ -28,9 +29,11 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
             float roll = CrossPlatformInputManager.GetAxis("Horizontal");
             float pitch = CrossPlatformInputManager.GetAxis("Vertical");
             bool airBrakes = CrossPlatformInputManager.GetButton("Fire1");
+            
 
             // auto throttle up, or down if braking.
             float throttle = airBrakes ? -1 : 1;
+
 #if MOBILE_INPUT
             AdjustInputForMobileControls(ref roll, ref pitch, ref throttle);
 #endif
