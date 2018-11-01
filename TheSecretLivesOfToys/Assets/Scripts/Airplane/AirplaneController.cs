@@ -3,36 +3,43 @@ using UnityEngine;
 
 public class AirplaneController : MonoBehaviour
 {
-    private int gameOver = 0; // Turn on and off the airplane code. Game over
-    private float crashForce = 0f; // When gameOver we need a force to let the airplane crash
+    [SerializeField] private float minimumSpeed = 595;                  // Minimum speed for take off 
+    [SerializeField] private float maximumSpeed = 800;                  // Maximum speed
+    [SerializeField] private float neutralSpeed = 700;                  // Speed in the air when not accelerating nor decelerating
+    [SerializeField] private float enginePower = 240;                   // How fast we accelerate/decelerate
 
-    // Rotation and position of our airplane
-    private float rotationX = 0.0f;
-    private float rotationY = 0.0f;
-    private float rotationZ = 0.0f;
-    private float positionX = 0.0f;
-    private float positionY = 0.0f;
-    private float positionZ = 0.0f;
+    [SerializeField] private float pitchSpeed = 80;                     // How fast we can go up and down
+    [SerializeField] private float airTurnSpeed = 100;                  // How fast we can turn right and left in the air
+    private float groundTurnSpeed;                                      // How fast we can turn right and left on the ground (about 0.3*airTurnSpeed)
+    [SerializeField] private float reverseRotationSpeed = 80;           // How fast the airplane can reverse its direction (going to the left when oriented to the right)
+    [SerializeField] private float horizontalRotateBackSpeed = 100;     // How fast the airplane can go back to a null rotation on Z axis
+    [SerializeField] private float verticalRotateBackSpeed = 50;        // How fast the airplane can go back to a null rotation on X axis
 
-    [SerializeField] private float minimumSpeed = 595;                   // Minimum speed for take off 
-    [SerializeField] private float maximumSpeed = 800;                   // Maximum speed
-    [SerializeField] private float neutralSpeed = 700;                   // Speed in the air when not accelerating nor decelerating
-    [SerializeField] private float enginePower = 240;                    // How fast we accelerate/decelerate
-    private float speed = 0.0f;                                         // Speed variable is the speed
-    private float upLift = 0.0f;                                        // Uplift to take off
-    [SerializeField] private float pseudoGravitation = -0.3f;            // Downlift for driving through landscape
+    [SerializeField] private float pseudoGravitation = -0.3f;           // Downlift for driving through landscape
 
-    private float rightLeftSoft = 0.0f;                 // Variable for soft curveflight
-    private float rightLeftSoftAbs = 0.0f;              // Positive rightLeftSoft Variable 
+    private float diveSalto;                                            // Blocks the forward salto, min 0, max 1
+    private float diveBlocker;                                          // Blocks sideways stagger flight while dive
+    
+    private int gameOver = 0;                                           // Turn on and off the airplane code. Game over
+    private float crashForce = 0f;                                      // When gameOver we need a force to let the airplane crash
 
-    private float diveSalto = 0.0f;                     // Blocks the forward salto
-    private float diveBlocker = 0.0f;                   // Blocks sideways stagger flight while dive
+    // Rotation of our airplane
+    private float rotationX;
+    private float rotationY;
+    private float rotationZ;
+
+    private float speed;                                                // Current speed of the airplane
+    private float upLift;                                               // Uplift to take off
+
+    private float rightLeftSoft;                                        // Variable for soft curve flight
 
     private Rigidbody m_Rigidbody;
 
     private void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+        // The airplane turns slower on the ground than in the air
+        groundTurnSpeed = airTurnSpeed * 0.3f;
     }
 
     private void Update()
@@ -65,35 +72,7 @@ public class AirplaneController : MonoBehaviour
             rotationX = transform.eulerAngles.x;
             rotationY = transform.eulerAngles.y;
             rotationZ = transform.eulerAngles.z;
-            positionX = transform.position.x;
-            positionY = transform.position.y;
-            positionZ = transform.position.z;
 
-
-            //----------------- Rotation of the airplane -----------------//
-
-            // Up Down, limited to a minimum speed
-            if ((Input.GetAxis("Vertical") <= 0) && ((speed > minimumSpeed)))
-            {
-                transform.Rotate((Input.GetAxis("Vertical") * Time.deltaTime * 80), 0, 0);
-            }
-            // Special case dive above 90 degrees
-            if ((Input.GetAxis("Vertical") > 0) && ((speed > minimumSpeed)))
-            {
-                transform.Rotate((0.8f - diveSalto) * (Input.GetAxis("Vertical") * Time.deltaTime * 80), 0, 0);
-            }
-
-            // Left Right at the ground	
-            if (GroundTrigger.triggered)
-                transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * 30, 0, Space.World);
-            // Left Right in the air
-            else
-                transform.Rotate(0, Time.deltaTime * 100 * rightLeftSoft, 0, Space.World);
-
-            // Tilt multiplied with minus 1 to go into the right direction	
-            // Tilt only happens in the air
-            if (!GroundTrigger.triggered)
-                transform.Rotate(0, 0, Time.deltaTime * 100 * (1.0f - rightLeftSoftAbs - diveBlocker) * Input.GetAxis("Horizontal") * -1.0f);
 
             //----------------- Pitch and Tilt calculations -----------------//
 
@@ -104,54 +83,85 @@ public class AirplaneController : MonoBehaviour
                 rightLeftSoft = rotationZ * 2.2f / 100 * -1f;           // to the left
             if ((Input.GetAxis("Horizontal") >= 0) && (rotationZ > 270))
                 rightLeftSoft = 7.92f - rotationZ * 2.2f / 100;       // to the right
-            
+
             //Limit rightLeftSoft so that the switch isn`t too hard when flying overhead
-            if (rightLeftSoft > 1)
-                rightLeftSoft = 1;
-            if (rightLeftSoft < -1)
-                rightLeftSoft = -1;
+            Mathf.Clamp(rightLeftSoft, -1.0f, 1.0f);
 
             // Precision problem rightLeftSoft to zero
             if ((rightLeftSoft > -0.01f) && (rightLeftSoft < 0.01f))
                 rightLeftSoft = 0;
 
             // Retrieves positive rightLeftSoft variable 
-            rightLeftSoftAbs = Mathf.Abs(rightLeftSoft);
+            float rightLeftSoftAbs = Mathf.Abs(rightLeftSoft);
+
 
             //----------------- Calculations Block salto forward -----------------//
 
             // Variable diveSalto
             // Dive salto forward blocking
             if (rotationX < 90)
-                diveSalto = rotationX / 100.0f; 
+                diveSalto = rotationX / 100.0f;
             if (rotationX > 90)
-                diveSalto = -0.2f;              
+                diveSalto = -0.2f;
 
             // Variable diveBlocker
             // Blocks sideways stagger flight while dive
-            if (rotationX < 90) diveBlocker = rotationX / 200.0f;
-            else diveBlocker = 0;
+            if (rotationX < 90)
+                diveBlocker = rotationX / 200.0f;
+            else
+                diveBlocker = 0;
+
+
+            //----------------- Rotation of the airplane -----------------//
+
+            // Up Down, limited to a minimum speed
+            if ((Input.GetAxis("Vertical") <= 0) && ((speed > minimumSpeed)))
+            {
+                transform.Rotate((Input.GetAxis("Vertical") * Time.deltaTime * pitchSpeed), 0, 0);
+            }
+            // Special case dive above 90 degrees
+            if ((Input.GetAxis("Vertical") > 0) && ((speed > minimumSpeed)))
+            {
+                // Make sure the diveSalto correction isn't too high or too low
+                transform.Rotate(Mathf.Clamp((1.0f - diveSalto), 0.0f, 1.0f) * (Input.GetAxis("Vertical") * Time.deltaTime * pitchSpeed), 0, 0);
+            }
+
+            // Left Right at the ground	
+            if (GroundTrigger.triggered)
+                transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * groundTurnSpeed, 0, Space.World);
+            // Left Right in the air
+            else
+                transform.Rotate(0, Time.deltaTime * airTurnSpeed * rightLeftSoft, 0, Space.World);
+
+            // Tilt multiplied with minus 1 to go into the right direction	
+            // Turn correction must not go below 0 or over 1
+            // Tilt only happens in the air
+            if (!GroundTrigger.triggered)
+                transform.Rotate(0, 0, 
+                    Time.deltaTime * airTurnSpeed * (1.0f - Mathf.Clamp(rightLeftSoftAbs - diveBlocker, 0.0f, 1.0f)) 
+                    * Input.GetAxis("Horizontal") * -1.0f);
+
 
             //----------------- Everything rotate back -----------------//
 
-            // Rotate back when key wrong direction 
+            // Turn back to opposite direction
             if ((rotationZ < 180) && (Input.GetAxis("Horizontal") > 0))
-                transform.Rotate(0, 0, rightLeftSoft * Time.deltaTime * 80);
+                transform.Rotate(0, 0, rightLeftSoft * Time.deltaTime * reverseRotationSpeed);
             if ((rotationZ > 180) && (Input.GetAxis("Horizontal") < 0))
-                transform.Rotate(0, 0, rightLeftSoft * Time.deltaTime * 80);
+                transform.Rotate(0, 0, rightLeftSoft * Time.deltaTime * reverseRotationSpeed);
 
             //Rotate back in Z axis general, limited by no horizontal button pressed
             if (!Input.GetButton("Horizontal"))
             {
-                if ((rotationZ < 135)) transform.Rotate(0, 0, rightLeftSoftAbs * Time.deltaTime * -100f);
-                if ((rotationZ > 225)) transform.Rotate(0, 0, rightLeftSoftAbs * Time.deltaTime * 100f);
+                if ((rotationZ < 135)) transform.Rotate(0, 0, rightLeftSoftAbs * Time.deltaTime * -horizontalRotateBackSpeed);
+                if ((rotationZ > 225)) transform.Rotate(0, 0, rightLeftSoftAbs * Time.deltaTime * horizontalRotateBackSpeed);
             }
 
             // Rotate back X axis
             if ((!Input.GetButton("Vertical")) && !GroundTrigger.triggered)
             {
-                if ((rotationX > 0) && (rotationX < 180)) transform.Rotate(Time.deltaTime * -50, 0, 0);
-                if ((rotationX > 0) && (rotationX > 180)) transform.Rotate(Time.deltaTime * 50, 0, 0);
+                if ((rotationX > 0) && (rotationX < 180)) transform.Rotate(Time.deltaTime * -verticalRotateBackSpeed, 0, 0);
+                if ((rotationX > 0) && (rotationX > 180)) transform.Rotate(Time.deltaTime * verticalRotateBackSpeed, 0, 0);
             }
 
             //----------------- Speed driving and flying -----------------//
