@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour {
 
-    private Vector3 TravelDirection;
+    public Vector3 TravelDirection;
     [SerializeField] private int Speed;
     private AudioSource m_AudioSource;
 
