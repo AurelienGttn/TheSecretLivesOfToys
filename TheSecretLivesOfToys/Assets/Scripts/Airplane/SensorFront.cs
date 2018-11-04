@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // Sensor front is part of the driving behaviour to keep the airplane aligned with the ground

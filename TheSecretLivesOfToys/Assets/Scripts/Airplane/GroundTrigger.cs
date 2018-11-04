@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 // Groundsensor is the cube primitive at the bottom side of our plane. 
 // This primitive represents our wheels. When it has ground contact the triggered 

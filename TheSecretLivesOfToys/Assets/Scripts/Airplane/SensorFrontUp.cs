@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 // Sensor front up is part of the driving behaviour to keep the airplane aligned with the ground
 
