@@ -18,9 +18,7 @@ public class Ring : MonoBehaviour {
         // Add visual effects if this ring is the next target
         if (nextRing)
         {
-            Debug.Log("Particles activated");
             GetComponent<Renderer>().enabled = false;
-            //Destroy(this);
             particles.Play();
         }
 	}
@@ -34,10 +32,9 @@ public class Ring : MonoBehaviour {
                 nextRing = false;
                 ringManager.AddRingDone();
 
-                ParticleSystem.MainModule mainModule = particles.main;
+                // Change visual effect so the player knows he did go through this ring
                 ParticleSystem.ColorOverLifetimeModule colorModule = particles.colorOverLifetime;
                 colorModule.color = Color.green;
-                //mainModule.startColor = Color.green;
             }
         }
     }

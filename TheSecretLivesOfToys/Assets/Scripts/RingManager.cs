@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class RingManager : MonoBehaviour {
 
     public static bool airplaneRingsLevel = false;
+    // Name of the scene we want to show after victory
     private string victoryScene = "PlaneScene";
 
     public static int ringsCount;
@@ -14,19 +15,9 @@ public class RingManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //rings = GameObject.FindGameObjectsWithTag("Ring");
         ringsCount = rings.Length;
         ringsDone = 0;
         rings[ringsDone].GetComponent<Ring>().setNextRing();
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        //rings[ringsDone].GetComponent<Ring>().setNextRing();
-        // Victory condition
-        //if (ringsDone == ringsCount)
-        //    Victory();
 	}
 
     // Method called when player goes through a ring
@@ -35,7 +26,6 @@ public class RingManager : MonoBehaviour {
         ringsDone++;
         if (ringsDone < ringsCount)
         {
-            Debug.Log("Ring " + ringsDone + " says: I'm next!");
             rings[ringsDone].GetComponent<Ring>().setNextRing();
         }
         else
