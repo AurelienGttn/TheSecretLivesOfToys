@@ -66,7 +66,7 @@ public class LoadScene : MonoBehaviour {
             if(firstMission)
                 nomScene = "FireTruck";
             if (missionTank)
-                nomScene = "Tank";
+                nomScene = "TankScene";
             if (missionPlane)
                 nomScene = "PlaneLevel1"; 
         }
@@ -113,7 +113,7 @@ public class LoadScene : MonoBehaviour {
 
         if (this.name == "Button_Tank")
         {
-            nomScene = "Tank"; 
+            nomScene = "TankScene"; 
         }
        
         SceneManager.LoadScene(nomScene);
