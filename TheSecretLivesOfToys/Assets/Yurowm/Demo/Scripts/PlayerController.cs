@@ -207,6 +207,26 @@ public class PlayerController : MonoBehaviour {
             {
                 Stay();
             }
-        } 
+        }
+
+    // Controler Véhicule
+    public GameObject vehicule;
+    public GameObject cameraTruck;
+    public GameObject FX_Emplacement; 
+
+    void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "FireTruck" && (Input.GetButton("Fire2") || Input.GetButton("F")))
+        {
+            gameObject.SetActive(false);
+            FX_Emplacement.SetActive(false); 
+            vehicule.GetComponent<VehiculeController>().enabled = true;
+            vehicule.GetComponent<AudioSource>().enabled = true; 
+            cameraTruck.SetActive(true); 
+            this.transform.GetChild(0);
+
+        }
+    }
+
 
 }

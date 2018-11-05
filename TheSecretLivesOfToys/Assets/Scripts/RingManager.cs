@@ -7,7 +7,7 @@ public class RingManager : MonoBehaviour {
 
     public static bool airplaneRingsLevel = false;
     // Name of the scene we want to show after victory
-    private string victoryScene = "PlaneScene";
+    //private string victoryScene = "PlaneScene";
 
     public static int ringsCount;
     public static int ringsDone;
@@ -33,7 +33,8 @@ public class RingManager : MonoBehaviour {
     }
     void Victory()
     {
+        SceneManager.LoadScene("MissionCompleted");
         airplaneRingsLevel = true;
-        SceneManager.LoadScene(victoryScene);
+        
     }
 }
