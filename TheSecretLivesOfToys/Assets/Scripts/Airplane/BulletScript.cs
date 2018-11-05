@@ -14,8 +14,9 @@ public class BulletScript : MonoBehaviour {
         m_AudioSource.Play();
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        // TODO: Add Linecast to have more precise collision detection
         transform.Translate(TravelDirection * Speed * Time.deltaTime);
     }
 

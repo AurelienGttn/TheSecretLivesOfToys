@@ -1,29 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Crosshair : MonoBehaviour {
+    
+    [SerializeField] private Transform m_BulletEmitter;
+    [SerializeField] private Camera m_Camera;
+    [SerializeField] private RectTransform m_Crosshair;
+    private Image m_CrosshairImage;
 
-    SpriteRenderer m_SpriteRenderer;
 	// Use this for initialization
 	void Start () {
-        m_SpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-	}
+        m_CrosshairImage = GetComponent<Image>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        RaycastHit hit, hit2;
-        if (Physics.Raycast(transform.position, transform.forward, out hit))
+        RaycastHit hit;
+
+        // Place the crosshair on the first object it collides with
+        if (Physics.Raycast(m_BulletEmitter.transform.position, -m_BulletEmitter.transform.up, out hit))
         {
-            if (hit.collider.tag == "Target")
+            if (hit.collider && !hit.collider.name.StartsWith("Bullet"))
             {
-                m_SpriteRenderer.color = new Color(255, 0, 0);
-                Debug.Log("Target hit------------------------------");
-            }
-            else
-            {
-                m_SpriteRenderer.color = new Color(0, 0, 0);
-                Debug.Log("No target");
+                m_Crosshair.transform.position = m_Camera.WorldToScreenPoint(hit.point);
+                // Change color of crosshair if it is on a target
+                if (hit.collider.tag == "Target")
+                {
+                    m_CrosshairImage.color = Color.red;
+                }
+                else
+                {
+                    m_CrosshairImage.color = Color.black;
+                }
             }
         }
 	}

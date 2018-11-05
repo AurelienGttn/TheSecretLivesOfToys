@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TravelDirection: {x: 0, y: -1.0000001, z: -0.00000011920929}
-  Speed: 5000
+  Speed: 500
 --- !u!136 &136428226309454990
 CapsuleCollider:
   m_ObjectHideFlags: 1
