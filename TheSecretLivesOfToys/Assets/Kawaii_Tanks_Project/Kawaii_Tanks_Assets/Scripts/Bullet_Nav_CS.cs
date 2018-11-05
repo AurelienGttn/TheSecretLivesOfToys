@@ -89,6 +89,24 @@ namespace ChobiAssets.KTP
 			}
 			Destroy (this.gameObject);
 		}
-	}
+
+        public float power = 10.0f;
+        public float radius = 5.0f;
+        public float upforce = 1.0f;
+
+        private void OnDestroy()
+        {
+            Vector3 explosionPosition = this.transform.position;
+            Collider[] colliders = Physics.OverlapSphere(explosionPosition, radius);
+            foreach(Collider hit in colliders)
+            {
+                Rigidbody rb = hit.GetComponent<Rigidbody>();
+                if(rb != null)
+                {
+                    rb.AddExplosionForce(power, explosionPosition, radius, upforce, ForceMode.Impulse);
+                }
+            }
+        }
+    }
 
 }

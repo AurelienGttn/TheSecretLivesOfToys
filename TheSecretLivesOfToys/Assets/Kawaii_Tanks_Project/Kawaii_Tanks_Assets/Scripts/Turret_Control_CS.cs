@@ -196,13 +196,13 @@ namespace ChobiAssets.KTP
 			Ray ray = Camera.main.ScreenPointToRay (screenPos);
 			RaycastHit [] raycastHits;
 			raycastHits = Physics.SphereCastAll (ray, spherecastRadius, 1000.0f, layerMask);
-			foreach (RaycastHit raycastHit in raycastHits) {
+			/*foreach (RaycastHit raycastHit in raycastHits) {
 				Transform colliderTransform = raycastHit.collider.transform;
 				if (colliderTransform.root != rootTransform) {
 					if (raycastHit.transform.GetComponent <Rigidbody> () && colliderTransform.root.tag != "Finish") { //When 'raycastHit.collider.transform' is Turret, 'raycastHit.transform' should be the MainBody.
 						targetTransform = raycastHit.transform; // Set the MainBody of the target.
 						targetOffset.y = 0.5f;
-						/* // Set the hit collider of the target.
+						 // Set the hit collider of the target.
 						targetTransform = colliderTransform ;
 						targetOffset = targetTransform.InverseTransformPoint (raycastHit.point);
 						if (targetTransform.localScale != Vector3.one) { // for Armor_Collider.
@@ -210,11 +210,11 @@ namespace ChobiAssets.KTP
 							targetOffset.y *= targetTransform.localScale.y;
 							targetOffset.z *= targetTransform.localScale.z;
 						}
-						*/
+						
 						return ;
 					}
 				}
-			}
+			}*/
 			// The target cannot be found.
 			Cast_Ray (screenPos, isLockOn);
 		}
