@@ -87,7 +87,7 @@ public class LoadScene : MonoBehaviour {
                 nomScene = "Mission";
             }
 
-            if (AirplaneController.PlaneScene)
+            if (RingManager.airplaneRingsLevel)
             {
                 firstMission = false;
                 missionTank = false;

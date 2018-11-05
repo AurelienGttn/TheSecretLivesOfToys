@@ -30,7 +30,7 @@ public class MissionsCompleted : MonoBehaviour {
             Vehicule.name = "Text_Tank";
         } 
             
-         if(AirplaneController.PlaneScene)
+         if(RingManager.airplaneRingsLevel)
          {
              Vehicule.name = "Text_Plane";
          }
@@ -50,7 +50,7 @@ public class MissionsCompleted : MonoBehaviour {
         if (Vehicule.name == "Text_Plane")
         {
             nomVehicule = "Plane ";
-            mission = "Ring crossed : 4/4";  
+            mission = "Ring crossed :" + RingManager.ringsDone.ToString()+ "/" + RingManager.ringsCount.ToString(); 
         }
 
         Vehicule.text = "Find "+ nomVehicule + ": ";
