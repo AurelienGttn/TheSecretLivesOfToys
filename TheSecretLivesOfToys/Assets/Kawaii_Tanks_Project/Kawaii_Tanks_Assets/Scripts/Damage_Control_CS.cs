@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 #if UNITY_ANDROID || UNITY_IPHONE
 using UnityStandardAssets.CrossPlatformInput;
@@ -8,9 +9,10 @@ using UnityStandardAssets.CrossPlatformInput;
 
 namespace ChobiAssets.KTP
 {
-	
+    
 	public class Damage_Control_CS : MonoBehaviour
 	{
+        public static bool TankScene = false; 
 		[Header ("Damage settings")]
 		[Tooltip ("Durability of this tank.")] public float durability = 300.0f;
 		[Tooltip ("Prefab used for destroyed effects.")] public GameObject destroyedPrefab;
@@ -58,6 +60,12 @@ namespace ChobiAssets.KTP
 					Start_Destroying ();
 				}
 			}
+
+            if (Input.GetButton("E"))
+            {
+                SceneManager.LoadScene("MissionCompleted");
+                TankScene = true;
+            }
 		}
 
 		public void Get_Damage (float damageValue)
@@ -101,6 +109,7 @@ namespace ChobiAssets.KTP
 		{ // Called from "Game_Controller_CS".
 			this.enabled = !isPaused;
 		}
+
 
 	}
 
