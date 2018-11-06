@@ -3579,6 +3579,16 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198303112991975630, guid: a525643e58738b14e9383b1a3e6bebee,
+        type: 2}
+      propertyPath: RotationModule.x.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 198303112991975630, guid: a525643e58738b14e9383b1a3e6bebee,
+        type: 2}
+      propertyPath: RotationModule.y.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114058497387079350, guid: a525643e58738b14e9383b1a3e6bebee, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: a525643e58738b14e9383b1a3e6bebee, type: 2}

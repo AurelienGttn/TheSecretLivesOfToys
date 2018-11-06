@@ -4704,9 +4704,28 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114379710571276958, guid: 4a8326f85e50aa048b5361b5316f684f,
+        type: 2}
+      propertyPath: m_BulletEmitter
+      value: 
+      objectReference: {fileID: 1264038017}
+    - target: {fileID: 114379710571276958, guid: 4a8326f85e50aa048b5361b5316f684f,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1922078300}
+    - target: {fileID: 1534436931698238, guid: 4a8326f85e50aa048b5361b5316f684f, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a8326f85e50aa048b5361b5316f684f, type: 2}
   m_IsPrefabAsset: 0
+--- !u!4 &1264038017 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4276521900031084, guid: 4a8326f85e50aa048b5361b5316f684f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1264038016}
 --- !u!1 &1270026816 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1982547035389648, guid: fe6b5f645fe434f45b6eacde8ec47f4d,
@@ -6689,6 +6708,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baec086904791744185aaa07a6cf55c2, type: 2}
   m_IsPrefabAsset: 0
+--- !u!20 &1922078300 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2000000, guid: baec086904791744185aaa07a6cf55c2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1922078299}
 --- !u!1001 &1938564856
 Prefab:
   m_ObjectHideFlags: 0
