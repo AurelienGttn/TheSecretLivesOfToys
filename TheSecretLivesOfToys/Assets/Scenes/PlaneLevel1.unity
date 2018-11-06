@@ -1002,6 +1002,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f91411351498c5488ec1b55b523cbcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_BulletEmitter: {fileID: 0}
+  m_Camera: {fileID: 0}
+  m_Crosshair: {fileID: 0}
 --- !u!212 &277389607
 SpriteRenderer:
   m_ObjectHideFlags: 0

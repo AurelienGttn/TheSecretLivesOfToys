@@ -9,13 +9,13 @@ public class RingManager : MonoBehaviour {
     // Name of the scene we want to show after victory
     private string victoryScene = "PlaneScene";
 
-    public static int ringsCount;
+    public static int ringCount;
     public static int ringsDone;
     public GameObject[] rings;
 
 	// Use this for initialization
 	void Start () {
-        ringsCount = rings.Length;
+        ringCount = rings.Length;
         ringsDone = 0;
         rings[ringsDone].GetComponent<Ring>().setNextRing();
 	}
@@ -24,7 +24,7 @@ public class RingManager : MonoBehaviour {
     public void AddRingDone()
     {
         ringsDone++;
-        if (ringsDone < ringsCount)
+        if (ringsDone < ringCount)
         {
             rings[ringsDone].GetComponent<Ring>().setNextRing();
         }
