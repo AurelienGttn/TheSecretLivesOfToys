@@ -41,7 +41,7 @@ public class PutOffFire : MonoBehaviour {
                     Particules[0].gameObject.SetActive(false);
                     Particules.Clear();
                     HouseSaved++;
-                    Debug.Log("Maison sauvé : " + HouseSaved + "/" + HouseOnFire);
+                    Debug.Log("Maisons sauvées : " + HouseSaved + "/" + HouseOnFire);
                 }           
             }
         }

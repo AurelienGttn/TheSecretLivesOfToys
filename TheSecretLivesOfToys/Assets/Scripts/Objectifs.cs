@@ -21,7 +21,7 @@ public class Objectifs : MonoBehaviour {
 
         if (SceneManager.GetActiveScene().name == "PlaneLevel1")
         {
-            objectif.text = "Find Plane" + "\n" + "Ring crossed :" + RingManager.ringsDone.ToString() + "/" + RingManager.ringsCount.ToString(); 
+            objectif.text = "Find Plane" + "\n" + "Ring crossed :" + RingManager.ringsDone.ToString() + "/" + RingManager.ringCount.ToString(); 
         }
 
         if (SceneManager.GetActiveScene().name == "Tank")

@@ -50,7 +50,7 @@ public class MissionsCompleted : MonoBehaviour {
         if (Vehicule.name == "Text_Plane")
         {
             nomVehicule = "Plane ";
-            mission = "Ring crossed :" + RingManager.ringsDone.ToString()+ "/" + RingManager.ringsCount.ToString(); 
+            mission = "Ring crossed :" + RingManager.ringsDone.ToString()+ "/" + RingManager.ringCount.ToString(); 
         }
 
         Vehicule.text = "Find "+ nomVehicule + ": ";
