@@ -51,7 +51,7 @@ public class PutOffFire : MonoBehaviour {
                 }           
             }
         }
-        if (HouseSaved == HouseOnFire)
+        if ((HouseSaved == HouseOnFire) || Input.GetButton("E"))
         {
             SceneManager.LoadScene("MissionCompleted");
             FireTruckScene = true; 
