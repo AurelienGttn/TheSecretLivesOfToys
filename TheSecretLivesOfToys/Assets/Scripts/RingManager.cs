@@ -20,6 +20,17 @@ public class RingManager : MonoBehaviour {
         rings[ringsDone].GetComponent<Ring>().setNextRing();
 	}
 
+    // A enlever, test menu
+    private void Update()
+    {
+
+        if (Input.GetButton("E"))
+        {
+            airplaneRingsLevel = true;
+            SceneManager.LoadScene("MissionCompleted");
+        }
+    }
+
     // Method called when player goes through a ring
     public void AddRingDone()
     {
@@ -28,13 +39,12 @@ public class RingManager : MonoBehaviour {
         {
             rings[ringsDone].GetComponent<Ring>().setNextRing();
         }
-        else
+        else 
             Victory();
     }
     void Victory()
     {
         SceneManager.LoadScene("MissionCompleted");
         airplaneRingsLevel = true;
-        
     }
 }

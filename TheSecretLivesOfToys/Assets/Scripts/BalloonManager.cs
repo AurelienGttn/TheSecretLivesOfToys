@@ -8,7 +8,7 @@ public class BalloonManager: MonoBehaviour
 
     public static bool airplaneBalloonsLevel = false;
     // Name of the scene we want to show after victory
-    private string victoryScene = "PlaneScene";
+    private string victoryScene = "MissionCompleted";
 
     public static int balloonCount;
     public static int balloonsShot;
@@ -19,6 +19,17 @@ public class BalloonManager: MonoBehaviour
     {
         balloonCount = balloons.Length;
         balloonsShot = 0;
+    }
+
+    // A enlever, test menu
+    private void Update()
+    {
+        
+        if (Input.GetButton("E"))
+        {
+            airplaneBalloonsLevel = true;
+            SceneManager.LoadScene(victoryScene);
+        }
     }
 
     // Method called when player shoots a balloon
