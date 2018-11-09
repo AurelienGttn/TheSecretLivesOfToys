@@ -24,7 +24,7 @@ public class Shooting : MonoBehaviour
         canShoot = false;
 
         // Create bullet
-        GameObject BulletClone = (GameObject)Instantiate(Bullet, BulletEmitter.transform.position, BulletEmitter.transform.rotation);
+        GameObject BulletClone = Instantiate(Bullet, BulletEmitter.transform.position, BulletEmitter.transform.rotation);
 
         Bullet.GetComponent<BulletScript>().TravelDirection = Bullet.transform.forward;
 
