@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (!isDragging)
         {
-            transform.Rotate(0, Input.GetAxisRaw("Horizontal") * 3.0f, 0);
+            transform.Rotate(0, Input.GetAxisRaw("Horizontal") * 100.0f * Time.deltaTime, 0);
         }
         if (Input.GetAxisRaw("Vertical") != 0)
         {

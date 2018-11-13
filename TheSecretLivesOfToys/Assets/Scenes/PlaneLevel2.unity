@@ -1678,7 +1678,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc4cbc5d33948c40b904cf05352bd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehicule: {fileID: 463327749}
 --- !u!65 &463327756
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4583,18 +4582,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400096, guid: de63ee434fe39914b8d2f5680c62d05f,
     type: 2}
   m_PrefabInternal: {fileID: 872936999}
---- !u!114 &1961484445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1961484443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783963a0087b1fa4abae9d80db4e64f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 0}
 --- !u!136 &1961484446
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Pause : MonoBehaviour {
-    public GameObject panelPause; 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public GameObject panelPause;
+    public GameObject soldier;
+    // Use this for initialization
+    void Start () {
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -23,5 +24,10 @@ public class Pause : MonoBehaviour {
         Time.timeScale = 1.0f;
         panelPause.SetActive(false); 
    }
+
+
+   
+      
+    
 
 }

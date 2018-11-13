@@ -63,7 +63,7 @@ public class LoadScene : MonoBehaviour {
             Application.Quit(); 
         }
 
-        if(this.name == "Button_AcceptMission")
+        if(this.name == "Button_AcceptMission" || this.name == "Button_TryAgain")
         {
             if(missionTank)
                 nomScene = "TankScene";
@@ -141,6 +141,7 @@ public class LoadScene : MonoBehaviour {
         {
             nomScene = "PlaneLevel2";
         }
+
 
         SceneManager.LoadScene(nomScene);
     }
