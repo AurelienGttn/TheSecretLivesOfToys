@@ -350,8 +350,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 25.475, y: -24.3}
-  m_SizeDelta: {x: -51, y: -400.8}
+  m_AnchoredPosition: {x: 0, y: -48.400032}
+  m_SizeDelta: {x: -50, y: -388.80008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &148666720
 MonoBehaviour:
@@ -393,7 +393,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 64
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
@@ -442,8 +442,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -105.00008, y: 74.999916}
-  m_SizeDelta: {x: -40, y: -146.9}
+  m_AnchoredPosition: {x: 0, y: 61.72496}
+  m_SizeDelta: {x: -50, y: -173.44992}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &258254110
 MonoBehaviour:
@@ -498,7 +498,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 64
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
@@ -1359,8 +1359,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 179.99998}
-  m_SizeDelta: {x: -40, y: -146.9}
+  m_AnchoredPosition: {x: 0, y: 180.85}
+  m_SizeDelta: {x: -50, y: -411.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1825611024
 MonoBehaviour:
@@ -1402,7 +1402,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 64
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
@@ -1672,7 +1672,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 747.00006, y: 2.0001183}
+  m_AnchoredPosition: {x: 508, y: 2.0001183}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1980961354

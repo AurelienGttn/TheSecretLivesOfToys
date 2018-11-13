@@ -7,6 +7,7 @@ TagManager:
   - floor
   - Ring
   - Target
+  - FireTruck
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - floor
   - Character
   - Wall
-  - 
+  - Targets
   - 
   - 
   - 

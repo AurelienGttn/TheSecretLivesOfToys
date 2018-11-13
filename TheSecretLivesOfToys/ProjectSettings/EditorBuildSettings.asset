@@ -9,17 +9,17 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 812a695942118e04db3c811a4e4ffe9a
+  - enabled: 1
     path: Assets/Scenes/FireTruck.unity
     guid: 0eff82bb36bfe5b438e6c112801d28d6
   - enabled: 1
     path: Assets/Scenes/MissionCompleted.unity
     guid: 30c471b01de524f42924aca3eb647cea
   - enabled: 0
-    path: Assets/Scenes/PlaneScene.unity
-    guid: 86bb1c2f87b6b564ca3d087d415f4fde
-  - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: 812a695942118e04db3c811a4e4ffe9a
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 202419465537744449e9a70d99acd5a8
@@ -39,8 +39,8 @@ EditorBuildSettings:
     path: Assets/Scenes/PlaneLevel1.unity
     guid: 1d8e695f67effc54dab34a89b9953144
   - enabled: 0
-    path: Assets/Scenes/Tank.unity
-    guid: 959d70939d530bb4e93e1de07debd7b3
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Mission.unity
     guid: e74e4fc2ac8228a43867c083a5b8a1d6
@@ -53,4 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlaneLevel2.unity
     guid: d10d0165711ab5749ad595b7fc582a5a
+  - enabled: 1
+    path: Assets/Scenes/TryAgain.unity
+    guid: e7f2c903e8bd2054c898d44be5d82026
   m_configObjects: {}
