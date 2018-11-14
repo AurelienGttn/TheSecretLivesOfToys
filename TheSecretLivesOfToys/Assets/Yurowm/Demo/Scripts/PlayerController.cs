@@ -20,10 +20,24 @@ public class PlayerController : MonoBehaviour {
     private Animator animator;
 
 	void Awake() {
+
 		animator = GetComponent<Animator> ();
 		if (arsenal.Length > 0)
 			SetArsenal (arsenal[0].name);
-		}
+
+        for (int i = 0; i <= 11; i++)
+        {
+            Physics.IgnoreLayerCollision(9, i, true); // Reset settings.
+            Physics.IgnoreLayerCollision(11, i, true); // Reset settings.
+        }
+        Physics.IgnoreLayerCollision(9, 9, false); // Wheels do not collide with each other.
+        Physics.IgnoreLayerCollision(9, 11, false); // Wheels do not collide with MainBody.
+        for (int i = 0; i <= 11; i++)
+        {
+            Physics.IgnoreLayerCollision(10, i, false); // Suspensions do not collide with anything.
+        }
+
+    }
 
 	public void SetArsenal(string name) {
 		foreach (Arsenal hand in arsenal) {

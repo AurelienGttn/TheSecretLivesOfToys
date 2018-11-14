@@ -8,6 +8,8 @@ TagManager:
   - Ring
   - Target
   - FireTruck
+  - FxTemporaire
+  - HouseOnFire
   layers:
   - Default
   - TransparentFX
