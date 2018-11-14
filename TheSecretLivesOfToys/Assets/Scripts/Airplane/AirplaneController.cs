@@ -42,7 +42,7 @@ public class AirplaneController : MonoBehaviour
         groundTurnSpeed = airTurnSpeed * 0.3f;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //----------------- Game over -----------------//
 

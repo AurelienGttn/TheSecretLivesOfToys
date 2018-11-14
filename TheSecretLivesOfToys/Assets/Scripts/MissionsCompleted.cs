@@ -22,35 +22,26 @@ public class MissionsCompleted : MonoBehaviour {
 
         if (PutOffFire.FireTruckScene)
         {
-            Vehicule.name = "Text_FireTruck"; 
-        }
-
-        if (Damage_Control_CS.TankScene)
-        {
-            Vehicule.name = "Text_Tank";
-        } 
-            
-         if(RingManager.airplaneRingsLevel)
-         {
-             Vehicule.name = "Text_Plane";
-         }
-
-        if (Vehicule.name == "Text_FireTruck")
-        {
             nomVehicule = "FireTruck ";
             mission = "House Saved : " + PutOffFire.HouseSaved.ToString() + "/" + PutOffFire.HouseOnFire.ToString();
         }
 
-        if (Vehicule.name == "Text_Tank")
+        if (Damage_Control_CS.TankScene)
         {
             nomVehicule = "Tank ";
-            mission = "Demolished objects : 10/10";
-        }
+            mission = "You found the plane ";
+        } 
+            
+         if(RingManager.airplaneRingsLevel)
+         {
+            nomVehicule = "Plane ";
+            mission = "Ring crossed :" + RingManager.ringsDone.ToString() + "/" + RingManager.ringCount.ToString();
+         }
 
-        if (Vehicule.name == "Text_Plane")
+        if (BalloonManager.airplaneBalloonsLevel)
         {
             nomVehicule = "Plane ";
-            mission = "Ring crossed :" + RingManager.ringsDone.ToString()+ "/" + RingManager.ringsCount.ToString(); 
+            mission = "Balloon exploded :" + BalloonManager.balloonsShot.ToString() + "/" + BalloonManager.balloonCount.ToString(); 
         }
 
         Vehicule.text = "Find "+ nomVehicule + ": ";

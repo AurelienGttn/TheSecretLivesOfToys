@@ -25,14 +25,20 @@ public class PutOffFire : MonoBehaviour {
     {
         if (Particules.Count != 0)
         {
-            if (ParticulesLife >= 0)
+            if (ParticulesLife >= 95)
             {
-                float NewScale = 1f * (ParticulesLife / 100f);
+                float scaleMultiplier = 1f * (ParticulesLife / 100f);
                 for (int i = 0; i < Particules.Count; i++)
                 {
-                    Particules[i].transform.localScale = new Vector3(NewScale, NewScale, NewScale);
+                    Vector3 currentScale = Particules[i].transform.localScale;
+                    currentScale = new Vector3(scaleMultiplier * currentScale.x, scaleMultiplier * currentScale.y, scaleMultiplier * currentScale.z);
+                    Particules[i].transform.localScale = currentScale;
+                    if (Particules[i].GetComponent<Light>() != null)
+                    {
+                        Particules[i].GetComponent<Light>().range -= 0.04f;
+                    }
                 }
-                ParticulesLife = ParticulesLife - 0.45f;
+                ParticulesLife = ParticulesLife - 0.05f;
             }
             else
             {       
@@ -41,11 +47,11 @@ public class PutOffFire : MonoBehaviour {
                     Particules[0].gameObject.SetActive(false);
                     Particules.Clear();
                     HouseSaved++;
-                    Debug.Log("Maison sauvé : " + HouseSaved + "/" + HouseOnFire);
+                    Debug.Log("Maisons sauvées : " + HouseSaved + "/" + HouseOnFire);
                 }           
             }
         }
-        if (HouseSaved == HouseOnFire)
+        if ((HouseSaved == HouseOnFire) || Input.GetButton("E"))
         {
             SceneManager.LoadScene("MissionCompleted");
             FireTruckScene = true; 

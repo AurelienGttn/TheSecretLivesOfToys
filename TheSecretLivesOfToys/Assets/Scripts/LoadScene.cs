@@ -6,10 +6,12 @@ using  ChobiAssets.KTP;
 
 public class LoadScene : MonoBehaviour {
     private string nomScene;
-    public static bool firstMission = false;
+    public static bool missionFireTruck = false;
     public static bool missionTank = false;
-    public static bool missionPlane = false; 
-    
+    public static bool missionPlaneRings = false;
+    public static bool missionPlaneBalloon = false;
+
+
     // Use this for initialization
     void Start () {
 		
@@ -24,7 +26,7 @@ public class LoadScene : MonoBehaviour {
     {
         if (this.name == "Button_Play") 
         {
-            firstMission = true; 
+            missionTank = true; 
             nomScene = "Mission";
         }
 
@@ -61,37 +63,56 @@ public class LoadScene : MonoBehaviour {
             Application.Quit(); 
         }
 
-        if(this.name == "Button_AcceptMission")
+        if(this.name == "Button_AcceptMission" || this.name == "Button_TryAgain")
         {
-            if(firstMission)
-                nomScene = "FireTruck";
-            if (missionTank)
+            if(missionTank)
                 nomScene = "TankScene";
-            if (missionPlane)
-                nomScene = "PlaneLevel1"; 
+
+            if (missionPlaneBalloon)
+                nomScene = "PlaneLevel2";
+
+            if (missionFireTruck)
+                nomScene = "FireTruck";
+             
+            if(missionPlaneRings)
+                nomScene = "PlaneLevel1";
         }
         
         if (this.name == "Button_NextMission")
         {
-            if (PutOffFire.FireTruckScene)
-            {
-                firstMission = false;
-                missionTank = true; 
-                nomScene = "Mission"; 
-            }
             if (Damage_Control_CS.TankScene)
             {
-                firstMission = false; 
+                missionTank = false; 
+                missionPlaneBalloon = true;
+                missionFireTruck = false;
+                missionPlaneRings = false;
+                nomScene = "Mission";
+            }
+
+            if (BalloonManager.airplaneBalloonsLevel)
+            {
                 missionTank = false;
-                missionPlane = true; 
+                missionPlaneBalloon = false;
+                missionFireTruck = true;
+                missionPlaneRings = false;
+                nomScene = "Mission";
+            }
+
+            if (PutOffFire.FireTruckScene)
+            {
+                missionTank = false;
+                missionPlaneBalloon = false;
+                missionFireTruck = false;
+                missionPlaneRings = true;
                 nomScene = "Mission";
             }
 
             if (RingManager.airplaneRingsLevel)
             {
-                firstMission = false;
                 missionTank = false;
-                missionPlane = false;
+                missionPlaneBalloon = false;
+                missionFireTruck = false;
+                missionPlaneRings = false;
                 nomScene = "ContenuNonDispo";
             }
         }
@@ -101,7 +122,7 @@ public class LoadScene : MonoBehaviour {
             nomScene = "Menu"; 
         }
 
-        if (this.name == "Button_Plane")
+        if (this.name == "Button_Plane_Rings")
         {
             nomScene = "PlaneLevel1";
         }
@@ -115,7 +136,13 @@ public class LoadScene : MonoBehaviour {
         {
             nomScene = "TankScene"; 
         }
-       
+
+        if (this.name == "Button_Plane_Balloon")
+        {
+            nomScene = "PlaneLevel2";
+        }
+
+
         SceneManager.LoadScene(nomScene);
     }
 }
