@@ -5,34 +5,28 @@ public class Balloon : MonoBehaviour {
     private BalloonManager balloonManager;
     [SerializeField] private ParticleSystem destructionEffect;
 
+    private Transform parent;
+    private Transform balloonString;
+    private Transform balloonBox;
+
     private void Start()
     {
         balloonManager = FindObjectOfType<BalloonManager>();
+        parent = transform.parent;
+        balloonString = parent.GetChild(1);
+        balloonBox = parent.GetChild(2);
     }
 
-    //public void BalloonShot()
-    //{
-    //    Debug.Log("kaboom");
-    //    // Instantiate on child balloon position, not on parent (balloon + string) position
-    //    ParticleSystem destructionTemp = Instantiate(destructionEffect, transform.GetChild(0).position, transform.rotation);
-    //    destructionTemp.transform.localScale = transform.localScale / 5;
-
-    //    balloonManager.GetComponent<BalloonManager>().AddBalloonShot();
-
-    //    Destroy(gameObject);
-    //}
-
-    private void OnTriggerEnter(Collider other)
+    public void BalloonShot()
     {
-        if (other.name.StartsWith("Bullet"))
-        {
-            // Instantiate on child balloon position, not on parent (balloon + string) position
-            ParticleSystem destructionTemp = Instantiate(destructionEffect, transform.GetChild(0).position, transform.rotation);
-            destructionTemp.transform.localScale = transform.localScale/5;
+        ParticleSystem destructionTemp = Instantiate(destructionEffect, transform.position, transform.rotation);
+        destructionTemp.transform.localScale = parent.localScale / 5;
 
-            balloonManager.GetComponent<BalloonManager>().AddBalloonShot();
-            
-            Destroy(gameObject);
-        }
+        balloonManager.GetComponent<BalloonManager>().AddBalloonShot();
+        
+        Destroy(balloonString.gameObject);
+        // Call box method to make it fall
+        balloonBox.GetComponent<BalloonBox>().DropBox();
+        Destroy(gameObject);
     }
 }
