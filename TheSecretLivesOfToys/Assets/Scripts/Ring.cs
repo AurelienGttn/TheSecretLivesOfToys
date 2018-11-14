@@ -6,7 +6,7 @@ public class Ring : MonoBehaviour {
 
     private RingManager ringManager;
     private bool nextRing;
-    [SerializeField] private ParticleSystem particles;
+    private ParticleSystem particles;
 
 	void Start () {
         ringManager = FindObjectOfType<RingManager>();
