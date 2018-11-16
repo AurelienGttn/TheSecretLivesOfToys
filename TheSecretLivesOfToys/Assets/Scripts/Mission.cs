@@ -30,7 +30,7 @@ public class Mission : MonoBehaviour {
         if (LoadScene.missionTank)
         {
             nomVehicule = "tank ";
-            mission = "2. Destroy all objects on your way";
+            mission = "2. Find a way to the plane";
         }
 
         if (LoadScene.missionPlaneBalloon)

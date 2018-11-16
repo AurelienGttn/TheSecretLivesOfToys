@@ -29,7 +29,7 @@ public class MissionsCompleted : MonoBehaviour {
         if (Damage_Control_CS.TankScene)
         {
             nomVehicule = "Tank ";
-            mission = "Demolished objects : 10/10";
+            mission = "You found the plane ";
         } 
             
          if(RingManager.airplaneRingsLevel)

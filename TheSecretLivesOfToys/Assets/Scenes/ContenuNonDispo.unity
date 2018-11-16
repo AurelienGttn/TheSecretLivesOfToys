@@ -215,8 +215,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -37.00002, y: 62.2}
-  m_SizeDelta: {x: -176, y: -238.9}
+  m_AnchoredPosition: {x: 0, y: 78.350006}
+  m_SizeDelta: {x: -50, y: -206.70001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8348558
 MonoBehaviour:
@@ -258,13 +258,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 64
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Contenu disponible dans The Secret Lives of Toys 2 '
+  m_Text: "Contenu disponible dans \nThe Secret Lives of Toys 2 "
 --- !u!222 &8348560
 CanvasRenderer:
   m_ObjectHideFlags: 0
