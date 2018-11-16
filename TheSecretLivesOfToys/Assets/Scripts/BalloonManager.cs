@@ -6,13 +6,11 @@ using UnityEngine.SceneManagement;
 public class BalloonManager: MonoBehaviour
 {
 
-    public static bool airplaneBalloonsLevel = false;
-    // Name of the scene we want to show after victory
-    private string victoryScene = "MissionCompleted";
-
     public static int balloonCount;
     public static int balloonsShot;
     public GameObject[] balloons;
+
+    public GameObject landingRing;
 
     // Use this for initialization
     void Start()
@@ -21,28 +19,16 @@ public class BalloonManager: MonoBehaviour
         balloonsShot = 0;
     }
 
-    // A enlever, test menu
-    private void Update()
-    {
-        
-        if (Input.GetButton("E"))
-        {
-            airplaneBalloonsLevel = true;
-            SceneManager.LoadScene(victoryScene);
-        }
-    }
-
     // Method called when player shoots a balloon
     public void AddBalloonShot()
     {
         balloonsShot++;
         if (balloonsShot == balloonCount)
-            Victory();
+            Land();
     }
 
-    void Victory()
+    void Land()
     {
-        airplaneBalloonsLevel = true;
-        SceneManager.LoadScene(victoryScene);
+        landingRing.GetComponent<Renderer>().enabled = true;
     }
 }

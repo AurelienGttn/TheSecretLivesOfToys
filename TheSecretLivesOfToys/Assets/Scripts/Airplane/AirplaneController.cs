@@ -175,22 +175,22 @@ public class AirplaneController : MonoBehaviour
             // We need a minimum speed limit in the air. We limit again with the groundtrigger.triggered variable
 
             // Accelerate and decelerate on ground
-            if (GroundTrigger.triggered && Input.GetButton("Fire1") && !Input.GetButton("Fire2") && speed < maximumSpeed)
+            if (GroundTrigger.triggered && Input.GetButton("Fire3") && !Input.GetButton("Fire2") && speed < maximumSpeed)
                 speed += Time.deltaTime * enginePower;
-            if (GroundTrigger.triggered && Input.GetButton("Fire2") && !Input.GetButton("Fire1") && speed > 0)
+            if (GroundTrigger.triggered && Input.GetButton("Fire2") && !Input.GetButton("Fire3") && speed > 0)
                 speed -= Time.deltaTime * enginePower;
 
             // Accelerate and decelerate in the air
-            if (!GroundTrigger.triggered && Input.GetButton("Fire1") && !Input.GetButton("Fire2") && speed < maximumSpeed)
+            if (!GroundTrigger.triggered && Input.GetButton("Fire3") && !Input.GetButton("Fire2") && speed < maximumSpeed)
                 speed += Time.deltaTime * enginePower;
-            else if (!GroundTrigger.triggered && Input.GetButton("Fire2") && !Input.GetButton("Fire1") && speed > minimumSpeed)
+            else if (!GroundTrigger.triggered && Input.GetButton("Fire2") && !Input.GetButton("Fire3") && speed > minimumSpeed)
                 speed -= Time.deltaTime * enginePower;
 
             if (speed < 0)
                 speed = 0; // Floatin point calculations make a fix necessary so that speed cannot be below zero
 
             // Another speed floating point fix:
-            if (!GroundTrigger.triggered && !Input.GetButton("Fire1") && !Input.GetButton("Fire2") 
+            if (!GroundTrigger.triggered && !Input.GetButton("Fire3") && !Input.GetButton("Fire2") 
                 && (speed > neutralSpeed - 5) && (speed < neutralSpeed + 5))
                 speed = neutralSpeed;
 
@@ -202,9 +202,9 @@ public class AirplaneController : MonoBehaviour
             // Above this value the airplane has to climb, with a lower speed it has to sink. That way we are able to takeoff and land.
 
             //This code resets the speed to neutralSpeed when there is no acceleration or deceleration
-            if (!Input.GetButton("Fire1") && !Input.GetButton("Fire2") && speed > minimumSpeed && speed < neutralSpeed)
+            if (!Input.GetButton("Fire3") && !Input.GetButton("Fire2") && speed > minimumSpeed && speed < neutralSpeed)
                 speed += Time.deltaTime * enginePower;
-            if (!Input.GetButton("Fire1") && !Input.GetButton("Fire2") && speed > minimumSpeed && speed > neutralSpeed)
+            if (!Input.GetButton("Fire3") && !Input.GetButton("Fire2") && speed > minimumSpeed && speed > neutralSpeed)
                 speed -= Time.deltaTime * enginePower;
 
             // Uplift

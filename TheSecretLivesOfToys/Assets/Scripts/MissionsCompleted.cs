@@ -38,10 +38,11 @@ public class MissionsCompleted : MonoBehaviour {
             mission = "Ring crossed :" + RingManager.ringsDone.ToString() + "/" + RingManager.ringCount.ToString();
          }
 
-        if (BalloonManager.airplaneBalloonsLevel)
+        if (LandingRing.airplaneBalloonsLevel)
         {
             nomVehicule = "Plane ";
-            mission = "Balloon exploded :" + BalloonManager.balloonsShot.ToString() + "/" + BalloonManager.balloonCount.ToString(); 
+            mission = "Balloon exploded :" + BalloonManager.balloonsShot.ToString() + "/" + BalloonManager.balloonCount.ToString() 
+                + "\nLand through ring"; 
         }
 
         Vehicule.text = "Find "+ nomVehicule + ": ";
