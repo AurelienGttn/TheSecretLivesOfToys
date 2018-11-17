@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AirplaneController : MonoBehaviour
 {
@@ -19,7 +21,7 @@ public class AirplaneController : MonoBehaviour
 
     private float diveSalto;                                            // Blocks the forward salto, min 0, max 1
     private float diveBlocker;                                          // Blocks sideways stagger flight while dive
-    
+
     private int gameOver = 0;                                           // Turn on and off the airplane code. Game over
     private float crashForce = 0f;                                      // When gameOver we need a force to let the airplane crash
     [SerializeField] private ParticleSystem crashExplosion;
@@ -60,6 +62,7 @@ public class AirplaneController : MonoBehaviour
         if (gameOver == 1)
         {
             transform.Rotate(Vector3.up, 200 * Time.deltaTime);
+            StartCoroutine(WaitCrash());
             //m_Rigidbody.AddRelativeForce(0, 0, crashForce);
             //gameOver = 2;
         }
@@ -137,7 +140,7 @@ public class AirplaneController : MonoBehaviour
             // Turn correction must not go below 0 or over 1
             // Tilt only happens in the air
             if (!GroundTrigger.triggered)
-                transform.Rotate(0, 0, 
+                transform.Rotate(0, 0,
                     Time.deltaTime * airTurnSpeed * (1.0f - Mathf.Clamp(rightLeftSoftAbs - diveBlocker, 0.0f, 1.0f)) *
                     Input.GetAxis("Horizontal") * -1.0f);
 
@@ -192,7 +195,7 @@ public class AirplaneController : MonoBehaviour
                 speed = 0; // Floatin point calculations make a fix necessary so that speed cannot be below zero
 
             // Another speed floating point fix:
-            if (!GroundTrigger.triggered && !Input.GetButton("Fire3") && !Input.GetButton("Fire2") 
+            if (!GroundTrigger.triggered && !Input.GetButton("Fire3") && !Input.GetButton("Fire2")
                 && (speed > neutralSpeed - 5) && (speed < neutralSpeed + 5))
                 speed = neutralSpeed;
 
@@ -262,5 +265,12 @@ public class AirplaneController : MonoBehaviour
             ParticleSystem crashExplosionClone = Instantiate(crashExplosion, transform.position, Quaternion.identity);
             crashExplosionClone.transform.localScale = transform.localScale;
         }
+    }
+
+    private IEnumerator WaitCrash()
+    {
+        yield return new WaitForSeconds(3f);
+
+        SceneManager.LoadScene("TryAgain");
     }
 }
