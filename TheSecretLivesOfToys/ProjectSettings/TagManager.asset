@@ -10,6 +10,7 @@ TagManager:
   - FireTruck
   - FxTemporaire
   - HouseOnFire
+  - Tank
   layers:
   - Default
   - TransparentFX
@@ -25,9 +26,9 @@ TagManager:
   - Wall
   - Balloons
   - Bullet
-  - 
-  - 
-  - 
+  - Tank_floor
+  - Tank_Wall
+  - Tank
   - 
   - 
   - 

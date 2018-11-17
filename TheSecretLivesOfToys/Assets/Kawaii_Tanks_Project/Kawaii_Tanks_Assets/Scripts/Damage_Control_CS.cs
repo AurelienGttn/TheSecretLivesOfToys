@@ -61,11 +61,7 @@ namespace ChobiAssets.KTP
 				}
 			}
 
-            if (Input.GetButton("E"))
-            {
-                SceneManager.LoadScene("MissionCompleted");
-                TankScene = true;
-            }
+          
 		}
 
 		public void Get_Damage (float damageValue)

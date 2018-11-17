@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using ChobiAssets.KTP; 
 
 [RequireComponent (typeof (Animator))]
 public class PlayerController : MonoBehaviour {
 
-	public Transform rightGunBone;
-	public Transform leftGunBone;
-	public Arsenal[] arsenal;
     public int Speed = 5;
     private Vector3 DirectionDeplacement = Vector3.zero;
     private CharacterController Player;
@@ -22,13 +20,11 @@ public class PlayerController : MonoBehaviour {
 	void Awake() {
 
 		animator = GetComponent<Animator> ();
-		if (arsenal.Length > 0)
-			SetArsenal (arsenal[0].name);
 
         for (int i = 0; i <= 11; i++)
         {
-            Physics.IgnoreLayerCollision(9, i, true); // Reset settings.
-            Physics.IgnoreLayerCollision(11, i, true); // Reset settings.
+            Physics.IgnoreLayerCollision(9, i, false); // Reset settings.
+            Physics.IgnoreLayerCollision(11, i, false); // Reset settings.
         }
         Physics.IgnoreLayerCollision(9, 9, false); // Wheels do not collide with each other.
         Physics.IgnoreLayerCollision(9, 11, false); // Wheels do not collide with MainBody.
@@ -38,39 +34,6 @@ public class PlayerController : MonoBehaviour {
         }
 
     }
-
-	public void SetArsenal(string name) {
-		foreach (Arsenal hand in arsenal) {
-			if (hand.name == name) {
-				if (rightGunBone.childCount > 0)
-					Destroy(rightGunBone.GetChild(0).gameObject);
-				if (leftGunBone.childCount > 0)
-					Destroy(leftGunBone.GetChild(0).gameObject);
-				if (hand.rightGun != null) {
-					GameObject newRightGun = (GameObject) Instantiate(hand.rightGun);
-					newRightGun.transform.parent = rightGunBone;
-					newRightGun.transform.localPosition = Vector3.zero;
-					newRightGun.transform.localRotation = Quaternion.Euler(90, 0, 0);
-					}
-				if (hand.leftGun != null) {
-					GameObject newLeftGun = (GameObject) Instantiate(hand.leftGun);
-					newLeftGun.transform.parent = leftGunBone;
-					newLeftGun.transform.localPosition = Vector3.zero;
-					newLeftGun.transform.localRotation = Quaternion.Euler(90, 0, 0);
-				}
-				animator.runtimeAnimatorController = hand.controller;
-				return;
-				}
-		}
-	}
-
-	[System.Serializable]
-	public struct Arsenal {
-		public string name;
-		public GameObject rightGun;
-		public GameObject leftGun;
-		public RuntimeAnimatorController controller;
-	}
 
     public void Stay()
     {
@@ -104,19 +67,7 @@ public class PlayerController : MonoBehaviour {
             animator.SetTrigger("Death");
     }
 
-   /* public void Damage()
-    {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Death")) return;
-        int id = Random.Range(0, countOfDamageAnimations);
-        if (countOfDamageAnimations > 1)
-            while (id == lastDamageAnimation)
-                id = Random.Range(0, countOfDamageAnimations);
-        lastDamageAnimation = id;
-        animator.SetInteger("DamageID", id);
-        animator.SetTrigger("Damage");
-    } */
-
-    public void JumpAnim()
+   public void JumpAnim()
     {
         animator.SetBool("Squat", false);
         animator.SetFloat("Speed", 0f);
@@ -154,6 +105,7 @@ public class PlayerController : MonoBehaviour {
    
     private void Update()
     {
+
         if (!isDragging)
         {
             transform.Rotate(0, Input.GetAxisRaw("Horizontal") * 100.0f * Time.deltaTime, 0);
@@ -224,8 +176,9 @@ public class PlayerController : MonoBehaviour {
         }
 
     // Controler Véhicule
-    public GameObject vehicule;
+    public GameObject [] vehicule;
     public GameObject cameraTruck;
+    public GameObject cameraTank; 
     public GameObject FX_Emplacement; 
 
     void OnCollisionStay(Collision collision)
@@ -234,9 +187,19 @@ public class PlayerController : MonoBehaviour {
         {
             gameObject.SetActive(false);
             FX_Emplacement.SetActive(false); 
-            vehicule.GetComponent<VehiculeController>().enabled = true;
-            vehicule.GetComponent<AudioSource>().enabled = true; 
+            vehicule[0].GetComponent<VehiculeController>().enabled = true;
+            vehicule[0].GetComponent<AudioSource>().enabled = true; 
             cameraTruck.SetActive(true); 
+            this.transform.GetChild(0);
+
+        }
+
+        if (collision.gameObject.tag == "Tank" && (Input.GetButton("Fire2") || Input.GetButton("F")))
+        {
+            gameObject.SetActive(false);
+            vehicule[1].GetComponent<ID_Control_CS>().enabled = true;
+            vehicule[1].GetComponent<Damage_Control_CS>().enabled = true;
+            cameraTank.SetActive(true);
             this.transform.GetChild(0);
 
         }

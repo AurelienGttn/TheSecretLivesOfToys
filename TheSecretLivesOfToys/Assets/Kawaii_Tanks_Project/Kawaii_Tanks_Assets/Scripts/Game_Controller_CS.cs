@@ -55,6 +55,7 @@ namespace ChobiAssets.KTP
 			Layer10 >> for Suspensions.
 			Layer11 >> for MainBody.
 			*/
+
 			for (int i = 0; i <= 11; i++) {
 				Physics.IgnoreLayerCollision (9, i, false); // Reset settings.
 				Physics.IgnoreLayerCollision (11, i, false); // Reset settings.

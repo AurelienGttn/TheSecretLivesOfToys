@@ -20,7 +20,7 @@ public class VehiculeController : MonoBehaviour
         transform.Rotate(0, Input.GetAxisRaw("Horizontal") * 2.0f, 0);
 
         if (Input.GetAxisRaw("Vertical") != 0)
-            transform.Translate(0, 0, Input.GetAxisRaw("Vertical") * 5f * Time.deltaTime);
+            transform.Translate(0, 0, Input.GetAxisRaw("Vertical") * 30f * Time.deltaTime);
 
         // Lancer de l'eau si le joueur appuie sur le bouton A 
         if (Input.GetButtonDown("Fire1"))
@@ -41,7 +41,7 @@ public class VehiculeController : MonoBehaviour
             Vector3 direction = (positionCube - positionCamion).normalized;
             Vector3 origin = RaycastCube.transform.position;
             RaycastHit hitInfo;
-            float distance = 10f;
+            float distance = 25f;
             Physics.Raycast(origin, direction, out hitInfo, distance);
             if (hitInfo.collider != null)
             {

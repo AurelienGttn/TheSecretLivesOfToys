@@ -25,8 +25,8 @@ public class CharacterPanel : MonoBehaviour {
 		actions = character.GetComponent<Actions> ();
 		controller = character.GetComponent<PlayerController> ();
 
-		foreach (PlayerController.Arsenal a in controller.arsenal)
-			CreateWeaponButton(a.name);
+		//foreach (PlayerController.Arsenal a in controller.arsenal)
+			//CreateWeaponButton(a.name);
 
 		CreateActionButton("Stay");
 		CreateActionButton("Walk");
@@ -47,10 +47,10 @@ public class CharacterPanel : MonoBehaviour {
 		camerasPanel.GetChild (0).GetComponent<Button>().onClick.Invoke();
 	}
 
-	void CreateWeaponButton(string name) {
+	/*void CreateWeaponButton(string name) {
 		Button button = CreateButton (name, weaponsPanel);
 		button.onClick.AddListener(() => controller.SetArsenal(name));
-	}
+	}*/
 
 	void CreateActionButton(string name) {
 		CreateActionButton(name, name);
