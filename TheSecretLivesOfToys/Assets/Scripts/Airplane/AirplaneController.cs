@@ -22,6 +22,7 @@ public class AirplaneController : MonoBehaviour
     
     private int gameOver = 0;                                           // Turn on and off the airplane code. Game over
     private float crashForce = 0f;                                      // When gameOver we need a force to let the airplane crash
+    [SerializeField] private ParticleSystem crashExplosion;
 
     // Rotation of our airplane
     private float rotationX;
@@ -58,8 +59,9 @@ public class AirplaneController : MonoBehaviour
         // Physics stuff when gameOver ==1
         if (gameOver == 1)
         {
-            m_Rigidbody.AddRelativeForce(0, 0, crashForce);
-            gameOver = 2;
+            transform.Rotate(Vector3.up, 200 * Time.deltaTime);
+            //m_Rigidbody.AddRelativeForce(0, 0, crashForce);
+            //gameOver = 2;
         }
 
 
@@ -253,10 +255,12 @@ public class AirplaneController : MonoBehaviour
         if (!GroundTrigger.triggered && !collision.gameObject.name.StartsWith("Bullet"))
         {
             GroundTrigger.triggered = true;
-            crashForce = speed * 10000;
+            //crashForce = speed * 10000;
             speed = 0;
             gameOver = 1;
             m_Rigidbody.useGravity = true;
+            ParticleSystem crashExplosionClone = Instantiate(crashExplosion, transform.position, Quaternion.identity);
+            crashExplosionClone.transform.localScale = transform.localScale;
         }
     }
 }

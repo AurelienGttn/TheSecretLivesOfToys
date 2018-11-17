@@ -31,7 +31,11 @@ public class LandingRing : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            StartCoroutine(WaitVictory());
+            bool canLand = GetComponentInChildren<LandingCheck>().landingAuthorization;
+            if (canLand)
+            {
+                StartCoroutine(WaitVictory());
+            }
         }
     }
 
