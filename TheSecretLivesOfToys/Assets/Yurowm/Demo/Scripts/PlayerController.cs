@@ -90,17 +90,35 @@ public class PlayerController : MonoBehaviour {
     public float runSpeed;
     public float turnSpeed;
     public bool isgrounded = true;
+    public bool isJumping = false;
     public bool isDragging = false;
 
     public Vector3 jumSpeed;
 
+    private Rigidbody m_rigidbody;
+    public float velocity;
     private void Start()
     {
+        m_rigidbody = GetComponent<Rigidbody>();
+        
     }
 
-   
+    
     private void Update()
     {
+        velocity = m_rigidbody.velocity.y;
+        // if character is falling, do as if it was jumping
+        if (Mathf.Abs(m_rigidbody.velocity.y) > 0.1)
+        {
+            isJumping = true;
+            isgrounded = false;
+        }
+        else
+        {
+            isJumping = false;
+            isgrounded = true;
+        }
+
         for (int i = 0; i <= 11; i++)
         {
             Physics.IgnoreLayerCollision(9, i, false); // Reset settings.
@@ -117,45 +135,55 @@ public class PlayerController : MonoBehaviour {
         {
             transform.Rotate(0, Input.GetAxisRaw("Horizontal") * 100.0f * Time.deltaTime, 0);
         }
-        if (Input.GetAxisRaw("Vertical") != 0)
+
+        if (isgrounded == true && (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Jump")))
         {
-            // Run 
-            if (Input.GetButton("Run"))
+            isWalking = false;
+            isRunning = false;
+            animator.SetFloat("Speed", 0);
+            animator.SetTrigger("Jump");
+            // Préparation du saut 
+            Vector3 v = gameObject.GetComponent<Rigidbody>().velocity;
+            v.y = jumSpeed.y;
+            // Saut
+            gameObject.GetComponent<Rigidbody>().velocity = v;
+            isgrounded = false;
+        }
+
+        if (Input.GetAxisRaw("Vertical") > 0)
+        {
+            if (isgrounded)
             {
-                isRunning = true;
+                // Run 
+                if (Input.GetButton("Run"))
+                {
+                    isRunning = true;
+                    isWalking = false;
+                    transform.Translate(0, 0, Input.GetAxisRaw("Vertical") * runSpeed * Time.deltaTime);
+                    ChooseAnimation();
+                }
+                // Walk 
+                else
+                {
+                    transform.Translate(0, 0, Input.GetAxisRaw("Vertical") * walkSpeed * Time.deltaTime);
+                    isWalking = true;
+                    isRunning = false;
+                    ChooseAnimation();
+                }
+            }
+            else if (isJumping)
+            {
                 isWalking = false;
-                transform.Translate(0, 0, Input.GetAxisRaw("Vertical") * runSpeed * Time.deltaTime);
-                ChooseAnimation();
-            }
-            // Walk 
-            else
-            {
-
-                transform.Translate(0, 0, Input.GetAxisRaw("Vertical") * walkSpeed * Time.deltaTime);
-                isWalking = true;
                 isRunning = false;
+                transform.Translate(0, 0, Input.GetAxisRaw("Vertical") * 6 * Time.deltaTime);
                 ChooseAnimation();
             }
-
         }
         else
         {
             isWalking = false;
             isRunning = false;
             ChooseAnimation();
-        }
-
-        if (isgrounded == true && (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Jump")))
-        {
-             
-            // Préparation du saut 
-            Vector3 v = gameObject.GetComponent<Rigidbody>().velocity;
-            v.y = jumSpeed.y;
-            // Saut
-            gameObject.GetComponent<Rigidbody>().velocity = jumSpeed;
-            isgrounded = false;
-           
-
         }
     }
 
@@ -170,19 +198,20 @@ public class PlayerController : MonoBehaviour {
 
 
     void ChooseAnimation()
+    {
+        if (isRunning)
         {
-            if (isRunning)
-            {
-                Run();
-            }else if (isWalking)
-            {
-                Walk();
-            }
-            else
-            {
-                Stay();
-            }
+            Run();
         }
+        else if (isWalking)
+        {
+            Walk();
+        }
+        else
+        {
+            Stay();
+        }
+    }
 
     // Controler Véhicule
     public GameObject [] vehicule;

@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class Spring : MonoBehaviour {
     
-    public float velocityJump; 
+    public float velocityJump;
 
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
-        { 
-            collision.GetComponent<Rigidbody>().velocity = new Vector3(0,velocityJump,0);
+        if (other.gameObject.tag == "Player")
+        {
+            Animator animator = other.GetComponent<Animator>();
+            Vector3 currentVelocity = other.GetComponent<Rigidbody>().velocity;
+            other.GetComponent<Rigidbody>().velocity = new Vector3(10 * Time.deltaTime , velocityJump, 10 * Time.deltaTime);
+            other.GetComponent<PlayerController>().isgrounded = true;
+            other.GetComponent<PlayerController>().isJumping = true;
+            animator.SetFloat("Speed", 0);
+            animator.SetTrigger("Jump");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            other.GetComponent<PlayerController>().isgrounded = false;
         }
     }
 
