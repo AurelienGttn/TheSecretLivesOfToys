@@ -89,7 +89,7 @@ public class LoadScene : MonoBehaviour {
                 nomScene = "Mission";
             }
 
-            if (BalloonManager.airplaneBalloonsLevel)
+            if (LandingRing.airplaneBalloonsLevel)
             {
                 missionTank = false;
                 missionPlaneBalloon = false;

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AirplaneController : MonoBehaviour
 {
@@ -19,9 +21,10 @@ public class AirplaneController : MonoBehaviour
 
     private float diveSalto;                                            // Blocks the forward salto, min 0, max 1
     private float diveBlocker;                                          // Blocks sideways stagger flight while dive
-    
+
     private int gameOver = 0;                                           // Turn on and off the airplane code. Game over
     private float crashForce = 0f;                                      // When gameOver we need a force to let the airplane crash
+    [SerializeField] private ParticleSystem crashExplosion;
 
     // Rotation of our airplane
     private float rotationX;
@@ -58,8 +61,10 @@ public class AirplaneController : MonoBehaviour
         // Physics stuff when gameOver ==1
         if (gameOver == 1)
         {
-            m_Rigidbody.AddRelativeForce(0, 0, crashForce);
-            gameOver = 2;
+            transform.Rotate(Vector3.up, 200 * Time.deltaTime);
+            StartCoroutine(WaitCrash());
+            //m_Rigidbody.AddRelativeForce(0, 0, crashForce);
+            //gameOver = 2;
         }
 
 
@@ -135,7 +140,7 @@ public class AirplaneController : MonoBehaviour
             // Turn correction must not go below 0 or over 1
             // Tilt only happens in the air
             if (!GroundTrigger.triggered)
-                transform.Rotate(0, 0, 
+                transform.Rotate(0, 0,
                     Time.deltaTime * airTurnSpeed * (1.0f - Mathf.Clamp(rightLeftSoftAbs - diveBlocker, 0.0f, 1.0f)) *
                     Input.GetAxis("Horizontal") * -1.0f);
 
@@ -175,22 +180,22 @@ public class AirplaneController : MonoBehaviour
             // We need a minimum speed limit in the air. We limit again with the groundtrigger.triggered variable
 
             // Accelerate and decelerate on ground
-            if (GroundTrigger.triggered && Input.GetButton("Fire1") && !Input.GetButton("Fire2") && speed < maximumSpeed)
+            if (GroundTrigger.triggered && Input.GetButton("Fire3") && !Input.GetButton("Fire2") && speed < maximumSpeed)
                 speed += Time.deltaTime * enginePower;
-            if (GroundTrigger.triggered && Input.GetButton("Fire2") && !Input.GetButton("Fire1") && speed > 0)
+            if (GroundTrigger.triggered && Input.GetButton("Fire2") && !Input.GetButton("Fire3") && speed > 0)
                 speed -= Time.deltaTime * enginePower;
 
             // Accelerate and decelerate in the air
-            if (!GroundTrigger.triggered && Input.GetButton("Fire1") && !Input.GetButton("Fire2") && speed < maximumSpeed)
+            if (!GroundTrigger.triggered && Input.GetButton("Fire3") && !Input.GetButton("Fire2") && speed < maximumSpeed)
                 speed += Time.deltaTime * enginePower;
-            else if (!GroundTrigger.triggered && Input.GetButton("Fire2") && !Input.GetButton("Fire1") && speed > minimumSpeed)
+            else if (!GroundTrigger.triggered && Input.GetButton("Fire2") && !Input.GetButton("Fire3") && speed > minimumSpeed)
                 speed -= Time.deltaTime * enginePower;
 
             if (speed < 0)
                 speed = 0; // Floatin point calculations make a fix necessary so that speed cannot be below zero
 
             // Another speed floating point fix:
-            if (!GroundTrigger.triggered && !Input.GetButton("Fire1") && !Input.GetButton("Fire2") 
+            if (!GroundTrigger.triggered && !Input.GetButton("Fire3") && !Input.GetButton("Fire2")
                 && (speed > neutralSpeed - 5) && (speed < neutralSpeed + 5))
                 speed = neutralSpeed;
 
@@ -202,9 +207,9 @@ public class AirplaneController : MonoBehaviour
             // Above this value the airplane has to climb, with a lower speed it has to sink. That way we are able to takeoff and land.
 
             //This code resets the speed to neutralSpeed when there is no acceleration or deceleration
-            if (!Input.GetButton("Fire1") && !Input.GetButton("Fire2") && speed > minimumSpeed && speed < neutralSpeed)
+            if (!Input.GetButton("Fire3") && !Input.GetButton("Fire2") && speed > minimumSpeed && speed < neutralSpeed)
                 speed += Time.deltaTime * enginePower;
-            if (!Input.GetButton("Fire1") && !Input.GetButton("Fire2") && speed > minimumSpeed && speed > neutralSpeed)
+            if (!Input.GetButton("Fire3") && !Input.GetButton("Fire2") && speed > minimumSpeed && speed > neutralSpeed)
                 speed -= Time.deltaTime * enginePower;
 
             // Uplift
@@ -253,10 +258,19 @@ public class AirplaneController : MonoBehaviour
         if (!GroundTrigger.triggered && !collision.gameObject.name.StartsWith("Bullet"))
         {
             GroundTrigger.triggered = true;
-            crashForce = speed * 10000;
+            //crashForce = speed * 10000;
             speed = 0;
             gameOver = 1;
             m_Rigidbody.useGravity = true;
+            ParticleSystem crashExplosionClone = Instantiate(crashExplosion, transform.position, Quaternion.identity);
+            crashExplosionClone.transform.localScale = transform.localScale;
         }
+    }
+
+    private IEnumerator WaitCrash()
+    {
+        yield return new WaitForSeconds(3f);
+
+        SceneManager.LoadScene("TryAgain");
     }
 }

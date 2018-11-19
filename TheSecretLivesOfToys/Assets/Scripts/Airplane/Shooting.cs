@@ -13,7 +13,7 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CrossPlatformInputManager.GetButton("Fire2") && canShoot)
+        if (CrossPlatformInputManager.GetButton("Fire1") && canShoot)
         {
             StartCoroutine("Shoot");
         }
