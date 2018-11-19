@@ -26,12 +26,7 @@ public class PlayerController : MonoBehaviour {
             Physics.IgnoreLayerCollision(9, i, false); // Reset settings.
             Physics.IgnoreLayerCollision(11, i, false); // Reset settings.
         }
-        Physics.IgnoreLayerCollision(9, 9, false); // Wheels do not collide with each other.
-        Physics.IgnoreLayerCollision(9, 11, false); // Wheels do not collide with MainBody.
-        for (int i = 0; i <= 11; i++)
-        {
-            Physics.IgnoreLayerCollision(10, i, false); // Suspensions do not collide with anything.
-        }
+        
 
     }
 
@@ -196,7 +191,8 @@ public class PlayerController : MonoBehaviour {
     public GameObject cameraTank; 
     public GameObject FX_Emplacement;
     public GameObject crossHairPlane;
-    public GameObject IA; 
+    public GameObject IA;
+    private GameObject key_Plane; 
 
     void OnCollisionStay(Collision collision)
     {
@@ -217,11 +213,24 @@ public class PlayerController : MonoBehaviour {
         if (collision.gameObject.tag == "Tank" && (Input.GetButton("Fire2") || Input.GetButton("F")))
         {
             gameObject.SetActive(false);
+
             vehicule[1].GetComponent<ID_Control_CS>().enabled = true;
             vehicule[1].GetComponent<Damage_Control_CS>().enabled = true;
             cameraTank.SetActive(true);
             this.transform.GetChild(0);
             IA.SetActive(false);
+            for (int i = 0; i <= 11; i++)
+            {
+                Physics.IgnoreLayerCollision(9, i, false); // Reset settings.
+                Physics.IgnoreLayerCollision(11, i, false); // Reset settings.
+            }
+            Physics.IgnoreLayerCollision(9, 9, true); // Wheels do not collide with each other.
+            Physics.IgnoreLayerCollision(9, 11, true); // Wheels do not collide with MainBody.
+            for (int i = 0; i <= 11; i++)
+            {
+                Physics.IgnoreLayerCollision(10, i, true); // Suspensions do not collide with anything.
+            }
+
 
         }
         //Plane
@@ -237,6 +246,12 @@ public class PlayerController : MonoBehaviour {
             crossHairPlane.SetActive(true); 
             this.transform.GetChild(0);
             IA.SetActive(false);
+        }
+
+        if (collision.gameObject.tag == "Key")
+        {
+            key_Plane = GameObject.Find("key_gold");
+            Destroy(key_Plane); 
         }
     }
 

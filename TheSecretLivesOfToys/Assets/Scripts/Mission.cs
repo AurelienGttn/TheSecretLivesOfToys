@@ -23,8 +23,8 @@ public class Mission : MonoBehaviour {
 
         if (PanelMissions.missionPlaneBalloon)
         {
-            nomVehicule = "plane ";
-            mission = "2. Explode all the balloon";
+            nomVehicule = "key"; 
+            mission = "2. Find the plane \n3. Explode all the balloon";
         }
 
         if (PanelMissions.missionFireTruck)

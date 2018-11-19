@@ -104,6 +104,10 @@ public class PanelMissions : MonoBehaviour
                 missionFireTruck = true;
                 return; 
             }
+            if (missionFireTruck)
+            {
+                SceneManager.LoadScene("PlaneLevel1"); 
+            }
            
 
         }
@@ -111,7 +115,7 @@ public class PanelMissions : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Tank" || other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Tank")
         {
             Time.timeScale = 0f;
             missionPanelCompleted = true; 
