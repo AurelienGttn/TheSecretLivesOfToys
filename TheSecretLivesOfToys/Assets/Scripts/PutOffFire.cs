@@ -7,13 +7,16 @@ public class PutOffFire : MonoBehaviour {
 
     private float ParticulesLife = 100f;
     public List<GameObject> Particules;
-    public static int HouseSaved = 0;
-    public static int HouseOnFire = 7;
+    private HouseOnFireManager houseOnFireManager;
+    //public static int HouseSaved = 0;
+    //public static int HouseOnFire = 7;
     public static bool FireTruckScene = false; 
     
     // Use this for initialization
     void Start () {
-       
+
+        houseOnFireManager = FindObjectOfType<HouseOnFireManager>();
+
     }
 	
 	// Update is called once per frame
@@ -46,17 +49,10 @@ public class PutOffFire : MonoBehaviour {
                 {
                     Particules[0].gameObject.SetActive(false);
                     Particules.Clear();
-                    HouseSaved++;
-                    Debug.Log("Maisons sauvées : " + HouseSaved + "/" + HouseOnFire);
+
+                    houseOnFireManager.GetComponent<HouseOnFireManager>().AddHouseSaved(); 
                 }           
             }
-        }
-        if ((HouseSaved == HouseOnFire) || Input.GetButton("E"))
-        {
-            SceneManager.LoadScene("MissionCompleted");
-            FireTruckScene = true; 
-        }
-
-        
+        }      
     }
 }

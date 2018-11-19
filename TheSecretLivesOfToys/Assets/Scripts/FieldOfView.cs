@@ -21,6 +21,7 @@ public class FieldOfView : MonoBehaviour {
 
 	public MeshFilter viewMeshFilter;
 	Mesh viewMesh;
+    public GameObject panelTryAgain; 
 
 	void Start() {
 		viewMesh = new Mesh ();
@@ -56,8 +57,10 @@ public class FieldOfView : MonoBehaviour {
 				float dstToTarget = Vector3.Distance (transform.position, target.position);
 				if (!Physics.Raycast (transform.position, dirToTarget, dstToTarget, obstacleMask)) {
 					visibleTargets.Add (target);
-                    SceneManager.LoadScene("TryAgain"); 
-				}
+                    panelTryAgain.SetActive(true);
+                    Time.timeScale = 0f;
+
+                }
 			}
 		}
 	}

@@ -11,6 +11,8 @@ TagManager:
   - FxTemporaire
   - HouseOnFire
   - Tank
+  - Soldier
+  - Key
   layers:
   - Default
   - TransparentFX

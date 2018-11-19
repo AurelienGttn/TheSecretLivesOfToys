@@ -36,11 +36,11 @@ namespace ChobiAssets.KTP
 		void Update ()
 		{
 			if (idScript.isPlayer) {
-				#if UNITY_ANDROID || UNITY_IPHONE
+				/*#if UNITY_ANDROID || UNITY_IPHONE
 				Mobile_Input () ;
-				#else
+				#else */
 				Desktop_Input ();
-				#endif
+				//#endif
 			}
 		}
 

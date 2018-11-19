@@ -19,16 +19,26 @@ public class BalloonManager: MonoBehaviour
         balloonsShot = 0;
     }
 
+    public void Update()
+    {
+        
+    }
+
     // Method called when player shoots a balloon
     public void AddBalloonShot()
     {
+       
         balloonsShot++;
         if (balloonsShot == balloonCount)
+        {
             Land();
+        }
+            
     }
 
     void Land()
-    {
+    { 
         landingRing.GetComponent<Renderer>().enabled = true;
+        
     }
 }

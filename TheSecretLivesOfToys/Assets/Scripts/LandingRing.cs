@@ -7,7 +7,12 @@ public class LandingRing : MonoBehaviour {
 
     public static bool airplaneBalloonsLevel = false;
     // Name of the scene we want to show after victory
-    private string victoryScene = "MissionCompleted";
+
+    public GameObject panelMissionCompleted;
+    public GameObject plane;
+    public GameObject planeClone;
+    public GameObject crosshair;
+    public GameObject Ring; 
 
     private Renderer m_renderer;
 	// Use this for initialization
@@ -16,16 +21,10 @@ public class LandingRing : MonoBehaviour {
         m_renderer.enabled = false;
     }    
     
-    // A enlever, test menu
     private void Update()
     {
-
-        if (Input.GetButton("E"))
-        {
-            airplaneBalloonsLevel = true;
-            SceneManager.LoadScene(victoryScene);
-        }
-    }
+        
+    } 
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,15 +34,19 @@ public class LandingRing : MonoBehaviour {
             if (canLand)
             {
                 StartCoroutine(WaitVictory());
+                PanelMissions.missionPanelCompleted = true;
+                plane.SetActive(false);
+                planeClone.SetActive(true);
+                crosshair.SetActive(false);
+                Ring.SetActive(false); 
+     
             }
         }
     }
 
     private IEnumerator WaitVictory()
     {
-        yield return new WaitForSeconds(2f);
-
-        airplaneBalloonsLevel = true;
-        SceneManager.LoadScene(victoryScene);
+        yield return new WaitForSeconds(1f);
+       
     }
 }
