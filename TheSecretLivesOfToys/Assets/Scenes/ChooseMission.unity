@@ -205,7 +205,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 44581902}
-        m_MethodName: ChangerScene
+        m_MethodName: ChooseMission
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -421,7 +421,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 444230988}
-        m_MethodName: ChangerScene
+        m_MethodName: ChooseMission
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -844,7 +844,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1134333934}
-        m_MethodName: ChangerScene
+        m_MethodName: ChooseMission
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1046,7 +1046,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1239189665}
-        m_MethodName: ChangerScene
+        m_MethodName: ChooseMission
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

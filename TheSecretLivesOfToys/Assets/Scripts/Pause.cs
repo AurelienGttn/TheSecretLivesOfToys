@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour {
     public GameObject panelPause;
-    public GameObject soldier;
     // Use this for initialization
     void Start () {
         

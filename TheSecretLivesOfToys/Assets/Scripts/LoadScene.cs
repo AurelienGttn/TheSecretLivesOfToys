@@ -6,10 +6,6 @@ using  ChobiAssets.KTP;
 
 public class LoadScene : MonoBehaviour {
     private string nomScene;
-    public static bool missionFireTruck = false;
-    public static bool missionTank = false;
-    public static bool missionPlaneRings = false;
-    public static bool missionPlaneBalloon = false;
 
 
     // Use this for initialization
@@ -22,12 +18,14 @@ public class LoadScene : MonoBehaviour {
 		
 	}
 
-    public void ChangerScene()
+    public void Menu()
     {
-        if (this.name == "Button_Play") 
+        if (this.name == "Button_Play")
         {
-            missionTank = true; 
-            nomScene = "Mission";
+            
+            nomScene = "TankScene";
+            Time.timeScale = 0f;
+
         }
 
         if (this.name == "Button_Missions")
@@ -40,17 +38,17 @@ public class LoadScene : MonoBehaviour {
             nomScene = "Credits";
         }
 
-        if(this.name == "Button_WindowClose")
+        if (this.name == "Button_WindowClose")
         {
             nomScene = "Menu";
         }
 
-        if(this.name == "Button_Sound")
+        if (this.name == "Button_Sound")
         {
-            nomScene = "SettingsSounds"; 
+            nomScene = "SettingsSounds";
         }
 
-        if (this.name == "Button_Manette")  
+        if (this.name == "Button_Manette")
         {
             nomScene = "Manette";
         }
@@ -60,63 +58,32 @@ public class LoadScene : MonoBehaviour {
         }
         if (this.name == "Button_Quit")
         {
-            Application.Quit(); 
+            Application.Quit();
         }
 
-        if(this.name == "Button_AcceptMission" || this.name == "Button_TryAgain")
+        if (this.name == "Button_TryAgain")
         {
-            if(missionTank)
-                nomScene = "TankScene";
-
-            if (missionPlaneBalloon)
-                nomScene = "PlaneLevel2";
-
-            if (missionFireTruck)
-                nomScene = "FireTruck";
-             
-            if(missionPlaneRings)
-                nomScene = "PlaneLevel1";
+         
+            nomScene = "TankScene"; 
         }
-        
-        if (this.name == "Button_NextMission")
+
+        if (this.name == "Button_TryAgain_Crash")
         {
-            if (Damage_Control_CS.TankScene)
-            {
-                missionTank = false; 
-                missionPlaneBalloon = true;
-                missionFireTruck = false;
-                missionPlaneRings = false;
-                nomScene = "Mission";
-            }
-
-            if (LandingRing.airplaneBalloonsLevel)
-            {
-                missionTank = false;
-                missionPlaneBalloon = false;
-                missionFireTruck = true;
-                missionPlaneRings = false;
-                nomScene = "Mission";
-            }
-
-            if (PutOffFire.FireTruckScene)
-            {
-                missionTank = false;
-                missionPlaneBalloon = false;
-                missionFireTruck = false;
-                missionPlaneRings = true;
-                nomScene = "Mission";
-            }
-
-            if (RingManager.airplaneRingsLevel)
-            {
-                missionTank = false;
-                missionPlaneBalloon = false;
-                missionFireTruck = false;
-                missionPlaneRings = false;
-                nomScene = "ContenuNonDispo";
-            }
+            
+            PanelMissions.missionPlaneBalloon = true;
+            PanelMissions.missionPanel = true; 
+            nomScene = "TankScene"; 
         }
 
+
+
+
+        SceneManager.LoadScene(nomScene);
+    }
+
+
+    public void ChooseMission()
+    {
         if(this.name == "Button_Menu")
         {
             nomScene = "Menu"; 
@@ -129,20 +96,27 @@ public class LoadScene : MonoBehaviour {
 
         if (this.name == "Button_Fire")
         {
-            nomScene = "FireTruck";
+            PanelMissions.missionFireTruck = true;
+            nomScene = "TankScene"; 
         }
 
         if (this.name == "Button_Tank")
         {
-            nomScene = "TankScene"; 
+            PanelMissions.missionTank = true;
+            nomScene = "TankScene";
         }
 
         if (this.name == "Button_Plane_Balloon")
         {
-            nomScene = "PlaneLevel2";
+            PanelMissions.missionPlaneBalloon = true;
+            nomScene = "TankScene";
         }
-
 
         SceneManager.LoadScene(nomScene);
     }
+
+    
 }
+
+
+         

@@ -20,29 +20,30 @@ public class MissionsCompleted : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (PutOffFire.FireTruckScene)
+        if (PanelMissions.missionFireTruck)
         {
             nomVehicule = "FireTruck ";
-            mission = "House Saved : " + PutOffFire.HouseSaved.ToString() + "/" + PutOffFire.HouseOnFire.ToString();
+            mission = "House Saved : " + HouseOnFireManager.houseSaved.ToString() + " / " + HouseOnFireManager.houseCount.ToString();
         }
 
-        if (Damage_Control_CS.TankScene)
+        if (PanelMissions.missionTank)
         {
             nomVehicule = "Tank ";
-            mission = "You found the plane ";
+            mission = "Way to the plane ";
         } 
             
-         if(RingManager.airplaneRingsLevel)
+         if(PanelMissions.missionPlaneRings)
          {
             nomVehicule = "Plane ";
             mission = "Ring crossed :" + RingManager.ringsDone.ToString() + "/" + RingManager.ringCount.ToString();
          }
 
-        if (LandingRing.airplaneBalloonsLevel)
+        if (PanelMissions.missionPlaneBalloon)
         {
             nomVehicule = "Plane ";
             mission = "Balloon exploded :" + BalloonManager.balloonsShot.ToString() + "/" + BalloonManager.balloonCount.ToString() 
                 + "\nLand through ring"; 
+            
         }
 
         Vehicule.text = "Find "+ nomVehicule + ": ";

@@ -14,22 +14,22 @@ public class Objectifs : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (SceneManager.GetActiveScene().name == "TankScene")
+        if (PanelMissions.missionTank)
         {
-            objectif.text = "Find a way to the tank" + "\n" + "Find a way to the plane";
+            objectif.text = "Find the tank" + "\n" + "Find a way to the plane";
         }
 
-        if (SceneManager.GetActiveScene().name == "PlaneLevel2")
+        if (PanelMissions.missionPlaneBalloon)
         {
-            objectif.text = "Find Plane" + "\n" + "Balloon exploded : " + BalloonManager.balloonsShot.ToString() + "/" + BalloonManager.balloonCount.ToString();
+            objectif.text = "Find the key" + "\n" + "Find Plane" + "\n" + "Balloon exploded : " + BalloonManager.balloonsShot.ToString() + "/" + BalloonManager.balloonCount.ToString();
         }
 
-        if (SceneManager.GetActiveScene().name == "FireTruck")
+        if (PanelMissions.missionFireTruck)
         {
-            objectif.text = "Find Firetruck"+"\n"+ "House Saved : " + PutOffFire.HouseSaved.ToString() + " / " + PutOffFire.HouseOnFire.ToString(); 
+            objectif.text = "Find Firetruck"+"\n"+ "House Saved : " + HouseOnFireManager.houseSaved.ToString() + " / " + HouseOnFireManager.houseCount.ToString(); 
         }
 
-        if (SceneManager.GetActiveScene().name == "PlaneLevel1")
+        if (PanelMissions.missionPlaneRings)
         {
             objectif.text = "Find Plane" + "\n" + "Ring crossed : " + RingManager.ringsDone.ToString() + "/" + RingManager.ringCount.ToString(); 
         }

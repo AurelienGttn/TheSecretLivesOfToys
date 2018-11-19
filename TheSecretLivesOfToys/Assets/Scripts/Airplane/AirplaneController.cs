@@ -37,6 +37,7 @@ public class AirplaneController : MonoBehaviour
     private float rightLeftSoft;                                        // Variable for soft curve flight
 
     private Rigidbody m_Rigidbody;
+    public GameObject panelCrashAvion; 
 
     private void Start()
     {
@@ -269,8 +270,7 @@ public class AirplaneController : MonoBehaviour
 
     private IEnumerator WaitCrash()
     {
-        yield return new WaitForSeconds(3f);
-
-        SceneManager.LoadScene("TryAgain");
+        yield return new WaitForSeconds(2f);
+        panelCrashAvion.SetActive(true); 
     }
 }
