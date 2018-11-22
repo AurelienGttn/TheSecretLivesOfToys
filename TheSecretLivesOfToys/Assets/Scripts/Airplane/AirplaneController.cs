@@ -31,11 +31,11 @@ public class AirplaneController : MonoBehaviour
     private float rotationY;
     private float rotationZ;
 
-    public float speed;                                                // Current speed of the airplane
+    public float speed;                                                 // Current speed of the airplane
     private float upLift;                                               // Uplift to take off
 
     private float rightLeftSoft;                                        // Variable for soft curve flight
-
+    private bool isLanding;                                             // Override controls during landing cutscene
     private Rigidbody m_Rigidbody;
     public GameObject panelCrashAvion; 
 
@@ -44,6 +44,7 @@ public class AirplaneController : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         // The airplane turns slower on the ground than in the air
         groundTurnSpeed = airTurnSpeed * 0.3f;
+        isLanding = false;
     }
 
     private void FixedUpdate()
@@ -78,7 +79,6 @@ public class AirplaneController : MonoBehaviour
             rotationX = transform.eulerAngles.x;
             rotationY = transform.eulerAngles.y;
             rotationZ = transform.eulerAngles.z;
-
 
             //----------------- Pitch and Tilt calculations -----------------//
 
@@ -130,21 +130,25 @@ public class AirplaneController : MonoBehaviour
                 transform.Rotate(Mathf.Clamp((1.0f - diveSalto), 0.0f, 1.0f) *
                     Input.GetAxis("Vertical") * Time.deltaTime * pitchSpeed, 0, 0);
 
-            // Left Right at the ground	
-            if (GroundTrigger.triggered)
-                transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * groundTurnSpeed, 0, Space.World);
-            // Left Right in the air
-            else
-                transform.Rotate(0, Time.deltaTime * airTurnSpeed * rightLeftSoft, 0, Space.World);
+            // Player can't turn during landing cutscene
+            if (!isLanding)
+            {
+                // Left Right at the ground	
+                if (GroundTrigger.triggered)
+                    transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * groundTurnSpeed, 0, Space.World);
+                // Left Right in the air
+                else
+                    transform.Rotate(0, Time.deltaTime * airTurnSpeed * rightLeftSoft, 0, Space.World);
 
-            // Tilt multiplied with minus 1 to go into the right direction	
-            // Turn correction must not go below 0 or over 1
-            // Tilt only happens in the air
-            if (!GroundTrigger.triggered)
-                transform.Rotate(0, 0,
-                    Time.deltaTime * airTurnSpeed * (1.0f - Mathf.Clamp(rightLeftSoftAbs - diveBlocker, 0.0f, 1.0f)) *
-                    Input.GetAxis("Horizontal") * -1.0f);
 
+                // Tilt multiplied with minus 1 to go into the right direction	
+                // Turn correction must not go below 0 or over 1
+                // Tilt only happens in the air
+                if (!GroundTrigger.triggered)
+                    transform.Rotate(0, 0,
+                        Time.deltaTime * airTurnSpeed * (1.0f - Mathf.Clamp(rightLeftSoftAbs - diveBlocker, 0.0f, 1.0f)) *
+                        Input.GetAxis("Horizontal") * -1.0f);
+            }
 
             //----------------- Everything rotate back -----------------//
 
@@ -272,5 +276,23 @@ public class AirplaneController : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         panelCrashAvion.SetActive(true); 
+    }
+
+    public void Land()
+    {
+        isLanding = true;
+        speed = 500;
+        StartCoroutine(DecreaseAirplaneSpeed());
+        transform.rotation = Quaternion.identity;
+    }
+
+    private IEnumerator DecreaseAirplaneSpeed()
+    {
+        if (speed > 0)
+            speed -= 40;
+        else
+            speed = 0;
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(DecreaseAirplaneSpeed());
     }
 }
