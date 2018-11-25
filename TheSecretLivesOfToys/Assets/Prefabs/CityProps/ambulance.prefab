@@ -105,9 +105,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4158215300098834}
   - component: {fileID: 65806813904465702}
+  - component: {fileID: 114606301252163348}
   m_Layer: 0
   m_Name: ambulance
-  m_TagString: Untagged
+  m_TagString: DestroyObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,8 +120,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816881717522662}
   m_LocalRotation: {x: -0, y: 0.38268274, z: -0, w: 0.9238798}
-  m_LocalPosition: {x: -101.67969, y: -0, z: -452.01752}
-  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_LocalPosition: {x: 45.4, y: 0, z: -40.33}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4523986282002590}
   - {fileID: 4831376564683728}
@@ -417,3 +418,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.5543296, y: 3.206601, z: 8.541777}
   m_Center: {x: 0.0825335, y: 1.1033723, z: -0.26952964}
+--- !u!114 &114606301252163348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1816881717522662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8142a9d071b1c51409c9307e5365e5ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyedGO: {fileID: 1044238494902834, guid: 0b89c6bb6957d824380d9669af3c319e,
+    type: 2}
+  explosionEffect: {fileID: 1077099123036256, guid: a92603b12f7e88443a46a6fdb01b80a1,
+    type: 2}
+  radius: 2
+  force: 1000

@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4246468913558350}
   - component: {fileID: 33543823534570566}
   - component: {fileID: 23269676088822982}
-  - component: {fileID: 64258884632663318}
+  - component: {fileID: 65676367652426130}
   m_Layer: 0
   m_Name: lanternDouble
   m_TagString: Untagged
@@ -158,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1087315953393822}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1863, y: -3.80005, z: -99.22583}
+  m_LocalPosition: {x: -33.1, y: -3.80005, z: -447.41748}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 4584183587089942}
@@ -266,8 +266,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1087315953393822}
   m_Mesh: {fileID: 4300000, guid: 88648285c78bf7340bc21b56d4a4303a, type: 3}
---- !u!64 &64258884632663318
-MeshCollider:
+--- !u!65 &65676367652426130
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -275,11 +275,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 88648285c78bf7340bc21b56d4a4303a, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.3349915, y: 13.25776, z: 1.3386993}
+  m_Center: {x: -0.006389618, y: 6.62888, z: 0.04928589}
 --- !u!108 &108120318207587250
 Light:
   m_ObjectHideFlags: 1

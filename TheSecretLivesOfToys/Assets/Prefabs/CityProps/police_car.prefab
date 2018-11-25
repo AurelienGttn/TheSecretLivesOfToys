@@ -54,9 +54,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4168795472175864}
   - component: {fileID: 65734525542425042}
+  - component: {fileID: 114067723312692546}
   m_Layer: 0
   m_Name: police_car
-  m_TagString: Untagged
+  m_TagString: DestroyObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,6 +106,7 @@ GameObject:
   - component: {fileID: 4027072839030246}
   - component: {fileID: 33175325888319694}
   - component: {fileID: 23730175633587294}
+  - component: {fileID: 114009115089560362}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -132,8 +134,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1323766788643486}
   m_LocalRotation: {x: -0, y: -0.2588186, z: -0, w: 0.965926}
-  m_LocalPosition: {x: -483.1797, y: 3.599999, z: -441.11752}
-  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_LocalPosition: {x: 7.25, y: 0.36, z: -39.24}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4027072839030246}
   - {fileID: 4681878922332412}
@@ -417,3 +419,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.596894, y: 2.7376747, z: 6.6983047}
   m_Center: {x: -0.06991958, y: 0.8688369, z: 0.012090208}
+--- !u!114 &114009115089560362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566682269765322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8142a9d071b1c51409c9307e5365e5ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyedGO: {fileID: 0}
+  explosionEffect: {fileID: 0}
+  radius: 0
+  force: 0
+--- !u!114 &114067723312692546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1323766788643486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8142a9d071b1c51409c9307e5365e5ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyedGO: {fileID: 1799062948349072, guid: 85d28befc54baef44a9e8dc4f86b8461,
+    type: 2}
+  explosionEffect: {fileID: 1077099123036256, guid: a92603b12f7e88443a46a6fdb01b80a1,
+    type: 2}
+  radius: 2
+  force: 1000

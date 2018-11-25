@@ -72,9 +72,10 @@ GameObject:
   - component: {fileID: 4204020462758316}
   - component: {fileID: 54431309820103662}
   - component: {fileID: 65309993639638642}
+  - component: {fileID: 114285371462462396}
   m_Layer: 0
   m_Name: carDelivery
-  m_TagString: Untagged
+  m_TagString: DestroyObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,8 +155,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1660034931020346}
   m_LocalRotation: {x: 0.12691055, y: -0.12691069, z: -0.69562405, w: 0.69562536}
-  m_LocalPosition: {x: -1124.1797, y: 25, z: -426.2175}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: -56.85, y: 2.5, z: -37.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4344394138351024}
   - {fileID: 4766300293535440}
@@ -591,3 +592,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.1375084, y: 7.9924107, z: 11.866955}
   m_Center: {x: -0.49258232, y: 1.8454027, z: -1.3661938}
+--- !u!114 &114285371462462396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660034931020346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8142a9d071b1c51409c9307e5365e5ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyedGO: {fileID: 0}
+  explosionEffect: {fileID: 0}
+  radius: 3
+  force: 1000
