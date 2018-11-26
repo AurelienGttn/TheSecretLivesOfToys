@@ -47,11 +47,11 @@ namespace ChobiAssets.KTP
 		void Update ()
 		{
 			if (idScript.isPlayer ) {
-				/*#if UNITY_ANDROID || UNITY_IPHONE
+				#if UNITY_ANDROID || UNITY_IPHONE
 				Mobile_Input ();
-				#else */
+				#else 
 				Desktop_Input ();
-				//#endif
+				#endif
 			}
 		}
 
@@ -82,7 +82,7 @@ namespace ChobiAssets.KTP
 
 		void Desktop_Input ()
 		{
-			if (Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.W)) {
+			if (Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.Z)) {
 				speedStep += 0.5f;
 				speedStep = Mathf.Clamp (speedStep, -0.5f, 0.5f);
 			} else if (Input.GetKeyDown (KeyCode.DownArrow) || Input.GetKeyDown (KeyCode.S)) {
