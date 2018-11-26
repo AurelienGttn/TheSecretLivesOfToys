@@ -13,6 +13,7 @@ TagManager:
   - Tank
   - Soldier
   - Key
+  - DestroyObstacle
   layers:
   - Default
   - TransparentFX
