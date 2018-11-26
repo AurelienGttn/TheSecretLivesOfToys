@@ -215,13 +215,13 @@ public class PlayerController : MonoBehaviour {
 
     // Controler Véhicule
     public GameObject [] vehicule;
+    public GameObject cameraPlane; 
     public GameObject cameraTruck;
     public GameObject cameraTank; 
-    public GameObject [] FX_Emplacement;
+    public GameObject FX_Emplacement;
     public GameObject crossHairPlane;
     public GameObject IA;
-    private GameObject key_Plane;
-    public GameObject audioEngine_Tank; 
+    private GameObject key_Plane; 
 
     void OnCollisionStay(Collision collision)
     {
@@ -230,7 +230,7 @@ public class PlayerController : MonoBehaviour {
         if (collision.gameObject.tag == "FireTruck" && (Input.GetButton("Fire2") || Input.GetButton("F")))
         {
             gameObject.SetActive(false);
-            FX_Emplacement[2].SetActive(false);
+            FX_Emplacement.SetActive(false); 
             vehicule[0].GetComponent<VehiculeController>().enabled = true;
             vehicule[0].GetComponent<AudioSource>().enabled = true; 
             cameraTruck.SetActive(true); 
@@ -243,13 +243,11 @@ public class PlayerController : MonoBehaviour {
         {
             gameObject.SetActive(false);
 
-            FX_Emplacement[0].SetActive(false);
             vehicule[1].GetComponent<ID_Control_CS>().enabled = true;
             vehicule[1].GetComponent<Damage_Control_CS>().enabled = true;
             cameraTank.SetActive(true);
             this.transform.GetChild(0);
             IA.SetActive(false);
-            audioEngine_Tank.SetActive(true); 
             for (int i = 0; i <= 11; i++)
             {
                 Physics.IgnoreLayerCollision(9, i, false); // Reset settings.
@@ -265,7 +263,7 @@ public class PlayerController : MonoBehaviour {
 
         }
         //Plane
-        if (collision.gameObject.tag == "Player" && Key_Plane.haveKey && (Input.GetButton("Fire2") || Input.GetButton("F")))
+        if (collision.gameObject.tag == "Player" && (Input.GetButton("Fire2") || Input.GetButton("F")))
         {
             gameObject.SetActive(false);
             vehicule[2].GetComponent<AirplaneController>().enabled = true;
@@ -273,14 +271,17 @@ public class PlayerController : MonoBehaviour {
             vehicule[2].GetComponent<Shooting>().enabled = true;
             vehicule[2].GetComponent<Animator>().enabled = true;
             vehicule[2].GetComponent<AudioSource>().enabled = true;
-
+            cameraPlane.SetActive(true);
             crossHairPlane.SetActive(true); 
             this.transform.GetChild(0);
             IA.SetActive(false);
-
-            FX_Emplacement[1].SetActive(false);
         }
 
+        if (collision.gameObject.tag == "Key")
+        {
+            key_Plane = GameObject.Find("key_gold");
+            Destroy(key_Plane); 
+        }
     }
 
 

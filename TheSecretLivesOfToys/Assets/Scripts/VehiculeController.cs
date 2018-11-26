@@ -41,7 +41,7 @@ public class VehiculeController : MonoBehaviour
             Vector3 direction = (positionCube - positionCamion).normalized;
             Vector3 origin = RaycastCube.transform.position;
             RaycastHit hitInfo;
-            float distance = 30f;
+            float distance = 25f;
             Physics.Raycast(origin, direction, out hitInfo, distance);
             if (hitInfo.collider != null)
             {
