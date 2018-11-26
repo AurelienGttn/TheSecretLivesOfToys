@@ -33,7 +33,7 @@ MonoBehaviour:
     m_Settings:
       method: 0
       fxaaSettings:
-        preset: 2
+        preset: 3
       taaSettings:
         jitterSpread: 0.75
         sharpen: 0.3
@@ -42,7 +42,7 @@ MonoBehaviour:
   ambientOcclusion:
     m_Enabled: 1
     m_Settings:
-      intensity: 1
+      intensity: 1.5
       radius: 0.5
       sampleCount: 16
       downsampling: 0
@@ -71,9 +71,9 @@ MonoBehaviour:
   depthOfField:
     m_Enabled: 1
     m_Settings:
-      focusDistance: 5.5
-      aperture: 5.6
-      focalLength: 71
+      focusDistance: 6
+      aperture: 6
+      focalLength: 70
       useCameraFov: 0
       kernelSize: 1
   motionBlur:
@@ -100,7 +100,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.04
+        intensity: 0.02
         threshold: 1.4
         softKnee: 0.5
         radius: 3
@@ -120,7 +120,7 @@ MonoBehaviour:
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
       basic:
-        postExposure: 2
+        postExposure: 1.5
         temperature: 20
         tint: 10
         hueShift: 1
