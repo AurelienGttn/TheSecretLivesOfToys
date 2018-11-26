@@ -22,9 +22,11 @@ public class LoadScene : MonoBehaviour {
     {
         if (this.name == "Button_Play")
         {
-            
+            AudioSource audioSource = this.GetComponent<AudioSource>();
+            audioSource.enabled = true;
             nomScene = "TankScene";
             Time.timeScale = 0f;
+ 
 
         }
 
@@ -35,17 +37,19 @@ public class LoadScene : MonoBehaviour {
 
         if (this.name == "Button_Credits")
         {
+            
             nomScene = "Credits";
         }
 
-        if (this.name == "Button_WindowClose")
+        if (this.name == "Button_Back")
         {
             nomScene = "Menu";
         }
 
         if (this.name == "Button_Sound")
         {
-            nomScene = "SettingsSounds";
+            
+            nomScene = "Settings_Sounds";
         }
 
         if (this.name == "Button_Manette")
@@ -54,6 +58,7 @@ public class LoadScene : MonoBehaviour {
         }
         if (this.name == "Button_Clavier")
         {
+            
             nomScene = "Clavier";
         }
         if (this.name == "Button_Quit")
@@ -63,7 +68,8 @@ public class LoadScene : MonoBehaviour {
 
         if (this.name == "Button_TryAgain")
         {
-         
+
+            Time.timeScale = 1f;
             nomScene = "TankScene"; 
         }
 
@@ -96,7 +102,9 @@ public class LoadScene : MonoBehaviour {
 
         if (this.name == "Button_Fire")
         {
+            PanelMissions.missionTank = false;
             PanelMissions.missionFireTruck = true;
+            
             nomScene = "TankScene"; 
         }
 
@@ -109,6 +117,7 @@ public class LoadScene : MonoBehaviour {
         if (this.name == "Button_Plane_Balloon")
         {
             PanelMissions.missionPlaneBalloon = true;
+            PanelMissions.missionTank = false; 
             nomScene = "TankScene";
         }
 

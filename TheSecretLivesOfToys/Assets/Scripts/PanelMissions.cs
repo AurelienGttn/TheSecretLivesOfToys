@@ -22,7 +22,13 @@ public class PanelMissions : MonoBehaviour
     public GameObject IA;
     public GameObject panelMission;
     public GameObject panelMissionCompleted;
-    private GameObject markerTank; 
+    private GameObject markerTank;
+    public GameObject plane; 
+    public GameObject planeClone;
+    public GameObject Ring;
+    public GameObject [] FX_Emplacement;
+    private GameObject targets;
+    public GameObject engine_sound; 
 
     // Use this for initialization
     void Start()
@@ -35,7 +41,6 @@ public class PanelMissions : MonoBehaviour
     {
         if (!missionPanel)
         {
-            Time.timeScale = 1f;
             panelMission.SetActive(false);
         }
 
@@ -43,6 +48,7 @@ public class PanelMissions : MonoBehaviour
         {
             Time.timeScale = 0f;
             panelMission.SetActive(true);
+            engine_sound.SetActive(false);
         }
 
         if (!missionPanelCompleted)
@@ -53,6 +59,7 @@ public class PanelMissions : MonoBehaviour
         {
             Time.timeScale = 0f;
             panelMissionCompleted.SetActive(true);
+            engine_sound.SetActive(false);
         }
 
     }
@@ -60,20 +67,20 @@ public class PanelMissions : MonoBehaviour
 
     public void Mission()
     {
-        if (this.name == "Button_AcceptMission" || this.name == "Button_TryAgain")
+        if (this.name == "Button_AcceptMission")
         {
             missionPanel = false;
-
+            Time.timeScale = 1f;
             if (missionPlaneBalloon)
             {
-                
                 soldier.SetActive(true);
                 soldier.transform.position = new Vector3(75, 1, 54); 
                 IA.SetActive(true);
                 tank.SetActive(false);
                 tank_clone.SetActive(true); 
                 markerTank = GameObject.Find("Marker");
-                markerTank.SetActive(false); 
+                markerTank.SetActive(false);
+                FX_Emplacement[1].SetActive(true); 
 
             }
 
@@ -82,11 +89,20 @@ public class PanelMissions : MonoBehaviour
                 soldier.SetActive(true);
                 soldier.transform.position = new Vector3(-9, 24, 80);
                 IA.SetActive(true);
+                FX_Emplacement[2].SetActive(true); 
+                targets = GameObject.Find("Targets");
+                Balloon[] balloons = targets.GetComponentsInChildren<Balloon>();
+                for (int i = 0; i < balloons.Length; i++)
+                {
+                    balloons[i].BalloonShot();
+                }
+                plane.SetActive(false);
+                planeClone.SetActive(true);
+                Ring.SetActive(false);
+
             }
         }
         
-
-
 
         if (this.name == "Button_NextMission")
         {
@@ -106,10 +122,15 @@ public class PanelMissions : MonoBehaviour
             }
             if (missionFireTruck)
             {
+                missionPlaneBalloon = false;
+                missionFireTruck = false;
+                missionTank = false;
+                missionPanel = false; 
+                
+                StartCoroutine(WaitChangementScene());
                 SceneManager.LoadScene("PlaneLevel1"); 
             }
            
-
         }
     }
 
@@ -121,5 +142,11 @@ public class PanelMissions : MonoBehaviour
             missionPanelCompleted = true; 
 
         }
+    }
+
+    private IEnumerator WaitChangementScene()
+    {
+        yield return new WaitForSeconds(2f);
+
     }
 }
