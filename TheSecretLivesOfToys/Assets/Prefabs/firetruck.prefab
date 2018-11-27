@@ -175,12 +175,12 @@ GameObject:
   - component: {fileID: 198072855953033632}
   - component: {fileID: 199360121085668654}
   m_Layer: 0
-  m_Name: CFX3_ResurrectionLight_Circle
+  m_Name: CFX3_ResurrectionLight_FireTruck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1640807111294094
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 4142066853870560}
   - component: {fileID: 20155352411283934}
   - component: {fileID: 81141315077473522}
+  - component: {fileID: 114275763446198740}
   m_Layer: 10
   m_Name: CameraTruck
   m_TagString: Untagged
@@ -375,9 +376,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1943077294636420}
-  m_LocalRotation: {x: 0, y: 0.71872735, z: -0, w: -0.6952921}
-  m_LocalPosition: {x: 77.8, y: -0.03442931, z: -79.22065}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_LocalRotation: {x: -0, y: 0.71872735, z: -0, w: -0.6952921}
+  m_LocalPosition: {x: 24.097153, y: -21.408997, z: -180.05202}
+  m_LocalScale: {x: 1.2500007, y: 1.25, z: 1.2500007}
   m_Children:
   - {fileID: 4142066853870560}
   - {fileID: 4510108260017536}
@@ -426,7 +427,7 @@ Transform:
   m_GameObject: {fileID: 1625833820163584}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children:
   - {fileID: 4214633442164216}
   - {fileID: 4726191835887940}
@@ -910,6 +911,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114275763446198740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1640807111294094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: f186d905a0d5a8e4d8b59c9bd8833aca, type: 2}
 --- !u!114 &114709120529678852
 MonoBehaviour:
   m_ObjectHideFlags: 1
