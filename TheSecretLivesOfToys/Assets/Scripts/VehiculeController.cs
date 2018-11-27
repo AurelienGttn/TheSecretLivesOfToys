@@ -17,7 +17,7 @@ public class VehiculeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, Input.GetAxisRaw("Horizontal") * 2.0f, 0);
+        transform.Rotate(0, Input.GetAxisRaw("Horizontal") * 100.0f * Time.deltaTime, 0);
 
         if (Input.GetAxisRaw("Vertical") != 0)
             transform.Translate(0, 0, Input.GetAxisRaw("Vertical") * 30f * Time.deltaTime);
@@ -41,7 +41,7 @@ public class VehiculeController : MonoBehaviour
             Vector3 direction = (positionCube - positionCamion).normalized;
             Vector3 origin = RaycastCube.transform.position;
             RaycastHit hitInfo;
-            float distance = 25f;
+            float distance = 30f;
             Physics.Raycast(origin, direction, out hitInfo, distance);
             if (hitInfo.collider != null)
             {

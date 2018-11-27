@@ -37,7 +37,8 @@ public class AirplaneController : MonoBehaviour
     private float rightLeftSoft;                                        // Variable for soft curve flight
     private bool isLanding;                                             // Override controls during landing cutscene
     private Rigidbody m_Rigidbody;
-    public GameObject panelCrashAvion; 
+    public GameObject panelCrashAvion;
+    public GameObject crossHair; 
 
     private void Start()
     {
@@ -275,7 +276,10 @@ public class AirplaneController : MonoBehaviour
     private IEnumerator WaitCrash()
     {
         yield return new WaitForSeconds(2f);
-        panelCrashAvion.SetActive(true); 
+        crossHair.SetActive(false); 
+        panelCrashAvion.SetActive(true);
+        Time.timeScale = 0f; 
+
     }
 
     public void Land()

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Key_Plane : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public static bool haveKey = true;
+    public GameObject pont;
+    [SerializeField] private ParticleSystem explostionPont;
+
+    // Use this for initialization
+    void Start() {
+        
+    }   
 	
 	// Update is called once per frame
 	void Update () {
@@ -16,9 +20,13 @@ public class Key_Plane : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            Destroy(this);
+            haveKey = true;
+            Destroy(this.gameObject);
+            pont.SetActive(false);
+            ParticleSystem crashExplosionClone = Instantiate(explostionPont, pont.transform.position, Quaternion.identity);
+            crashExplosionClone.transform.localScale = pont.transform.localScale;
         }
     }
 }

@@ -6,8 +6,7 @@ using  ChobiAssets.KTP;
 
 public class LoadScene : MonoBehaviour {
     private string nomScene;
-
-
+    
     // Use this for initialization
     void Start () {
 		
@@ -23,7 +22,7 @@ public class LoadScene : MonoBehaviour {
         if (this.name == "Button_Play")
         {
             
-            nomScene = "TankScene";
+            nomScene = "Jeu";
             Time.timeScale = 0f;
 
         }
@@ -38,7 +37,7 @@ public class LoadScene : MonoBehaviour {
             nomScene = "Credits";
         }
 
-        if (this.name == "Button_WindowClose")
+        if (this.name == "Button_Back")
         {
             nomScene = "Menu";
         }
@@ -61,18 +60,17 @@ public class LoadScene : MonoBehaviour {
             Application.Quit();
         }
 
-        if (this.name == "Button_TryAgain")
-        {
-         
-            nomScene = "TankScene"; 
-        }
 
         if (this.name == "Button_TryAgain_Crash")
         {
             
             PanelMissions.missionPlaneBalloon = true;
             PanelMissions.missionPanel = true; 
-            nomScene = "TankScene"; 
+            nomScene = "Jeu"; 
+        }
+        if (this.name == "Button_Menu")
+        {
+            nomScene = "Menu";
         }
 
 
@@ -84,10 +82,7 @@ public class LoadScene : MonoBehaviour {
 
     public void ChooseMission()
     {
-        if(this.name == "Button_Menu")
-        {
-            nomScene = "Menu"; 
-        }
+       
 
         if (this.name == "Button_Plane_Rings")
         {
@@ -96,20 +91,23 @@ public class LoadScene : MonoBehaviour {
 
         if (this.name == "Button_Fire")
         {
+            PanelMissions.missionTank = false;
             PanelMissions.missionFireTruck = true;
-            nomScene = "TankScene"; 
+
+            nomScene = "Jeu";
         }
 
         if (this.name == "Button_Tank")
         {
             PanelMissions.missionTank = true;
-            nomScene = "TankScene";
+            nomScene = "Jeu";
         }
 
         if (this.name == "Button_Plane_Balloon")
         {
             PanelMissions.missionPlaneBalloon = true;
-            nomScene = "TankScene";
+            PanelMissions.missionTank = false;
+            nomScene = "Jeu";
         }
 
         SceneManager.LoadScene(nomScene);

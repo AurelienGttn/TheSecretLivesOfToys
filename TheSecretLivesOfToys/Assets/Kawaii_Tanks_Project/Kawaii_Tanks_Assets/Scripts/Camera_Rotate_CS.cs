@@ -38,7 +38,7 @@ namespace ChobiAssets.KTP
 			if (idScript.isPlayer) {
 				#if UNITY_ANDROID || UNITY_IPHONE
 				Mobile_Input () ;
-				#else
+				#else 
 				Desktop_Input ();
 				#endif
 			}

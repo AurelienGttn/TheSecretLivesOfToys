@@ -37,8 +37,9 @@ public class BalloonManager: MonoBehaviour
     }
 
     void Land()
-    { 
-        landingRing.GetComponent<Renderer>().enabled = true;
-        
+    {
+        landingRing.SetActive(true); 
+
+
     }
 }

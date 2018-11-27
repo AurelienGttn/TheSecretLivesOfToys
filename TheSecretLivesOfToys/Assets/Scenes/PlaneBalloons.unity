@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1949,7 +1949,6 @@ MonoBehaviour:
   - {fileID: 1890663536}
   - {fileID: 1962392617}
   - {fileID: 930477862}
-  panelMissionCompleted: {fileID: 0}
   landingRing: {fileID: 1148429365}
 --- !u!4 &256795262
 Transform:
@@ -4180,6 +4179,10 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12075071cc17e304589aa8e9ce8cf933, type: 2}
   m_IsPrefabAsset: 0
+--- !u!4 &518034126 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 518034125}
 --- !u!1001 &523262687
 Prefab:
   m_ObjectHideFlags: 0
@@ -4276,8 +4279,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7515625, y: 0.7515625, z: 0.7515625}
   m_Children:
-  - {fileID: 594035968}
-  - {fileID: 1213631281}
+  - {fileID: 518034126}
+  - {fileID: 1822221747}
   - {fileID: 1271238428}
   - {fileID: 853734830}
   - {fileID: 180092485}
@@ -4692,11 +4695,6 @@ Transform:
   m_Father: {fileID: 1869602937}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &594035968 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4947115328724828, guid: 12075071cc17e304589aa8e9ce8cf933,
-    type: 2}
-  m_PrefabInternal: {fileID: 518034125}
 --- !u!1001 &605664106
 Prefab:
   m_ObjectHideFlags: 0
@@ -6401,8 +6399,7 @@ Prefab:
   m_IsPrefabAsset: 0
 --- !u!4 &853734830 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4603937452459966, guid: f69d473914d2e1941ba4182ff5067958,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 853734829}
 --- !u!1 &857258715
 GameObject:
@@ -7104,8 +7101,7 @@ Prefab:
   m_IsPrefabAsset: 0
 --- !u!4 &934610662 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4947115328724828, guid: 12075071cc17e304589aa8e9ce8cf933,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 934610661}
 --- !u!1001 &944417174
 Prefab:
@@ -9336,11 +9332,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1213512084}
   m_Mesh: {fileID: 4300028, guid: 77ffcebf31620234696176b49645d319, type: 3}
---- !u!4 &1213631281 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4603937452459966, guid: f69d473914d2e1941ba4182ff5067958,
-    type: 2}
-  m_PrefabInternal: {fileID: 1822221746}
 --- !u!1 &1215373865
 GameObject:
   m_ObjectHideFlags: 0
@@ -9836,8 +9827,7 @@ Prefab:
   m_IsPrefabAsset: 0
 --- !u!4 &1271238428 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4603937452459966, guid: f69d473914d2e1941ba4182ff5067958,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 1271238427}
 --- !u!1001 &1274211357
 Prefab:
@@ -9941,8 +9931,7 @@ Prefab:
   m_IsPrefabAsset: 0
 --- !u!4 &1274211358 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4603937452459966, guid: f69d473914d2e1941ba4182ff5067958,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 1274211357}
 --- !u!1 &1274211359 stripped
 GameObject:
@@ -13982,6 +13971,10 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f69d473914d2e1941ba4182ff5067958, type: 2}
   m_IsPrefabAsset: 0
+--- !u!4 &1822221747 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1822221746}
 --- !u!1 &1829570190 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 771e92ebf5b7a8f419d0aa40d276a928,
@@ -15480,8 +15473,7 @@ Prefab:
   m_IsPrefabAsset: 0
 --- !u!4 &2033933214 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4947115328724828, guid: 12075071cc17e304589aa8e9ce8cf933,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 2033933213}
 --- !u!1 &2042179373
 GameObject:
