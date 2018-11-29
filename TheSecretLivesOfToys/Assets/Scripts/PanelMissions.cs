@@ -28,12 +28,13 @@ public class PanelMissions : MonoBehaviour
     public GameObject tank;
     public GameObject tank_clone; 
     public GameObject soldier;
-    public GameObject obstacle_tank; 
+    public GameObject obstacle_tank;
+
+    public TimelineManager timelineManager;
 
     // Use this for initialization
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -79,12 +80,17 @@ public class PanelMissions : MonoBehaviour
         {
             missionPanel = false;
             Time.timeScale = 1f;
-            panelGameOver.SetActive(false); 
+            panelGameOver.SetActive(false);
 
+            soldier.GetComponent<PlayerController>().enabled = false;
+            timelineManager.timelineTank.SetActive(true);
+            timelineManager.cutsceneTank.Play();
+            soldier.GetComponent<PlayerController>().enabled = true;
 
             if (missionPlaneBalloon)
             {
                 soldier.SetActive(true);
+                soldier.GetComponent<PlayerController>().enabled = false;
                 soldier.transform.position = new Vector3(75, 1, 54); 
                 IA.SetActive(true);
                 tank.SetActive(false);
@@ -92,7 +98,10 @@ public class PanelMissions : MonoBehaviour
                 markerTank = GameObject.Find("Marker");
                 markerTank.SetActive(false);
                 FX_Emplacement[1].SetActive(true);
-
+                // play cutscene
+                timelineManager.timelineAirplane.SetActive(true);
+                timelineManager.cutsceneAirplane.Play();
+                soldier.GetComponent<PlayerController>().enabled = true;
             }
 
             if (missionFireTruck)
