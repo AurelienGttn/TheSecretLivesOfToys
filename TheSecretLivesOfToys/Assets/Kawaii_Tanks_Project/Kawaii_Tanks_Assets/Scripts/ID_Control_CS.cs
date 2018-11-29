@@ -21,11 +21,22 @@ namespace ChobiAssets.KTP
 		[HideInInspector] public Camera_Zoom_CS mainCamScript;
 		[HideInInspector] public GunCamera_Control_CS gunCamScript;
 
+        public Wheel_Control_CS wheelcont;
+        public Fire_Control_CS firecont;
+        public Camera_Rotate_CS cameracont; 
+
 
 		void Start ()
 		{ // Do not change to "Awake ()".
-			// Send this reference to the "Game_Controller" in the scene.
-			GameObject gameController = GameObject.FindGameObjectWithTag ("GameController");
+          // Send this reference to the "Game_Controller" in the scene.
+            wheelcont.Get_ID_Script(this);
+            firecont.Get_ID_Script(this);
+            cameracont.Get_ID_Script(this); 
+            wheelcont.active = true;
+            firecont.active = true;
+            cameracont.active = true; 
+            
+            GameObject gameController = GameObject.FindGameObjectWithTag ("GameController");
 			if (gameController) {
 				controllerScript = gameController.GetComponent <Game_Controller_CS> ();
 			}

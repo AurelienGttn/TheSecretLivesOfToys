@@ -20,6 +20,7 @@ namespace UnityStandardAssets.Cameras
 
         protected virtual void Awake()
         {
+
             // find the camera in the object hierarchy
             m_Cam = GetComponentInChildren<Camera>().transform;
             m_Pivot = m_Cam.parent;

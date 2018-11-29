@@ -24,7 +24,7 @@ namespace ChobiAssets.KTP
 		#endif
 
 		ID_Control_CS idScript;
-
+        public bool active = false; 
 		void Awake ()
 		{
 			thisTransform = transform;
@@ -35,13 +35,17 @@ namespace ChobiAssets.KTP
 
 		void Update ()
 		{
-			if (idScript.isPlayer) {
-				#if UNITY_ANDROID || UNITY_IPHONE
+            if (active)
+            {
+                if (idScript.isPlayer)
+                {
+#if UNITY_ANDROID || UNITY_IPHONE
 				Mobile_Input () ;
-				#else 
-				Desktop_Input ();
-				#endif
-			}
+#else
+                    Desktop_Input();
+#endif
+                }
+            }
 		}
 
 		#if UNITY_ANDROID || UNITY_IPHONE
@@ -102,7 +106,7 @@ namespace ChobiAssets.KTP
 		}
 		#endif
 
-		void Get_ID_Script (ID_Control_CS tempScript)
+		public void Get_ID_Script (ID_Control_CS tempScript)
 		{
 			idScript = tempScript;
 		}

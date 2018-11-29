@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(0, Input.GetAxisRaw("Horizontal") * 100.0f * Time.deltaTime, 0);
         }
 
-        if (isgrounded == true && (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Jump")))
+       /* if (isgrounded == true && (Input.GetKeyDown(KeyCode.Space) || Input.GetButton("Jump")))
         {
             isWalking = false;
             isRunning = false;
@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
             // Saut
             gameObject.GetComponent<Rigidbody>().velocity = v;
             isgrounded = false;
-        }
+        } */
 
         if (Input.GetAxisRaw("Vertical") > 0)
         {
@@ -226,6 +226,7 @@ public class PlayerController : MonoBehaviour
     public GameObject audioEngine_Tank;
     public GameObject cmvcam_plane;
     public GameObject cameraTruck;
+    public GameObject multipurposeMainCamera; 
 
     void OnCollisionStay(Collision collision)
     {
@@ -260,6 +261,7 @@ public class PlayerController : MonoBehaviour
         //Plane
         if (collision.gameObject.tag == "Player" && Key_Plane.haveKey && (Input.GetButton("Fire2") || Input.GetButton("F")))
         {
+            multipurposeMainCamera.SetActive(true); 
             gameObject.SetActive(false);
             vehicule[1].GetComponent<AirplaneController>().enabled = true;
             vehicule[1].GetComponent<AirplaneAudio>().enabled = true;

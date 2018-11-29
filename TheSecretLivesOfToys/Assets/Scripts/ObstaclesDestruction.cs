@@ -10,6 +10,7 @@ public class ObstaclesDestruction : MonoBehaviour {
     {
         if(collision.gameObject.tag == "DestroyObstacle")
         {
+
                 Destroy(collision.gameObject);
 
         }

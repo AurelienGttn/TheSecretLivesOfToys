@@ -24,6 +24,7 @@ namespace ChobiAssets.KTP
 		ID_Control_CS idScript;
 		Barrel_Control_CS[] barrelScripts;
 		Fire_Spawn_CS[] fireScripts;
+        public bool active = false; 
 
 
 		void Awake ()
@@ -35,13 +36,17 @@ namespace ChobiAssets.KTP
 
 		void Update ()
 		{
-			if (idScript.isPlayer) {
-				#if UNITY_ANDROID || UNITY_IPHONE
+            if (active)
+            {
+                if (idScript.isPlayer)
+                {
+#if UNITY_ANDROID || UNITY_IPHONE
 				Mobile_Input ();
-				#else
-				Desktop_Input ();
-				#endif
-			}
+#else
+                    Desktop_Input();
+#endif
+                }
+            }
 		}
 
 		#if UNITY_ANDROID || UNITY_IPHONE
@@ -87,7 +92,7 @@ namespace ChobiAssets.KTP
 			Destroy (this);
 		}
 
-		void Get_ID_Script (ID_Control_CS tempScript)
+		public void Get_ID_Script (ID_Control_CS tempScript)
 		{
 			idScript = tempScript;
 			bodyRigidbody = idScript.storedTankProp.bodyRigidbody;

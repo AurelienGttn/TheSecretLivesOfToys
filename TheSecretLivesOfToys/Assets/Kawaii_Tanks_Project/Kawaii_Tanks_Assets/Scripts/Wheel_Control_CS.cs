@@ -29,7 +29,7 @@ namespace ChobiAssets.KTP
 		float autoParkingBrakeLag = 0.5f;
 
 		ID_Control_CS idScript;
-
+        public bool active=false;
 		/* for reducing Calls.
 		Wheel_Rotate_CS[] rotateScripts;
 		*/
@@ -46,13 +46,17 @@ namespace ChobiAssets.KTP
 
 		void Update ()
 		{
-			if (idScript.isPlayer ) {
-				#if UNITY_ANDROID || UNITY_IPHONE
+            if (active)
+            {
+                if (idScript.isPlayer)
+                {
+#if UNITY_ANDROID || UNITY_IPHONE
 				Mobile_Input ();
-				#else 
-				Desktop_Input ();
-				#endif
-			}
+#else
+                    Desktop_Input();
+#endif
+                }
+            }
 		}
 
 		#if UNITY_ANDROID || UNITY_IPHONE
@@ -149,7 +153,7 @@ namespace ChobiAssets.KTP
 			Destroy (this);
 		}
 
-		void Get_ID_Script (ID_Control_CS tempScript)
+		public void Get_ID_Script (ID_Control_CS tempScript)
 		{
 			idScript = tempScript;
 		}
