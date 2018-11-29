@@ -175,12 +175,12 @@ GameObject:
   - component: {fileID: 198072855953033632}
   - component: {fileID: 199360121085668654}
   m_Layer: 0
-  m_Name: CFX3_ResurrectionLight_Circle
+  m_Name: CFX3_ResurrectionLight_FireTruck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1640807111294094
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,13 +191,15 @@ GameObject:
   - component: {fileID: 4142066853870560}
   - component: {fileID: 20155352411283934}
   - component: {fileID: 81141315077473522}
+  - component: {fileID: 114431170052267728}
+  - component: {fileID: 114778455885014044}
   m_Layer: 10
   m_Name: CameraTruck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1650074236835108
 GameObject:
   m_ObjectHideFlags: 1
@@ -258,8 +260,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1640807111294094}
-  m_LocalRotation: {x: 0.15729629, y: 0, z: 0, w: 0.98755145}
-  m_LocalPosition: {x: -0.03, y: 11.94, z: -14.44}
+  m_LocalRotation: {x: -0.033455126, y: -0.011879472, z: -0.0003976393, w: 0.9993695}
+  m_LocalPosition: {x: -0.00000028610214, y: 4.8, z: -23.999992}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 4709217415754962}
@@ -375,9 +377,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1943077294636420}
-  m_LocalRotation: {x: 0, y: 0.71872735, z: -0, w: -0.6952921}
-  m_LocalPosition: {x: 77.8, y: -0.03442931, z: -79.22065}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_LocalRotation: {x: -0, y: 0.71872735, z: -0, w: -0.6952921}
+  m_LocalPosition: {x: 80.6, y: 0, z: -83.1}
+  m_LocalScale: {x: 1.2500007, y: 1.25, z: 1.2500007}
   m_Children:
   - {fileID: 4142066853870560}
   - {fileID: 4510108260017536}
@@ -426,7 +428,7 @@ Transform:
   m_GameObject: {fileID: 1625833820163584}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children:
   - {fileID: 4214633442164216}
   - {fileID: 4726191835887940}
@@ -467,21 +469,21 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  near clip plane: 0.1
+  far clip plane: 5000
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -910,6 +912,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114431170052267728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1640807111294094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: f186d905a0d5a8e4d8b59c9bd8833aca, type: 2}
 --- !u!114 &114709120529678852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -923,6 +937,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RaycastCube: {fileID: 1332571841744750}
   ParticulesWater: {fileID: 1039865872121406}
+--- !u!114 &114778455885014044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1640807111294094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Cinemachine.CinemachineBrain+BrainEvent, Cinemachine, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Cinemachine.CinemachineBrain+VcamActivatedEvent, Cinemachine, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!136 &136532752732467116
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1015,7 +1065,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1455,7 +1505,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 10
+    maxNumParticles: 1000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -1664,7 +1714,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 150
+      scalar: 500
       minScalar: 10
       maxCurve:
         serializedVersion: 2

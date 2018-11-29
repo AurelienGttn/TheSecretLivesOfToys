@@ -21,17 +21,17 @@ public class Objectifs : MonoBehaviour {
 
         if (PanelMissions.missionPlaneBalloon)
         {
-            objectif.text = "Find the key" + "\n" + "Find Plane" + "\n" + "Balloon exploded : " + BalloonManager.balloonsShot.ToString() + "/" + BalloonManager.balloonCount.ToString();
+            objectif.text = "Find the key" + "\n" + "Find the plane" + "\n" + "Balloon exploded : " + BalloonManager.balloonsShot.ToString() + "/" + BalloonManager.balloonCount.ToString();
         }
 
         if (PanelMissions.missionFireTruck)
         {
-            objectif.text = "Find Firetruck"+"\n"+ "House Saved : " + HouseOnFireManager.houseSaved.ToString() + " / " + HouseOnFireManager.houseCount.ToString(); 
+            objectif.text = "Find the firetruck"+"\n"+ "House Saved : " + HouseOnFireManager.houseSaved.ToString() + " / " + HouseOnFireManager.houseCount.ToString()+"\n"+"Bring back the firetruck";
         }
 
-        if (PanelMissions.missionPlaneRings)
+        if (PanelPlaneRings.missionPanelRings)
         {
-            objectif.text = "Find Plane" + "\n" + "Ring crossed : " + RingManager.ringsDone.ToString() + "/" + RingManager.ringCount.ToString(); 
+            objectif.text = "Find Plane" + "\n" + "Ring crossed : " + RingManager.ringsDone.ToString() + "/" + RingManager.ringCount.ToString();
         }
 
     }

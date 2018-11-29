@@ -11,10 +11,7 @@ public class PanelMissions : MonoBehaviour
     public static bool missionPanelCompleted = false;
     public static bool missionTank = true;
     public static bool missionFireTruck = false;
-    public static bool missionPlaneRings = false;
     public static bool missionPlaneBalloon = false;
-
-
 
     public GameObject IA;
     public GameObject panelMission;
@@ -24,7 +21,8 @@ public class PanelMissions : MonoBehaviour
     public GameObject Ring;
     public GameObject[] FX_Emplacement;
     private GameObject targets;
-    public GameObject panelGameOver; 
+    public GameObject panelGameOver;
+    public GameObject cmvcam_plane;
 
 
     public GameObject tank;
@@ -79,10 +77,10 @@ public class PanelMissions : MonoBehaviour
 
         if (this.name == "Button_AcceptMission" || this.name == "Button_TryAgain")
         {
-           
             missionPanel = false;
             Time.timeScale = 1f;
-            panelGameOver.SetActive(false);
+            panelGameOver.SetActive(false); 
+
 
             if (missionPlaneBalloon)
             {
@@ -100,6 +98,7 @@ public class PanelMissions : MonoBehaviour
             if (missionFireTruck)
             {
                 soldier.SetActive(true);
+                cmvcam_plane.SetActive(false);
                 soldier.transform.position = new Vector3(-9, 24, 80);
                 IA.SetActive(true);
                 FX_Emplacement[2].SetActive(true);
@@ -109,7 +108,6 @@ public class PanelMissions : MonoBehaviour
                 {
                     balloons[i].BalloonShot();
                 }
-                plane.SetActive(false);
                 Ring.SetActive(false);
                 obstacle_tank.SetActive(false);
                 tank.SetActive(false);
@@ -144,9 +142,9 @@ public class PanelMissions : MonoBehaviour
                 missionPlaneBalloon = false;
                 missionFireTruck = false;
                 missionPanel = false;
-
+                PanelPlaneRings.missionPanelRings = true;
                 StartCoroutine(WaitChangementScene());
-                SceneManager.LoadScene("PlaneLevel1"); 
+                SceneManager.LoadScene("PlaneRings"); 
             }
            
 

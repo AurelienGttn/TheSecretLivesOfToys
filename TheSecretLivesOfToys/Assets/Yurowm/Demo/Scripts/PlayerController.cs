@@ -217,37 +217,27 @@ public class PlayerController : MonoBehaviour
 
     // Controler Véhicule
     public GameObject[] vehicule;
-    public GameObject cameraTruck;
+    public GameObject cmvcam_firetruck;
     public GameObject cameraTank;
     public GameObject[] FX_Emplacement;
     public GameObject crossHairPlane;
     public GameObject IA;
     public GameObject key_Plane;
     public GameObject audioEngine_Tank;
-    public GameObject cameraPlane;
+    public GameObject cmvcam_plane;
+    public GameObject cameraTruck;
 
     void OnCollisionStay(Collision collision)
     {
 
-        // FireTruck
-        if (collision.gameObject.tag == "FireTruck" && (Input.GetButton("Fire2") || Input.GetButton("F")))
-        {
-            gameObject.SetActive(false);
-            FX_Emplacement[2].SetActive(false);
-            vehicule[0].GetComponent<VehiculeController>().enabled = true;
-            vehicule[0].GetComponent<AudioSource>().enabled = true;
-            cameraTruck.SetActive(true);
-            this.transform.GetChild(0);
-            IA.SetActive(false);
-
-        }
+        
         // Tank 
         if (collision.gameObject.tag == "Tank" && (Input.GetButton("Fire2") || Input.GetButton("F")))
         {
             gameObject.SetActive(false);
             FX_Emplacement[0].SetActive(false);
-            vehicule[1].GetComponent<ID_Control_CS>().enabled = true;
-            vehicule[1].GetComponent<Damage_Control_CS>().enabled = true;
+            vehicule[0].GetComponent<ID_Control_CS>().enabled = true;
+            vehicule[0].GetComponent<Damage_Control_CS>().enabled = true;
 
             cameraTank.SetActive(true);
             this.transform.GetChild(0);
@@ -271,17 +261,36 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Player" && Key_Plane.haveKey && (Input.GetButton("Fire2") || Input.GetButton("F")))
         {
             gameObject.SetActive(false);
-            vehicule[2].GetComponent<AirplaneController>().enabled = true;
-            vehicule[2].GetComponent<AirplaneAudio>().enabled = true;
-            vehicule[2].GetComponent<Shooting>().enabled = true;
-            vehicule[2].GetComponent<Animator>().enabled = true;
+            vehicule[1].GetComponent<AirplaneController>().enabled = true;
+            vehicule[1].GetComponent<AirplaneAudio>().enabled = true;
+            vehicule[1].GetComponent<Animator>().enabled = true;
+            vehicule[1].GetComponent<AudioSource>().enabled = true;
+            this.transform.GetChild(0);
+            cmvcam_plane.SetActive(true);
+            cameraTruck.SetActive(false); 
+            FX_Emplacement[1].SetActive(false);
+
+            if (PanelMissions.missionPlaneBalloon)
+            {
+                vehicule[1].GetComponent<Shooting>().enabled = true;
+                crossHairPlane.SetActive(true);
+                IA.SetActive(false);
+                key_Plane.SetActive(false);
+            }
+            
+        }
+
+        // FireTruck
+        if (collision.gameObject.tag == "FireTruck" && (Input.GetButton("Fire2") || Input.GetButton("F")))
+        {
+            gameObject.SetActive(false);
+            FX_Emplacement[2].SetActive(false);
+            vehicule[2].GetComponent<VehiculeController>().enabled = true;
             vehicule[2].GetComponent<AudioSource>().enabled = true;
-            crossHairPlane.SetActive(true);
+            cmvcam_firetruck.SetActive(true);
             this.transform.GetChild(0);
             IA.SetActive(false);
-            FX_Emplacement[1].SetActive(false);
-            cameraPlane.SetActive(true);
-            key_Plane.SetActive(false); 
+
         }
 
         if (collision.gameObject.tag == "Player" && Key_Plane.haveKey == false && (Input.GetButton("Fire2") || Input.GetButton("F")))

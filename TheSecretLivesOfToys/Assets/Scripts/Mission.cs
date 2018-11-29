@@ -30,13 +30,7 @@ public class Mission : MonoBehaviour {
         if (PanelMissions.missionFireTruck)
         {
             nomVehicule = " fire truck ";
-            mission = "2. Extinguish all burning houses";
-        }
-
-        if (PanelMissions.missionPlaneRings)
-        {
-            nomVehicule = "plane ";
-            mission = "2. Cross all the rings";
+            mission = "2. Extinguish all burning houses \n3.Bring back the firetruck ";
         }
 
         Vehicule.text = "1. Find the " + nomVehicule;

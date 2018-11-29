@@ -9,7 +9,6 @@ public class HouseOnFireManager : MonoBehaviour
     public static int houseCount;
     public static int houseSaved;
     public GameObject[] houseOnFire;
-    public GameObject panelMission; 
     
 
     // Use this for initialization
@@ -22,12 +21,7 @@ public class HouseOnFireManager : MonoBehaviour
     // Method called when player saved a house
     public void AddHouseSaved()
     {
-        houseSaved++;
-        if ((houseSaved == houseCount) || (Input.GetButton("E")))
-        {
-            PanelMissions.missionPanelCompleted = true; 
-        }
-            
+        houseSaved++;           
     }
 
 

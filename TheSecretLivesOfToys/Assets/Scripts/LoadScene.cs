@@ -23,8 +23,8 @@ public class LoadScene : MonoBehaviour {
         {
             
             nomScene = "Jeu";
-            Time.timeScale = 0f;
-
+            PanelMissions.missionPanel = true; 
+            
         }
 
         if (this.name == "Button_Missions")
@@ -86,27 +86,43 @@ public class LoadScene : MonoBehaviour {
 
         if (this.name == "Button_Plane_Rings")
         {
-            nomScene = "PlaneLevel1";
+            nomScene = "PlaneRings";
+            Time.timeScale = 0f;
+            PanelPlaneRings.missionPanelRings = true;
+            PanelMissions.missionTank = false;
+            PanelMissions.missionPlaneBalloon = false;
+            PanelMissions.missionFireTruck = false;
         }
 
         if (this.name == "Button_Fire")
         {
+            PanelMissions.missionPanel = true;
             PanelMissions.missionTank = false;
+            PanelMissions.missionPlaneBalloon = false; 
             PanelMissions.missionFireTruck = true;
+            PanelPlaneRings.missionPanelRings = false; 
 
             nomScene = "Jeu";
         }
 
         if (this.name == "Button_Tank")
         {
+            PanelMissions.missionPanel = true;
             PanelMissions.missionTank = true;
+            PanelMissions.missionPlaneBalloon = false;
+            PanelMissions.missionFireTruck = false;
+            PanelPlaneRings.missionPanelRings = false;
+
             nomScene = "Jeu";
         }
 
         if (this.name == "Button_Plane_Balloon")
         {
+            PanelMissions.missionPanel = true;
             PanelMissions.missionPlaneBalloon = true;
             PanelMissions.missionTank = false;
+            PanelMissions.missionFireTruck = false;
+            PanelPlaneRings.missionPanelRings = false;
             nomScene = "Jeu";
         }
 

@@ -13,7 +13,6 @@ public class LandingRing : MonoBehaviour {
     public Camera cutSceneCamera;
     public AirplaneController airplaneController;
     public GameObject crossHair;
-    public GameObject bullet; 
 
     private Renderer m_renderer;
 	// Use this for initialization
@@ -47,8 +46,16 @@ public class LandingRing : MonoBehaviour {
     private IEnumerator WaitVictory()
     {
         yield return new WaitForSeconds(3f);
-        bullet.SetActive(false); 
         PanelMissions.missionPanelCompleted = true;
+        airplaneController.enabled = false;
+        Vector3 airplanePos = airplaneController.gameObject.transform.position;
+        airplaneController.gameObject.transform.position = new Vector3(airplanePos.x, 22.5f, airplanePos.z);
+        airplaneController.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        Debug.Log(airplanePos);
+        Debug.Log(airplaneController.gameObject.transform.position);
+        airplaneController.gameObject.transform.rotation = Quaternion.identity;
+        airplaneController.GetComponent<Animator>().enabled = false;
+        airplaneController.GetComponent<Shooting>().enabled = false;
         crossHair.SetActive(false);
         panelMissionCompleted.SetActive(true);
         Time.timeScale = 0f; 

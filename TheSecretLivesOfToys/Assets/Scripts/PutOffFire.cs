@@ -8,9 +8,6 @@ public class PutOffFire : MonoBehaviour {
     private float ParticulesLife = 100f;
     public List<GameObject> Particules;
     private HouseOnFireManager houseOnFireManager;
-    //public static int HouseSaved = 0;
-    //public static int HouseOnFire = 7;
-    public static bool FireTruckScene = false; 
     
     // Use this for initialization
     void Start () {

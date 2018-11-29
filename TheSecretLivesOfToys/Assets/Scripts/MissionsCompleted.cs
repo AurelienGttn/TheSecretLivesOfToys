@@ -23,7 +23,7 @@ public class MissionsCompleted : MonoBehaviour {
         if (PanelMissions.missionFireTruck)
         {
             nomVehicule = "FireTruck ";
-            mission = "House Saved : " + HouseOnFireManager.houseSaved.ToString() + " / " + HouseOnFireManager.houseCount.ToString();
+            mission = "House Saved : " + HouseOnFireManager.houseSaved.ToString() + " / " + HouseOnFireManager.houseCount.ToString() + "\n" + "Bring back the firetruck"; 
         }
 
         if (PanelMissions.missionTank)
@@ -31,19 +31,17 @@ public class MissionsCompleted : MonoBehaviour {
             nomVehicule = "Tank ";
             mission = "Way to the plane ";
         } 
-            
-         if(PanelMissions.missionPlaneRings)
-         {
-            nomVehicule = "Plane ";
-            mission = "Ring crossed :" + RingManager.ringsDone.ToString() + "/" + RingManager.ringCount.ToString();
-         }
 
         if (PanelMissions.missionPlaneBalloon)
         {
             nomVehicule = "Plane ";
             mission = "Balloon exploded :" + BalloonManager.balloonsShot.ToString() + "/" + BalloonManager.balloonCount.ToString() 
                 + "\nLand through ring"; 
-            
+        }
+        if (PanelPlaneRings.missionPanelRings)
+        {
+            nomVehicule = "Plane ";
+            mission = "Ring crossed : " + RingManager.ringsDone.ToString() + "/" + RingManager.ringCount.ToString();
         }
 
         Vehicule.text = "Find "+ nomVehicule + ": ";
