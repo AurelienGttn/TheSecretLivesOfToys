@@ -23,28 +23,31 @@ public class MissionsCompleted : MonoBehaviour {
         if (PanelMissions.missionFireTruck)
         {
             nomVehicule = "FireTruck ";
-            mission = "House Saved : " + HouseOnFireManager.houseSaved.ToString() + " / " + HouseOnFireManager.houseCount.ToString() + "\n" + "Bring back the firetruck"; 
+            mission = "Houses saved: " + HouseOnFireManager.houseSaved.ToString() + " / " + HouseOnFireManager.houseCount.ToString() + "\n" + "Bring back the firetruck"; 
         }
 
-        if (PanelMissions.missionTank)
+        else if (PanelMissions.missionTank)
         {
             nomVehicule = "Tank ";
-            mission = "Way to the plane ";
+            mission = "Found a way to the plane ";
         } 
 
-        if (PanelMissions.missionPlaneBalloon)
+        else if (PanelMissions.missionPlaneBalloon)
         {
             nomVehicule = "Plane ";
-            mission = "Balloon exploded :" + BalloonManager.balloonsShot.ToString() + "/" + BalloonManager.balloonCount.ToString() 
-                + "\nLand through ring"; 
-        }
-        if (PanelPlaneRings.missionPanelRings)
-        {
-            nomVehicule = "Plane ";
-            mission = "Ring crossed : " + RingManager.ringsDone.ToString() + "/" + RingManager.ringCount.ToString();
+            mission = "Balloons exploded: " + BalloonManager.balloonsShot.ToString() + "/" + BalloonManager.balloonCount.ToString() 
+                + "\nLanded on the bed"; 
         }
 
-        Vehicule.text = "Find "+ nomVehicule + ": ";
+        else if (PanelPlaneRings.missionPanelRings)
+        {
+            nomVehicule = "Plane ";
+            mission = "Rings passed: " + RingManager.ringsDone.ToString() + "/" + RingManager.ringCount.ToString() + "\nLanded on the bed";
+        }
+
+        Vehicule.color = new Color32(27, 183, 27, 255);
+        InformationMission.color = new Color32(27, 183, 27, 255);
+        Vehicule.text = "Found "+ nomVehicule;
         InformationMission.text = mission;  
     }
 }

@@ -17,20 +17,20 @@ public class Mission : MonoBehaviour {
 
         if (PanelMissions.missionTank)
         {
-            nomVehicule = "tank ";
+            nomVehicule = "tank";
             mission = "2. Find a way to the plane";
         }
 
         if (PanelMissions.missionPlaneBalloon)
         {
             nomVehicule = "key"; 
-            mission = "2. Find the plane \n3. Explode all the balloon";
+            mission = "2. Find the plane \n3. Explode all the balloons";
         }
 
         if (PanelMissions.missionFireTruck)
         {
-            nomVehicule = " fire truck ";
-            mission = "2. Extinguish all burning houses \n3.Bring back the firetruck ";
+            nomVehicule = "firetruck";
+            mission = "2. Extinguish all burning houses \n3. Bring back the firetruck ";
         }
 
         Vehicule.text = "1. Find the " + nomVehicule;

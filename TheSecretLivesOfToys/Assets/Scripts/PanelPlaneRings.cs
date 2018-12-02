@@ -6,17 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class PanelPlaneRings : MonoBehaviour {
     public GameObject panelMission;
-    public static bool missionPanelRings = false;
+    public static bool missionPanelRings = true;
     private bool showPanelMission;
+
+    public GameObject objectifs;
+    public GameObject timer;
 
     public PlayerController playerController;
     public GameObject timelineAirplane;
     public Camera cutsceneCamera;
-    public Canvas blackScreen;
 
     private void Start()
     {
-        blackScreen.enabled = false;
+        objectifs.SetActive(false);
+        timer.SetActive(false);
         showPanelMission = true;
     }
 
@@ -36,7 +39,6 @@ public class PanelPlaneRings : MonoBehaviour {
             Time.timeScale = 0;
             showPanelMission = false;
             playerController.enabled = false;
-            blackScreen.enabled = true;
             cutsceneCamera.enabled = true;
             timelineAirplane.SetActive(true);
             timelineAirplane.GetComponent<PlayableDirector>().Play();

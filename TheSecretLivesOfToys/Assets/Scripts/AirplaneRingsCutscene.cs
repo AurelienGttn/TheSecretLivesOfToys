@@ -8,8 +8,9 @@ public class AirplaneRingsCutscene : MonoBehaviour
 {
     private PlayableDirector cutscene;
     public Camera cutsceneCamera;
-    public Canvas blackScreen;
     public PlayerController playerController;
+
+    public GameObject objectifs, timer;
 
     // Use this for initialization
     void Start()
@@ -26,8 +27,9 @@ public class AirplaneRingsCutscene : MonoBehaviour
     private void Cutscene_stopped(PlayableDirector cutscene)
     {
         cutsceneCamera.enabled = false;
-        blackScreen.enabled = false;
         playerController.enabled = true;
+        objectifs.SetActive(true);
+        timer.SetActive(true);
         Time.timeScale = 1f;
     }
 }

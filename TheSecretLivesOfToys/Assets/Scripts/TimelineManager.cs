@@ -12,6 +12,8 @@ public class TimelineManager : MonoBehaviour {
     public Canvas blackScreen;
     public PlayerController playerController;
 
+    public GameObject objectifs, timer;
+
 	// Use this for initialization
 	void Start () {
         cutsceneTank = timelineTank.GetComponent<PlayableDirector>();
@@ -31,6 +33,8 @@ public class TimelineManager : MonoBehaviour {
         cutsceneCamera.enabled = false;
         blackScreen.enabled = false;
         playerController.enabled = true;
+        objectifs.SetActive(true);
+        timer.SetActive(true);
         Time.timeScale = 1f;
     }
 }

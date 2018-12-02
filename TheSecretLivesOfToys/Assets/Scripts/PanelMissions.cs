@@ -16,6 +16,8 @@ public class PanelMissions : MonoBehaviour
     public GameObject IA;
     public GameObject panelMission;
     public GameObject panelMissionCompleted;
+    public GameObject objectifs;
+    public GameObject timer;
     private GameObject markerTank;
     public GameObject plane;
     public GameObject Ring;
@@ -34,11 +36,12 @@ public class PanelMissions : MonoBehaviour
 
     public TimelineManager timelineManager;
     public Camera cutsceneCamera;
-    public Canvas blackScreen;
 
     // Use this for initialization
     void Start()
     {
+        objectifs.SetActive(false);
+        timer.SetActive(false);
     }
 
     // Update is called once per frame
@@ -72,14 +75,6 @@ public class PanelMissions : MonoBehaviour
 
     public void Mission()
     {
-        /*if (missionTank)
-        {
-            if(this.name == "Button_TryAgain")
-            {
-                SceneManager.LoadScene("Jeu");
-            }
-        }*/
-
         if (name == "Button_AcceptMission" || name == "Button_TryAgain")
         {
             missionPanel = false;
@@ -111,7 +106,6 @@ public class PanelMissions : MonoBehaviour
                     markerTank.SetActive(false);
                 FX_Emplacement[1].SetActive(true);
                 // play cutscene
-                blackScreen.enabled = true;
                 cutsceneCamera.enabled = true;
                 timelineManager.timelineAirplane.SetActive(true);
                 timelineManager.cutsceneAirplane.Play();
@@ -136,7 +130,6 @@ public class PanelMissions : MonoBehaviour
                 tank.SetActive(false);
                 tank_clone.SetActive(true);
                 // play cutscene
-                blackScreen.enabled = true;
                 cutsceneCamera.enabled = true;
                 timelineManager.timelineFiretruck.SetActive(true);
                 timelineManager.cutsceneFiretruck.Play();
@@ -148,7 +141,6 @@ public class PanelMissions : MonoBehaviour
                 soldier.GetComponent<PlayerController>().enabled = false;
                 soldier.transform.position = new Vector3(-133, 0, -88);
                 soldier.transform.rotation = Quaternion.identity;
-                blackScreen.enabled = true;
                 cutsceneCamera.enabled = true;
                 timelineManager.timelineTank.SetActive(true);
                 timelineManager.cutsceneTank.Play();
