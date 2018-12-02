@@ -14,7 +14,13 @@ public class Objectifs : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (PanelMissions.missionPlaneBalloon)
+        if (FindObjectOfType<RingManager>() != null)
+        //else if (PanelPlaneRings.missionPanelRings)
+        {
+            objectif.text = "Find Plane" + "\n" + "Rings passed: " + RingManager.ringsDone.ToString() + "/" + RingManager.ringCount.ToString() + "\nLand on the bed";
+        }
+
+        else if (PanelMissions.missionPlaneBalloon)
         {
             objectif.text = "Find the key" + "\n" + "Find the plane" + "\n" + "Balloons exploded: " + BalloonManager.balloonsShot.ToString() + "/" + BalloonManager.balloonCount.ToString();
         }
@@ -29,10 +35,6 @@ public class Objectifs : MonoBehaviour {
             objectif.text = "Find the tank" + "\n" + "Find a way to the plane";
         }
         
-        else if (PanelPlaneRings.missionPanelRings)
-        {
-            objectif.text = "Find Plane" + "\n" + "Rings passed: " + RingManager.ringsDone.ToString() + "/" + RingManager.ringCount.ToString() + "\nLand on the bed";
-        }
 
     }
 }

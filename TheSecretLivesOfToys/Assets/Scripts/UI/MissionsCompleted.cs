@@ -18,9 +18,15 @@ public class MissionsCompleted : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+        if (FindObjectOfType<RingManager>() != null)
+        {
+            nomVehicule = "Plane ";
+            mission = "Rings passed: " + RingManager.ringsDone.ToString() + "/" + RingManager.ringCount.ToString() + "\nLanded on the bed";
+        }
 
-        if (PanelMissions.missionFireTruck)
+        else if (PanelMissions.missionFireTruck)
         {
             nomVehicule = "FireTruck ";
             mission = "Houses saved: " + HouseOnFireManager.houseSaved.ToString() + " / " + HouseOnFireManager.houseCount.ToString() + "\n" + "Bring back the firetruck"; 
@@ -37,12 +43,6 @@ public class MissionsCompleted : MonoBehaviour {
             nomVehicule = "Plane ";
             mission = "Balloons exploded: " + BalloonManager.balloonsShot.ToString() + "/" + BalloonManager.balloonCount.ToString() 
                 + "\nLanded on the bed"; 
-        }
-
-        else if (PanelPlaneRings.missionPanelRings)
-        {
-            nomVehicule = "Plane ";
-            mission = "Rings passed: " + RingManager.ringsDone.ToString() + "/" + RingManager.ringCount.ToString() + "\nLanded on the bed";
         }
 
         Vehicule.color = new Color32(27, 183, 27, 255);

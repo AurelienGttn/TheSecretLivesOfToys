@@ -51,8 +51,6 @@ public class LandingRing : MonoBehaviour {
         Vector3 airplanePos = airplaneController.gameObject.transform.position;
         airplaneController.gameObject.transform.position = new Vector3(airplanePos.x, 22.5f, airplanePos.z);
         airplaneController.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        Debug.Log(airplanePos);
-        Debug.Log(airplaneController.gameObject.transform.position);
         airplaneController.gameObject.transform.rotation = Quaternion.identity;
         airplaneController.GetComponent<Animator>().enabled = false;
         airplaneController.GetComponent<Shooting>().enabled = false;
