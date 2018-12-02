@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Key_Plane : MonoBehaviour {
 
-    public static bool haveKey = true;
+    public static bool haveKey = false;
     public GameObject pont;
-    [SerializeField] private ParticleSystem explostionPont;
+    [SerializeField] private ParticleSystem explosionPont;
 
     // Use this for initialization
     void Start() {
@@ -25,8 +25,8 @@ public class Key_Plane : MonoBehaviour {
             haveKey = true;
             Destroy(this.gameObject);
             pont.SetActive(false);
-            ParticleSystem crashExplosionClone = Instantiate(explostionPont, pont.transform.position, Quaternion.identity);
-            crashExplosionClone.transform.localScale = pont.transform.localScale;
+            ParticleSystem crashExplosionClone = Instantiate(explosionPont, pont.transform.position, Quaternion.identity);
+            crashExplosionClone.transform.localScale = pont.transform.localScale * 40;
         }
     }
 }

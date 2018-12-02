@@ -88,8 +88,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1111720388036764}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: -86.02373, y: 0.07359946, z: 74.982994}
+  m_LocalRotation: {x: 1.0743444e-15, y: 0.051232032, z: 2.0942827e-14, w: 0.99868685}
+  m_LocalPosition: {x: -85.73273, y: -0.20785081, z: 64.17247}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4204905653570136}
@@ -97,14 +97,15 @@ Transform:
   - {fileID: 4704641397781404}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4204905653570136
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1608649221386946}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0.0000000037252887, y: -0.0000000037252894, z: -0.70710677,
+    w: 0.70710677}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
@@ -230,7 +231,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 6
-  m_Range: 40
+  m_Range: 25
   m_SpotAngle: 63.3
   m_CookieSize: 10
   m_Shadows:
@@ -270,7 +271,7 @@ MonoBehaviour:
   points:
   - {fileID: 0}
   - {fileID: 0}
-  agent: {fileID: 0}
+  agent: {fileID: 195694040289916176}
 --- !u!114 &114736058832078862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,14 +283,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e96d3d0fc9df2d49b74375a29462df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 35
+  viewRadius: 25
   viewAngle: 50
   targetMask:
     serializedVersion: 2
     m_Bits: 1024
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 129847
   visibleTargets: []
   meshResolution: 1
   edgeResolveIterations: 4
@@ -372,7 +373,7 @@ NavMeshAgent:
   m_AngularSpeed: 360
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 1.61
   m_BaseOffset: -0.12

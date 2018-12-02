@@ -24,13 +24,17 @@ public class PanelMissions : MonoBehaviour
     public GameObject panelGameOver;
     public GameObject cmvcam_plane;
 
-
     public GameObject tank;
     public GameObject tank_clone; 
     public GameObject soldier;
     public GameObject obstacle_tank;
 
+    public GameObject keyPrefab;
+    public GameObject bridgePrefab;
+
     public TimelineManager timelineManager;
+    public Camera cutsceneCamera;
+    public Canvas blackScreen;
 
     // Use this for initialization
     void Start()
@@ -68,45 +72,55 @@ public class PanelMissions : MonoBehaviour
 
     public void Mission()
     {
-        if (missionTank)
+        /*if (missionTank)
         {
             if(this.name == "Button_TryAgain")
             {
                 SceneManager.LoadScene("Jeu");
             }
-        }
+        }*/
 
-        if (this.name == "Button_AcceptMission" || this.name == "Button_TryAgain")
+        if (name == "Button_AcceptMission" || name == "Button_TryAgain")
         {
             missionPanel = false;
-            Time.timeScale = 1f;
             panelGameOver.SetActive(false);
-
-            soldier.GetComponent<PlayerController>().enabled = false;
-            timelineManager.timelineTank.SetActive(true);
-            timelineManager.cutsceneTank.Play();
-            soldier.GetComponent<PlayerController>().enabled = true;
 
             if (missionPlaneBalloon)
             {
                 soldier.SetActive(true);
+                Key_Plane.haveKey = false;
+                if (FindObjectOfType<Key_Plane>() == null)
+                {
+                    GameObject bridge = Instantiate(bridgePrefab, new Vector3(-62.43f, 20.92f, 133.58f), Quaternion.Euler(new Vector3(0, 90, 0)));
+                    GameObject key = Instantiate(keyPrefab, new Vector3(-80, 22.5f, 133), Quaternion.identity);
+                    key.GetComponentInChildren<Key_Plane>().pont = bridge;
+                }
+                GameObject[] tankObstacles = GameObject.FindGameObjectsWithTag("DestroyObstacle");
+                for (int i = 0; i < tankObstacles.Length; i++)
+                {
+                    tankObstacles[i].SetActive(false);
+                }
                 soldier.GetComponent<PlayerController>().enabled = false;
-                soldier.transform.position = new Vector3(75, 1, 54); 
+                soldier.transform.position = new Vector3(75, 0, 54);
+                soldier.transform.rotation = Quaternion.identity;
                 IA.SetActive(true);
                 tank.SetActive(false);
-                tank_clone.SetActive(true); 
+                tank_clone.SetActive(true);
                 markerTank = GameObject.Find("Marker");
-                markerTank.SetActive(false);
+                if (markerTank != null)
+                    markerTank.SetActive(false);
                 FX_Emplacement[1].SetActive(true);
                 // play cutscene
+                blackScreen.enabled = true;
+                cutsceneCamera.enabled = true;
                 timelineManager.timelineAirplane.SetActive(true);
                 timelineManager.cutsceneAirplane.Play();
-                soldier.GetComponent<PlayerController>().enabled = true;
             }
 
-            if (missionFireTruck)
+            else if (missionFireTruck)
             {
                 soldier.SetActive(true);
+                soldier.GetComponent<PlayerController>().enabled = false;
                 cmvcam_plane.SetActive(false);
                 soldier.transform.position = new Vector3(-9, 24, 80);
                 IA.SetActive(true);
@@ -121,14 +135,27 @@ public class PanelMissions : MonoBehaviour
                 obstacle_tank.SetActive(false);
                 tank.SetActive(false);
                 tank_clone.SetActive(true);
+                // play cutscene
+                blackScreen.enabled = true;
+                cutsceneCamera.enabled = true;
+                timelineManager.timelineFiretruck.SetActive(true);
+                timelineManager.cutsceneFiretruck.Play();
+            }
 
+            else if (missionTank)
+            {
+                // play cutscene
+                soldier.GetComponent<PlayerController>().enabled = false;
+                soldier.transform.position = new Vector3(-133, 0, -88);
+                soldier.transform.rotation = Quaternion.identity;
+                blackScreen.enabled = true;
+                cutsceneCamera.enabled = true;
+                timelineManager.timelineTank.SetActive(true);
+                timelineManager.cutsceneTank.Play();
             }
         }
         
         
-
-
-
         if (this.name == "Button_NextMission")
         {
             missionPanelCompleted = false;

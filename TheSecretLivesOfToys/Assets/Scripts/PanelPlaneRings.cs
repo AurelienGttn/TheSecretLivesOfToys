@@ -1,33 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class PanelPlaneRings : MonoBehaviour {
     public GameObject panelMission;
     public static bool missionPanelRings = false;
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private bool showPanelMission;
+
+    public PlayerController playerController;
+    public GameObject timelineAirplane;
+    public Camera cutsceneCamera;
+    public Canvas blackScreen;
+
+    private void Start()
+    {
+        blackScreen.enabled = false;
+        showPanelMission = true;
+    }
+
+    private void Update()
+    {
+        if (showPanelMission)
+        {
+            Time.timeScale = 0;
+        }
+    }
 
     public void afficherPanel()
     {
-        if (this.name == "Button_AcceptMission")
+        if (name == "Button_AcceptMission")
         {
-            Time.timeScale = 1f; 
             panelMission.SetActive(false);
+            Time.timeScale = 0;
+            showPanelMission = false;
+            playerController.enabled = false;
+            blackScreen.enabled = true;
+            cutsceneCamera.enabled = true;
+            timelineAirplane.SetActive(true);
+            timelineAirplane.GetComponent<PlayableDirector>().Play();
+            Key_Plane.haveKey = true;
         }
-       if(this.name == "Button_TryAgain_Crash")
+       if(name == "Button_TryAgain_Crash")
        {
             SceneManager.LoadScene("PlaneRings");
        }
-       if(this.name == "Button_NextMission")
+       if(name == "Button_NextMission")
        {
             SceneManager.LoadScene("ContenuNonDispo");
        }
