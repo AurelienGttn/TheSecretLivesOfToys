@@ -87,7 +87,7 @@ public class PanelMissions : MonoBehaviour
             {
                 soldier.SetActive(true);
                 Key_Plane.haveKey = false;
-                if (FindObjectOfType<Key_Plane>() == null)
+                if (GameObject.FindGameObjectWithTag("Key") == null)
                 {
                     GameObject bridge = Instantiate(bridgePrefab, new Vector3(-62.43f, 20.92f, 133.58f), Quaternion.Euler(new Vector3(0, 90, 0)));
                     GameObject key = Instantiate(keyPrefab, new Vector3(-80, 22.5f, 133), Quaternion.identity);
@@ -119,7 +119,10 @@ public class PanelMissions : MonoBehaviour
                 soldier.SetActive(true);
                 soldier.GetComponent<PlayerController>().enabled = false;
                 cmvcam_plane.SetActive(false);
-                soldier.transform.position = new Vector3(-9, 24, 80);
+                plane.transform.position = new Vector3(-10, 22.5f, 86);
+                plane.transform.rotation = Quaternion.identity;
+                plane.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                soldier.transform.position = new Vector3(-9, 21f, 80);
                 IA.SetActive(true);
                 FX_Emplacement[2].SetActive(true);
                 targets = GameObject.Find("Targets");

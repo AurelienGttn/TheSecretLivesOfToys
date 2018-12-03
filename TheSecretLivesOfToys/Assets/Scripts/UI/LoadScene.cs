@@ -7,21 +7,12 @@ using  ChobiAssets.KTP;
 public class LoadScene : MonoBehaviour {
     private string nomScene;
     
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     public void Menu()
     {
         if (this.name == "Button_Play")
         {
-            
+
+            PanelMissions.missionTank = true;
             nomScene = "Jeu";
             PanelMissions.missionPanel = true; 
             
@@ -70,6 +61,10 @@ public class LoadScene : MonoBehaviour {
         }
         if (this.name == "Button_Menu")
         {
+            PanelMissions.missionTank = false;
+            PanelMissions.missionFireTruck = false;
+            PanelMissions.missionPlaneBalloon = false;
+            PanelPlaneRings.missionPanelRings = false;
             nomScene = "Menu";
         }
 
