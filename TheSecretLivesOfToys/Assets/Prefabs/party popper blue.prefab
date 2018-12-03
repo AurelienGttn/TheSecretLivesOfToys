@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 136006635187318532}
   - component: {fileID: 114253855178938496}
   - component: {fileID: 82093007527838460}
-  - component: {fileID: 114214901565887872}
   m_Layer: 0
   m_Name: shooting stars particles
   m_TagString: Untagged
@@ -380,17 +379,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114214901565887872
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1739634230009824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1aa1b8203f0f044ba577e3df8e0f307, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114253855178938496
 MonoBehaviour:
   m_ObjectHideFlags: 1

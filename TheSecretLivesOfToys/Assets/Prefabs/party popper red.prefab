@@ -56,7 +56,6 @@ GameObject:
   - component: {fileID: 136188842900798290}
   - component: {fileID: 114069398481402498}
   - component: {fileID: 82953748923898864}
-  - component: {fileID: 114052060966011018}
   m_Layer: 0
   m_Name: unity confetti particles
   m_TagString: Untagged
@@ -163,8 +162,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1197414344628966}
-  m_LocalRotation: {x: 0, y: 0, z: 0.17364816, w: 0.9848078}
-  m_LocalPosition: {x: 0.333, y: -0.124, z: 1.259}
+  m_LocalRotation: {x: 0, y: 0, z: -0.08715578, w: 0.9961947}
+  m_LocalPosition: {x: 2.293, y: -0.011, z: 0.061}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4035519061377664}
@@ -172,7 +171,7 @@ Transform:
   - {fileID: 4023162472673750}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -10}
 --- !u!4 &4317749309934846
 Transform:
   m_ObjectHideFlags: 1
@@ -380,17 +379,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114052060966011018
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1209242208229626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1aa1b8203f0f044ba577e3df8e0f307, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114069398481402498
 MonoBehaviour:
   m_ObjectHideFlags: 1
