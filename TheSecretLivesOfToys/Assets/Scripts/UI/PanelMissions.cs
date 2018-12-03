@@ -37,6 +37,8 @@ public class PanelMissions : MonoBehaviour
     public TimelineManager timelineManager;
     public Camera cutsceneCamera;
 
+    public AudioSource globalMusic;
+
     // Use this for initialization
     void Start()
     {
@@ -79,6 +81,7 @@ public class PanelMissions : MonoBehaviour
         {
             missionPanel = false;
             panelGameOver.SetActive(false);
+            globalMusic.Play();
 
             if (missionPlaneBalloon)
             {

@@ -260,8 +260,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1640807111294094}
-  m_LocalRotation: {x: -0.171303, y: -0.6965737, z: 0.17707786, w: -0.67385745}
-  m_LocalPosition: {x: 142.13907, y: 3.6000404, z: 169.09457}
+  m_LocalRotation: {x: -0.074089825, y: -0.71463513, z: 0.076587066, w: -0.69133335}
+  m_LocalPosition: {x: -4.65171, y: 3.6000001, z: 171.12807}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 4709217415754962}
@@ -790,7 +790,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1943077294636420}
   serializedVersion: 2
-  m_Mass: 1000
+  m_Mass: 10
   m_Drag: 0.1
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -808,8 +808,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.312861, y: 4.5811987, z: 11.959752}
-  m_Center: {x: -0.0328362, y: 2.1473193, z: 0.4752499}
+  m_Size: {x: 3.8073545, y: 4.5811996, z: 11.959752}
+  m_Center: {x: -0.028772715, y: 2.1473198, z: 0.47525004}
 --- !u!81 &81141315077473522
 AudioListener:
   m_ObjectHideFlags: 1
@@ -828,9 +828,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9dadd59c92fc29b479033ba118e4eac6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -997,7 +997,7 @@ ParticleSystem:
   simulationSpeed: 1
   stopAction: 0
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -1012,7 +1012,7 @@ ParticleSystem:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1021,7 +1021,7 @@ ParticleSystem:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 1
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0

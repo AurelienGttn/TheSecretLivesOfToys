@@ -23,6 +23,7 @@ public class FieldOfView : MonoBehaviour
     public MeshFilter viewMeshFilter;
     Mesh viewMesh;
     public GameObject panelTryAgain;
+    public AudioSource globalMusic;
 
     void Start()
     {
@@ -68,6 +69,7 @@ public class FieldOfView : MonoBehaviour
                 if (!Physics.Raycast(new Vector3(transform.position.x, 0.5f, transform.position.z), dirToTarget, dstToTarget, obstacleMask))
                 {
                     visibleTargets.Add(target);
+                    globalMusic.Stop();
                     panelTryAgain.SetActive(true);
                     Time.timeScale = 0f;
                 }

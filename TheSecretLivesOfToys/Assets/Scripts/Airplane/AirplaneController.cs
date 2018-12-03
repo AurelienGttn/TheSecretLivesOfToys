@@ -38,7 +38,9 @@ public class AirplaneController : MonoBehaviour
     private bool isLanding;                                             // Override controls during landing cutscene
     private Rigidbody m_Rigidbody;
     public GameObject panelCrashAvion;
-    public GameObject crossHair; 
+    public GameObject crossHair;
+
+    public AudioSource globalMusic;
 
     private void Start()
     {
@@ -51,23 +53,14 @@ public class AirplaneController : MonoBehaviour
     private void FixedUpdate()
     {
         //----------------- Game over -----------------//
-
-        //Restart when gameOver = 2
-        if (gameOver == 2 && (Input.GetKey("enter")) || gameOver == 2 && (Input.GetKey("return")))
-        {
-            gameOver = 0;
-            m_Rigidbody.useGravity = false;
-            transform.position = new Vector3(0, 1.67f, 0);
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        }
+        
 
         // Physics stuff when gameOver ==1
         if (gameOver == 1)
         {
             transform.Rotate(Vector3.up, 200 * Time.deltaTime);
+            globalMusic.Stop();
             StartCoroutine(WaitCrash());
-            //m_Rigidbody.AddRelativeForce(0, 0, crashForce);
-            //gameOver = 2;
         }
 
 

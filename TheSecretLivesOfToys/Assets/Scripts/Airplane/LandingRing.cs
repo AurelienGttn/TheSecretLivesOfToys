@@ -55,6 +55,7 @@ public class LandingRing : MonoBehaviour {
         airplaneController.GetComponent<Animator>().enabled = false;
         airplaneController.GetComponent<Shooting>().enabled = false;
         crossHair.SetActive(false);
+        cutSceneCamera.enabled = false;
         panelMissionCompleted.SetActive(true);
         Time.timeScale = 0f; 
 

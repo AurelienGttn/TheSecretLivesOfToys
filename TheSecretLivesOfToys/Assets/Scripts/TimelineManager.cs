@@ -9,7 +9,6 @@ public class TimelineManager : MonoBehaviour {
     public GameObject timelineTank, timelineAirplane, timelineFiretruck;
     public PlayableDirector cutsceneTank, cutsceneAirplane, cutsceneFiretruck;
     public Camera cutsceneCamera;
-    public Canvas blackScreen;
     public PlayerController playerController;
 
     public GameObject objectifs, timer;
@@ -31,7 +30,6 @@ public class TimelineManager : MonoBehaviour {
     private void Cutscene_stopped(PlayableDirector cutscene)
     {
         cutsceneCamera.enabled = false;
-        blackScreen.enabled = false;
         playerController.enabled = true;
         objectifs.SetActive(true);
         timer.SetActive(true);

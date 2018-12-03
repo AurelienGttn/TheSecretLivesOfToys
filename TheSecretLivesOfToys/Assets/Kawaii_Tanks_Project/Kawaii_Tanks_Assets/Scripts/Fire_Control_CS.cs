@@ -14,7 +14,7 @@ namespace ChobiAssets.KTP
 	{
 
 		[Header ("Fire control settings")]
-		[Tooltip ("Loading time. (Sec)")] public float reloadTime = 4.0f;
+		[Tooltip ("Loading time. (Sec)")] public float reloadTime = 2.5f;
 		[Tooltip ("Recoil force with firing.")] public float recoilForce = 5000.0f;
 
 		bool isReady = true;

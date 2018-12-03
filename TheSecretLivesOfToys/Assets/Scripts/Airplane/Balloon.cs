@@ -19,14 +19,23 @@ public class Balloon : MonoBehaviour {
 
     public void BalloonShot()
     {
-        ParticleSystem destructionTemp = Instantiate(destructionEffect, transform.position, transform.rotation);
-        destructionTemp.transform.localScale = parent.localScale / 5;
+        if (GetComponent<Renderer>().enabled == true)
+        {
+            ParticleSystem destructionTemp = Instantiate(destructionEffect, transform.position, transform.rotation);
+            destructionTemp.transform.localScale = parent.localScale / 5;
+            GetComponent<AudioSource>().Play();
 
-        balloonManager.GetComponent<BalloonManager>().AddBalloonShot();
-        
-        Destroy(balloonString.gameObject);
-        // Call box method to make it fall
-        balloonBox.GetComponent<BalloonBox>().DropBox();
-        Destroy(gameObject);
+            balloonManager.GetComponent<BalloonManager>().AddBalloonShot();
+            GetComponent<Renderer>().enabled = false;
+            Collider[] coll = GetComponents<Collider>();
+            for (int i = 0; i < coll.Length; i++)
+            {
+                coll[i].enabled = false;
+            }
+            Destroy(balloonString.gameObject);
+            // Call box method to make it fall
+            balloonBox.GetComponent<BalloonBox>().DropBox();
+            Destroy(gameObject, GetComponent<AudioSource>().clip.length);
+        }
     }
 }

@@ -88,8 +88,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1111720388036764}
-  m_LocalRotation: {x: 1.0743444e-15, y: 0.051232032, z: 2.0942827e-14, w: 0.99868685}
-  m_LocalPosition: {x: -85.73273, y: -0.20785081, z: 64.17247}
+  m_LocalRotation: {x: -0, y: 0.0000059604636, z: -0, w: -1}
+  m_LocalPosition: {x: 48.9, y: 0, z: -32.1}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4204905653570136}
@@ -104,8 +104,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1608649221386946}
-  m_LocalRotation: {x: 0.0000000037252887, y: -0.0000000037252894, z: -0.70710677,
-    w: 0.70710677}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
@@ -297,6 +296,7 @@ MonoBehaviour:
   edgeDstThreshold: 0.5
   viewMeshFilter: {fileID: 33675820108468232}
   panelTryAgain: {fileID: 0}
+  globalMusic: {fileID: 0}
 --- !u!136 &136015189343828640
 CapsuleCollider:
   m_ObjectHideFlags: 1

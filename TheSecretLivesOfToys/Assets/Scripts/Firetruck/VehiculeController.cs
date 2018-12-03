@@ -47,7 +47,6 @@ public class VehiculeController : MonoBehaviour
             {
                 if (hitInfo.transform.gameObject.tag == "HouseOnFire")
                 {
-                    Debug.Log("Je peux éteindre le feu");
                     hitInfo.transform.gameObject.GetComponent<PutOffFire>().onHit();
                 }
             }

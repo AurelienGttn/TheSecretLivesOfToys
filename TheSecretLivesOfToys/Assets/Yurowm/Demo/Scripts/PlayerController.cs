@@ -233,12 +233,13 @@ public class PlayerController : MonoBehaviour
 
         
         // Tank 
-        if (collision.gameObject.tag == "Tank" && (Input.GetButton("Fire2") || Input.GetButton("F")))
+        if (collision.gameObject.tag == "Tank" && Input.GetButton("F"))
         {
             gameObject.SetActive(false);
             FX_Emplacement[0].SetActive(false);
             vehicule[0].GetComponent<ID_Control_CS>().enabled = true;
             vehicule[0].GetComponent<Damage_Control_CS>().enabled = true;
+            vehicule[0].GetComponent<AudioSource>().Play();
 
             cameraTank.SetActive(true);
             this.transform.GetChild(0);
@@ -259,7 +260,7 @@ public class PlayerController : MonoBehaviour
 
         }
         //Plane
-        if (collision.gameObject.tag == "Player" && Key_Plane.haveKey && (Input.GetButton("Fire2") || Input.GetButton("F")))
+        if (collision.gameObject.tag == "Player" && Key_Plane.haveKey && Input.GetButton("F"))
         {
             multipurposeMainCamera.SetActive(true); 
             gameObject.SetActive(false);
@@ -283,19 +284,20 @@ public class PlayerController : MonoBehaviour
         }
 
         // FireTruck
-        if (collision.gameObject.tag == "FireTruck" && (Input.GetButton("Fire2") || Input.GetButton("F")))
+        if (collision.gameObject.tag == "FireTruck" && Input.GetButton("F"))
         {
             gameObject.SetActive(false);
             FX_Emplacement[2].SetActive(false);
             vehicule[2].GetComponent<VehiculeController>().enabled = true;
             vehicule[2].GetComponent<AudioSource>().enabled = true;
+            cameraTruck.SetActive(true);
             cmvcam_firetruck.SetActive(true);
             this.transform.GetChild(0);
             IA.SetActive(false);
 
         }
 
-        if (collision.gameObject.tag == "Player" && Key_Plane.haveKey == false && (Input.GetButton("Fire2") || Input.GetButton("F")))
+        if (collision.gameObject.tag == "Player" && !Key_Plane.haveKey && (Input.GetButton("Fire2") || Input.GetButton("F")))
         {
           
             key_Plane.SetActive(true);

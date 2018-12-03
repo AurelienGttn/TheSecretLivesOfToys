@@ -16,6 +16,8 @@ public class PanelPlaneRings : MonoBehaviour {
     public GameObject timelineAirplane;
     public Camera cutsceneCamera;
 
+    public AudioSource globalMusic;
+
     private void Start()
     {
         objectifs.SetActive(false);
@@ -35,6 +37,7 @@ public class PanelPlaneRings : MonoBehaviour {
     {
         if (name == "Button_AcceptMission")
         {
+            globalMusic.Play();
             panelMission.SetActive(false);
             Time.timeScale = 0;
             showPanelMission = false;
