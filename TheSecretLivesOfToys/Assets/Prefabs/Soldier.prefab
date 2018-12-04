@@ -309,7 +309,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4070851429014546}
   - component: {fileID: 95469923562780684}
-  - component: {fileID: 114627353101968938}
   - component: {fileID: 114910912923436040}
   - component: {fileID: 136018688462096076}
   - component: {fileID: 54274453083284936}
@@ -839,7 +838,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1378817468209618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 63.9, y: -0.16000001, z: -80.2}
+  m_LocalPosition: {x: -133, y: 0, z: -88}
   m_LocalScale: {x: 4.0193996, y: 4, z: 4.0194006}
   m_Children:
   - {fileID: 4664494722672122}
@@ -1074,8 +1073,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1314961855436584}
-  m_LocalRotation: {x: 0.106559336, y: -0.000000019841325, z: -0.000000088187164,
-    w: 0.9943064}
+  m_LocalRotation: {x: 0.10655929, y: 9.404741e-10, z: -1.0078988e-10, w: 0.9943064}
   m_LocalPosition: {x: 0, y: 1.125, z: -1.9903466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1602,17 +1600,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Cinemachine.CinemachineBrain+VcamActivatedEvent, Cinemachine, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114627353101968938
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1378817468209618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a85c5e349cb17df4b85883ea088c2f95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114910912923436040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1624,35 +1611,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9aa840a3854ebd47b920d1a5c7d693f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
-  Jump: 5
-  gravite: 20
-  RunSpeed: 10
   walkSpeed: 10
   runSpeed: 20
-  turnSpeed: 200
-  isgrounded: 1
+  turnSpeed: 150
   isJumping: 0
-  isDragging: 0
-  jumSpeed: {x: 0, y: 7, z: 0}
-  velocity: 0
+  IA: {fileID: 0}
   vehicule:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  cmvcam_firetruck: {fileID: 0}
-  cameraTank: {fileID: 0}
   FX_Emplacement:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  crossHairPlane: {fileID: 0}
-  IA: {fileID: 0}
-  key_Plane: {fileID: 0}
+  cameraTank: {fileID: 0}
   audioEngine_Tank: {fileID: 0}
-  cmvcam_plane: {fileID: 0}
   cameraTruck: {fileID: 0}
-  multipurposeMainCamera: {fileID: 0}
+  cmvcam_firetruck: {fileID: 0}
+  cmvcam_plane: {fileID: 0}
+  crosshairPlane: {fileID: 0}
+  missingKey: {fileID: 0}
+  multipurposeCamera: {fileID: 0}
 --- !u!136 &136018688462096076
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -242,13 +242,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1400694876754668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2255468ea97f384a9ebbb13e497e050, type: 3}
+  m_Script: {fileID: 11500000, guid: 74eb290077a495b4f8489f895b2cc599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.2
-  delay: 0
-  finalIntensity: 0
-  autodestruct: 1
+  loop: 1
+  smoothFactor: 4
+  addIntensity: 0.5
 --- !u!114 &114631794342416938
 MonoBehaviour:
   m_ObjectHideFlags: 1

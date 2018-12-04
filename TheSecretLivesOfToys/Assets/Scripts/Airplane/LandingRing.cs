@@ -4,29 +4,22 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LandingRing : MonoBehaviour {
-
+    // Used for handling several levels
     public static bool airplaneBalloonsLevel = false;
-    // Name of the scene we want to show after victory
 
     public GameObject panelMissionCompleted;
+
+    // Used to switch camera for the landing cutscene
     public Camera mainCamera;
     public Camera cutSceneCamera;
+
     public AirplaneController airplaneController;
     public GameObject crossHair;
-
-    private Renderer m_renderer;
-	// Use this for initialization
+    
 	void Start () {
-        m_renderer = GetComponent<Renderer>();
-        //m_renderer.enabled = false;
         mainCamera.enabled = true;
         cutSceneCamera.enabled = false;
     }    
-    
-    private void Update()
-    {
-        
-    } 
 
     private void OnTriggerEnter(Collider other)
     {
@@ -48,14 +41,19 @@ public class LandingRing : MonoBehaviour {
         yield return new WaitForSeconds(3f);
         PanelMissions.missionPanelCompleted = true;
         airplaneController.enabled = false;
+
+        // Due to how the controls are, the plane still moves weirdly after landing
+        // so we need to fix its position and rotation to make it clean
         Vector3 airplanePos = airplaneController.gameObject.transform.position;
         airplaneController.gameObject.transform.position = new Vector3(airplanePos.x, 22.5f, airplanePos.z);
         airplaneController.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         airplaneController.gameObject.transform.rotation = Quaternion.identity;
+
         airplaneController.GetComponent<Animator>().enabled = false;
         airplaneController.GetComponent<Shooting>().enabled = false;
         crossHair.SetActive(false);
         cutSceneCamera.enabled = false;
+
         panelMissionCompleted.SetActive(true);
         Time.timeScale = 0f; 
 

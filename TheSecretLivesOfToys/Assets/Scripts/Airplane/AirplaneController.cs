@@ -17,18 +17,16 @@ public class AirplaneController : MonoBehaviour
     [SerializeField] private float horizontalRotateBackSpeed = 100;     // How fast the airplane can go back to a null rotation on Z axis
     [SerializeField] private float verticalRotateBackSpeed = 50;        // How fast the airplane can go back to a null rotation on X axis
 
-    [SerializeField] private float pseudoGravitation = -0.3f;           // Downlift for driving through landscape
+    [SerializeField] private float pseudoGravitation = -0.3f;           // Downlift for driving on the ground
 
     private float diveSalto;                                            // Blocks the forward salto, min 0, max 1
     private float diveBlocker;                                          // Blocks sideways stagger flight while dive
 
-    private int gameOver = 0;                                           // Turn on and off the airplane code. Game over
-    private float crashForce = 0f;                                      // When gameOver we need a force to let the airplane crash
+    private bool gameOver = false;                                           // Turn on and off the airplane code. Game over
     [SerializeField] private ParticleSystem crashExplosion;
 
     // Rotation of our airplane
     private float rotationX;
-    private float rotationY;
     private float rotationZ;
 
     public float speed;                                                 // Current speed of the airplane
@@ -56,7 +54,7 @@ public class AirplaneController : MonoBehaviour
         
 
         // Physics stuff when gameOver ==1
-        if (gameOver == 1)
+        if (gameOver)
         {
             transform.Rotate(Vector3.up, 200 * Time.deltaTime);
             globalMusic.Stop();
@@ -66,12 +64,11 @@ public class AirplaneController : MonoBehaviour
 
         //---------------------#####     Flying Maincode     #####---------------------//
 
-        // Code is active when gameOver = 0
-        if (gameOver == 0)
+        // Code is active when gameOver is false
+        if (!gameOver)
         {
             // Turn variables to rotation and position of the object
             rotationX = transform.eulerAngles.x;
-            rotationY = transform.eulerAngles.y;
             rotationZ = transform.eulerAngles.z;
 
             //----------------- Pitch and Tilt calculations -----------------//
@@ -250,22 +247,25 @@ public class AirplaneController : MonoBehaviour
 
     // When our airplane is in the air (!onGround), and touches the ground with something different than 
     // the wheels (groundtrigger primitive) it will count as crash.
-    // We need to convert the speed into a force so that we can let our airplane collide
 
     private void OnCollisionEnter(Collision collision)
     {
+        // Should not happen if the airplane is not active
+        if (!enabled)
+            return;
+
         if (!GroundTrigger.triggered && !collision.gameObject.name.StartsWith("Bullet"))
         {
             GroundTrigger.triggered = true;
-            //crashForce = speed * 10000;
             speed = 0;
-            gameOver = 1;
+            gameOver = true;
             m_Rigidbody.useGravity = true;
             ParticleSystem crashExplosionClone = Instantiate(crashExplosion, transform.position, Quaternion.identity);
             crashExplosionClone.transform.localScale = transform.localScale;
         }
     }
 
+    // Wait a little before showing the crash panel
     private IEnumerator WaitCrash()
     {
         yield return new WaitForSeconds(2f);
@@ -275,6 +275,7 @@ public class AirplaneController : MonoBehaviour
 
     }
 
+    // Make the plane land by overriding the speed
     public void Land()
     {
         isLanding = true;
@@ -283,6 +284,7 @@ public class AirplaneController : MonoBehaviour
         transform.rotation = Quaternion.identity;
     }
 
+    // Decrease speed over time to land
     private IEnumerator DecreaseAirplaneSpeed()
     {
         if (speed > 0)
