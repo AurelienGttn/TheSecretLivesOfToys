@@ -9,6 +9,7 @@ ModelImporter:
     400002: //RootNode
     2100000: wall
     2100002: wallDark
+    2100004: bridgeStraight_exclusiveMat
     2300000: bridgeStraight_exclusive
     3300000: bridgeStraight_exclusive
     4300000: bridgeStraight_exclusive

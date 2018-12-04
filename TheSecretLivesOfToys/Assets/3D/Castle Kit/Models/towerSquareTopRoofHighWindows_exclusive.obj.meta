@@ -12,6 +12,8 @@ ModelImporter:
     2100000: dark
     2100002: wall
     2100004: roof
+    2100006: Group_988Mat
+    2100008: towerSquareTopRoofHighWindows_exclusiveMat
     2300000: Group_988
     2300002: towerSquareTopRoofHighWindows_exclusive
     3300000: Group_988
