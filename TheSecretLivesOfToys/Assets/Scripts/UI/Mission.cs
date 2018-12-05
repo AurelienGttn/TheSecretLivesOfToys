@@ -11,10 +11,9 @@ public class Mission : MonoBehaviour {
     // Use this for initialization
     void Start () {
     }
-	
-	// Update is called once per frame
-	void Update () {
 
+    // Displays goals for different missions on the panel mission 
+    void Update () {
         if (PanelMissions.missionTank)
         {
             nomVehicule = "tank";
@@ -32,7 +31,7 @@ public class Mission : MonoBehaviour {
             nomVehicule = "firetruck";
             mission = "2. Extinguish all burning houses \n3. Bring back the firetruck ";
         }
-
+        // Show matching text
         Vehicule.text = "1. Find the " + nomVehicule;
         InformationMission.text = mission;
     }

@@ -11,9 +11,10 @@ public class Objectifs : MonoBehaviour {
     void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Displays objectifs for different missions on the UI in the bottom right
+    // The objectifs shows the values in real time 
+    void Update () {
         if (FindObjectOfType<RingManager>() != null)
         //else if (PanelPlaneRings.missionPanelRings)
         {

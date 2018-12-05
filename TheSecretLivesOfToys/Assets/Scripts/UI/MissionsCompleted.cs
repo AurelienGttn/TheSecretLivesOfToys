@@ -16,9 +16,9 @@ public class MissionsCompleted : MonoBehaviour {
     void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Displays the summary of different mission
+    void Update ()
     {
         if (FindObjectOfType<RingManager>() != null)
         {
@@ -45,9 +45,9 @@ public class MissionsCompleted : MonoBehaviour {
                 + "\nLanded on the bed"; 
         }
 
-        Vehicule.color = new Color32(27, 183, 27, 255);
-        InformationMission.color = new Color32(27, 183, 27, 255);
-        Vehicule.text = "Found "+ nomVehicule;
+        Vehicule.color = new Color32(27, 183, 27, 255); // Display the text in green  
+        InformationMission.color = new Color32(27, 183, 27, 255); // Display the text in green  
+        Vehicule.text = "Found "+ nomVehicule; // Display the summary 
         InformationMission.text = mission;  
     }
 }

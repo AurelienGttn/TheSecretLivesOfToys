@@ -11,17 +11,17 @@ public class Pause : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.Escape)) // If the player press  escape 
         {
-            Time.timeScale = 0f;
-            panelPause.SetActive(true); 
+            Time.timeScale = 0f; // freeze time 
+            panelPause.SetActive(true); // active panel pause 
         }
 	}
 
-   public void Resume()
+   public void Resume() // if the player click on resume button 
    {
-        Time.timeScale = 1.0f;
-        panelPause.SetActive(false); 
+        Time.timeScale = 1.0f; // defreeze time 
+        panelPause.SetActive(false);  // disable panel pause 
    }
 
 

@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class HouseOnFireManager : MonoBehaviour
 {
-
+    // number of houses on fire
     public static int houseCount;
+    // number of houses saved   
     public static int houseSaved;
+    // GameObject with all the houses on fire 
     public GameObject[] houseOnFire;
     
 
-    // Use this for initialization
+    // Initialization of the variables 
     void Start()
     {
         houseCount = houseOnFire.Length;

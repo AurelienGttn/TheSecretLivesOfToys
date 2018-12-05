@@ -18,7 +18,7 @@ public class FieldOfView : MonoBehaviour
 
     public float meshResolution;
     public int edgeResolveIterations;
-    public float edgeDstThreshold;
+    public float edgeDstThreshold; // if there is two obstacles 
 
     public MeshFilter viewMeshFilter;
     Mesh viewMesh;
@@ -52,45 +52,53 @@ public class FieldOfView : MonoBehaviour
         DrawFieldOfView();
     }
 
+    // Find the target. Here, find the player 
     void FindVisibleTargets()
     {
         visibleTargets.Clear();
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
 
+        // for all the target
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
             Transform target = targetsInViewRadius[i].transform;
-            Vector3 dirToTarget = (target.position - transform.position).normalized;
+            Vector3 dirToTarget = (target.position - transform.position).normalized; // direction to the target 
             //dirToTarget.Scale(new Vector3(1f, 0f, 1f));
 
+            // if the target is in the field of view. 
             if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
             {
-                float dstToTarget = Vector3.Distance(transform.position, target.position);
+                float dstToTarget = Vector3.Distance(transform.position, target.position); // distance to the target 
+                // If we don't collider with something else when we draw the raycast
                 if (!Physics.Raycast(new Vector3(transform.position.x, 0.5f, transform.position.z), dirToTarget, dstToTarget, obstacleMask))
                 {
+                    // This means there are no obstacle in the way, we can add the target 
                     visibleTargets.Add(target);
                     globalMusic.Stop();
-                    panelTryAgain.SetActive(true);
-                    Time.timeScale = 0f;
+                    panelTryAgain.SetActive(true); // active panel try again 
+                    Time.timeScale = 0f; // freeze the time 
                 }
             }
         }
     }
 
+    
     void DrawFieldOfView()
     {
-        int stepCount = Mathf.RoundToInt(viewAngle * meshResolution);
+        int stepCount = Mathf.RoundToInt(viewAngle * meshResolution); 
         float stepAngleSize = viewAngle / stepCount;
-        List<Vector3> viewPoints = new List<Vector3>();
+        List<Vector3> viewPoints = new List<Vector3>(); // list of all the points our raycast hit 
         ViewCastInfo oldViewCast = new ViewCastInfo();
         for (int i = 0; i <= stepCount; i++)
         {
             float angle = transform.eulerAngles.y - viewAngle / 2 + stepAngleSize * i;
             ViewCastInfo newViewCast = ViewCast(angle);
 
+            
             if (i > 0)
             {
                 bool edgeDstThresholdExceeded = Mathf.Abs(oldViewCast.dst - newViewCast.dst) > edgeDstThreshold;
+                // Case when there are two obstacles 
                 if (oldViewCast.hit != newViewCast.hit || (oldViewCast.hit && newViewCast.hit && edgeDstThresholdExceeded))
                 {
                     EdgeInfo edge = FindEdge(oldViewCast, newViewCast);
@@ -162,12 +170,13 @@ public class FieldOfView : MonoBehaviour
         return new EdgeInfo(minPoint, maxPoint);
     }
 
-
+    // Detect if there is an object on the way of the raycast
     ViewCastInfo ViewCast(float globalAngle)
     {
         Vector3 dir = DirFromAngle(globalAngle, true);
         RaycastHit hit;
 
+        // if we hit something / if we detect an obstacle 
         if (Physics.Raycast(transform.position, dir, out hit, viewRadius, obstacleMask))
         {
             return new ViewCastInfo(true, hit.point, hit.distance, globalAngle);
@@ -178,6 +187,7 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
+    // Method which contains a angle and ajust the direction of that angle
     public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
     {
         if (!angleIsGlobal)
@@ -187,11 +197,12 @@ public class FieldOfView : MonoBehaviour
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 
+    // Return information about the raycast 
     public struct ViewCastInfo
     {
-        public bool hit;
-        public Vector3 point;
-        public float dst;
+        public bool hit; // if the raycast hit something
+        public Vector3 point; // the end point of the ray 
+        public float dst; // length of the ray 
         public float angle;
 
         public ViewCastInfo(bool _hit, Vector3 _point, float _dst, float _angle)

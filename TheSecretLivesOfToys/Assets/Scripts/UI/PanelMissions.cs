@@ -46,7 +46,7 @@ public class PanelMissions : MonoBehaviour
         timer.SetActive(false);
     }
 
-    // Update is called once per frame
+    // Enable/Disable panel 
     void Update()
     {
         if (!missionPanel)
@@ -75,6 +75,8 @@ public class PanelMissions : MonoBehaviour
     }
 
 
+    // There are many things to enable/disable when the soldier is in different mission
+    // such as his position, the IA, the vehicule clone.. This is where this is handled.
     public void Mission()
     {
         if (name == "Button_AcceptMission" || name == "Button_TryAgain")
@@ -152,8 +154,8 @@ public class PanelMissions : MonoBehaviour
                 timelineManager.cutsceneTank.Play();
             }
         }
-        
-        
+
+        // initialize mission values ​​according to the next mission
         if (this.name == "Button_NextMission")
         {
             missionPanelCompleted = false;
@@ -184,13 +186,14 @@ public class PanelMissions : MonoBehaviour
 
         }
     }
-
+    // Wait between the scene of the firetruck and the scene of plane rings 
     private IEnumerator WaitChangementScene()
     {
         yield return new WaitForSeconds(2f);
 
     }
-
+    
+    // This function is call when the tank enter in the area. It means that the mission tank is completed 
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Tank")

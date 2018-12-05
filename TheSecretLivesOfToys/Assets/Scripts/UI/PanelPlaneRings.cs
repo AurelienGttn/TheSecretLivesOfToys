@@ -33,6 +33,8 @@ public class PanelPlaneRings : MonoBehaviour {
         }
     }
 
+    // There are many things to enable/disable when we start the mission plane rings 
+    // such as disable objectifs and panel to show the cinematic 
     public void afficherPanel()
     {
         if (name == "Button_AcceptMission")
@@ -47,10 +49,12 @@ public class PanelPlaneRings : MonoBehaviour {
             timelineAirplane.GetComponent<PlayableDirector>().Play();
             Key_Plane.haveKey = true;
         }
+        // Restart the scene when the plane crash 
        if(name == "Button_TryAgain_Crash")
        {
             SceneManager.LoadScene("PlaneRings");
        }
+       // Load scene "ContenuNonDispo" when the player click on the button "next mission"
        if(name == "Button_NextMission")
        {
             SceneManager.LoadScene("ContenuNonDispo");
