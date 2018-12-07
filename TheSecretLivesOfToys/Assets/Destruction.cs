@@ -5,16 +5,20 @@ using UnityEngine;
 public class Destruction : MonoBehaviour {
 
     public GameObject DestroyedGO;
-    public GameObject explosionEffect;
+    
 
     public float radius;
     public float force;
 
+    public void SpawnDestroy()
+    {
+        Instantiate(DestroyedGO, transform.position, transform.rotation);
+    }
+
     private void OnDestroy()
     {
-        Instantiate(explosionEffect, transform.position, transform.rotation);
-        Instantiate(DestroyedGO, transform.position, transform.rotation);
 
+       
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
 
         foreach (Collider nearObject in colliders)
