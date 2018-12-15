@@ -222,7 +222,7 @@ GameObject:
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1235558922260368
 GameObject:
   m_ObjectHideFlags: 1
@@ -4352,7 +4352,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5598b471f73506042a2c7c77fb565e20, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5396,6 +5396,10 @@ MonoBehaviour:
   wheelcont: {fileID: 114101591130819588}
   firecont: {fileID: 114011375035837862}
   cameracont: {fileID: 114419902151485156}
+  busArrow: {fileID: 0}
+  deliveryArrow: {fileID: 0}
+  policeArrow: {fileID: 0}
+  ambulanceArrow: {fileID: 0}
   aimButton: 0
   aimButtonDown: 0
   aimButtonUp: 0

@@ -88,18 +88,16 @@ namespace ChobiAssets.KTP
 
 		void Mouse_Input_Drag (bool isFreeAiming)
 		{
-			if (idScript.aimButton == false) {
-				if (idScript.dragButtonDown) {
-					previousMousePos = Input.mousePosition;
-				}
-				if (idScript.dragButton) {
-					float horizontal = (Input.mousePosition.x - previousMousePos.x) * 0.1f;
-					targetAng_Y += horizontal * 3.0f;
-					angY = targetAng_Y;
-					//float vertical = (Input.mousePosition.y - previousMousePos.y) * 0.1f;
-					//angZ -= vertical * 2.0f;
-					previousMousePos = Input.mousePosition;
-				}
+			if (idScript.dragButtonDown) {
+				previousMousePos = Input.mousePosition;
+			}
+			if (idScript.dragButton) {
+				float horizontal = (Input.mousePosition.x - previousMousePos.x) * 0.1f;
+				targetAng_Y += horizontal * 3.0f;
+				angY = targetAng_Y;
+				//float vertical = (Input.mousePosition.y - previousMousePos.y) * 0.1f;
+				//angZ -= vertical * 2.0f;
+				previousMousePos = Input.mousePosition;
 			}
 			angY = Mathf.MoveTowardsAngle (angY, targetAng_Y, 180.0f * Time.deltaTime);
 			thisTransform.rotation = Quaternion.Euler (0.0f, angY, angZ);
