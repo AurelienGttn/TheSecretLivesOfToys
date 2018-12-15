@@ -86,7 +86,7 @@ namespace ChobiAssets.KTP
 
 		void Update ()
 		{
-			// Switch operable tank.
+			/*// Switch operable tank.
 			#if UNITY_ANDROID || UNITY_IPHONE
 			if (CrossPlatformInputManager.GetButtonDown ("Switch")) {
 			#else
@@ -122,7 +122,7 @@ namespace ChobiAssets.KTP
 			if (Input.GetKeyDown ("p")) {
 			#endif
 				Pause ();
-			}
+			}*/
 		}
 
 		void Pause ()

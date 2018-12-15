@@ -29,28 +29,9 @@ namespace ChobiAssets.KTP
 		{ // Do not change to "Awake()".
 			initialDurability = durability;
 		}
-
-		//void Set_DamageText ()
-		//{
-		//	if (textPrefab == null || string.IsNullOrEmpty (canvasName) || durability == Mathf.Infinity) {
-		//		return;
-		//	}
-		//	// Instantiate Damage Text, and set it to the Canvas.
-		//	GameObject textObject = Instantiate (textPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-		//	displayScript = textObject.GetComponent <Damage_Display_CS> ();
-		//	displayScript.targetTransform = bodyTransform;
-		//	GameObject canvasObject = GameObject.Find (canvasName);
-		//	if (canvasObject) {
-		//		displayScript.transform.SetParent (canvasObject.transform);
-		//		displayScript.transform.localScale = Vector3.one;
-		//	} else {
-		//		Debug.LogWarning ("Canvas for Damage Text cannot be found.");
-		//	}
-		//}
-
 		void Update ()
 		{
-			// Destruct
+			/*// Destruct
 			if (idScript.isPlayer) {
 				#if UNITY_ANDROID || UNITY_IPHONE
 				if (CrossPlatformInputManager.GetButtonDown ("Destruct")) {
@@ -59,7 +40,7 @@ namespace ChobiAssets.KTP
 				#endif
 					Start_Destroying ();
 				}
-			}
+			}*/
 
           
 		}

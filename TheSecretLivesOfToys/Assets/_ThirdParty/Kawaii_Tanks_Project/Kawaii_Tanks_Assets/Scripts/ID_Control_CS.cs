@@ -23,10 +23,14 @@ namespace ChobiAssets.KTP
 
         public Wheel_Control_CS wheelcont;
         public Fire_Control_CS firecont;
-        public Camera_Rotate_CS cameracont; 
+        public Camera_Rotate_CS cameracont;
 
+        public GameObject busArrow;
+        public GameObject deliveryArrow;
+        public GameObject policeArrow;
+        public GameObject ambulanceArrow;
 
-		void Start ()
+        void Start ()
 		{ // Do not change to "Awake ()".
           // Send this reference to the "Game_Controller" in the scene.
             wheelcont.Get_ID_Script(this);
@@ -34,8 +38,13 @@ namespace ChobiAssets.KTP
             cameracont.Get_ID_Script(this); 
             wheelcont.active = true;
             firecont.active = true;
-            cameracont.active = true; 
-            
+            cameracont.active = true;
+
+            busArrow.SetActive(true);
+            deliveryArrow.SetActive(true);
+            policeArrow.SetActive(true);
+            ambulanceArrow.SetActive(true);
+
             GameObject gameController = GameObject.FindGameObjectWithTag ("GameController");
 			if (gameController) {
 				controllerScript = gameController.GetComponent <Game_Controller_CS> ();
@@ -59,9 +68,9 @@ namespace ChobiAssets.KTP
 		void Update ()
 		{
 			if (isPlayer) {
-				aimButton = Input.GetKey (KeyCode.Space);
-				aimButtonDown = Input.GetKeyDown (KeyCode.Space);
-				aimButtonUp = Input.GetKeyUp (KeyCode.Space);
+				//aimButton = Input.GetKey (KeyCode.Space);
+				//aimButtonDown = Input.GetKeyDown (KeyCode.Space);
+				//aimButtonUp = Input.GetKeyUp (KeyCode.Space);
 				dragButton = Input.GetMouseButton (1);
 				dragButtonDown = Input.GetMouseButtonDown (1);
 				fireButton = Input.GetMouseButton (0);
