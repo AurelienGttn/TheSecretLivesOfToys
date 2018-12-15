@@ -1995,7 +1995,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 131852296}
-  m_LocalRotation: {x: 0.10494339, y: -0.8778828, z: 0.22497319, w: 0.40950692}
+  m_LocalRotation: {x: 0.104943365, y: -0.8778828, z: 0.22497316, w: 0.4095069}
   m_LocalPosition: {x: 61.4, y: 100.4, z: 106.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13448,8 +13448,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  startColor: {r: 0.0032484944, g: 0.6886792, b: 0.06730734, a: 1}
-  endColor: {r: 0.0032484944, g: 0.6886792, b: 0.06730734, a: 0.14509805}
+  startColor: {r: 0.12148452, g: 0.3962264, b: 0.14660376, a: 1}
+  endColor: {r: 0.26633143, g: 0.5943396, b: 0.29632074, a: 0.14509805}
   repeatable: 1
 --- !u!1001 &1454128551
 Prefab:
