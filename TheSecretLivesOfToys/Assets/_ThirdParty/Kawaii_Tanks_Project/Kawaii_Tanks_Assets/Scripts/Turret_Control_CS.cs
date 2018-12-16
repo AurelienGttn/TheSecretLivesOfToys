@@ -29,7 +29,6 @@ namespace ChobiAssets.KTP
 		Transform rootTransform;
 		float currentAng;
 		Transform targetTransform;
-		Vector3 targetOffset;
 		Vector3 previousMousePos;
 		float speedRate;
 		Image markerImage;
@@ -220,9 +219,6 @@ namespace ChobiAssets.KTP
 		{
 			// Calculate Angle.
 			if (isTracking) {
-				if (targetTransform) {
-					targetPos = targetTransform.position + (targetTransform.forward * targetOffset.z) + (targetTransform.right * targetOffset.x) + (targetTransform.up * targetOffset.y);
-				}
 				localTargetPos = thisTransform.InverseTransformPoint (targetPos);
 				targetAng = Vector2.Angle (Vector2.up, new Vector2 (localTargetPos.x, localTargetPos.z)) * Mathf.Sign (localTargetPos.x);
 				targetAng += adjustAng.x;

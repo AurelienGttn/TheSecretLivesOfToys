@@ -29,7 +29,6 @@ namespace ChobiAssets.KTP
 		[Tooltip ("Set the prefab of 'Touch_Controls'.")] public GameObject touchControlsPrefab;
 
 		List <ID_Control_CS> tankList;
-		int currentID = 0;
 		bool isPaused;
 
 		void Awake ()
@@ -82,47 +81,6 @@ namespace ChobiAssets.KTP
 			} else {
 				idScript.isPlayer = false;
 			}
-		}
-
-		void Update ()
-		{
-			/*// Switch operable tank.
-			#if UNITY_ANDROID || UNITY_IPHONE
-			if (CrossPlatformInputManager.GetButtonDown ("Switch")) {
-			#else
-			if (Input.GetKeyDown (KeyCode.Tab)) {
-			#endif
-				currentID += 1;
-				if (currentID > tankList.Count - 1) {
-					currentID = 0;
-				}
-				for (int i = 0; i < tankList.Count; i++) {
-					tankList [i].Get_Current_ID (currentID);
-				}
-			}
-			// Quit
-			if (Input.GetKeyDown (KeyCode.Escape)) {
-				Application.Quit ();
-			}
-			// Reload the scene.
-			#if UNITY_ANDROID || UNITY_IPHONE
-			if (CrossPlatformInputManager.GetButtonDown ("Restart")) {
-			#else
-			if (Input.GetKeyDown (KeyCode.Backspace)) {
-			#endif
-				if (isPaused) {
-					Pause ();
-				}
-				SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
-			}
-			// Pause.
-			#if UNITY_ANDROID || UNITY_IPHONE
-			if (CrossPlatformInputManager.GetButtonDown ("Pause")) {
-			#else
-			if (Input.GetKeyDown ("p")) {
-			#endif
-				Pause ();
-			}*/
 		}
 
 		void Pause ()

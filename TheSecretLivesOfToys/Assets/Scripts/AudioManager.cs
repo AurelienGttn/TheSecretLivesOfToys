@@ -10,11 +10,13 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     public AudioMixer mixer;
     public AudioSetting[] audioSettings;
+    private AudioSource sfxSample;
     private enum AudioGroups { Music, SFX };
 
     void Awake()
     {
         instance = GetComponent<AudioManager>();
+        sfxSample = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -33,6 +35,8 @@ public class AudioManager : MonoBehaviour
     public void SetSFXVolume(float value)
     {
         audioSettings[(int)AudioGroups.SFX].SetExposedParam(value);
+        if (!sfxSample.isPlaying)
+            sfxSample.Play();
     }
 
     [System.Serializable]
