@@ -15,7 +15,6 @@ public class EndLineGlow : MonoBehaviour {
         startTime = Time.time;
 	}
 	
-	// Update is called once per frame
 	void Update ()
     {
         if(!repeatable)
