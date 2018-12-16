@@ -26,7 +26,7 @@ public class Key_Plane : MonoBehaviour {
             Destroy(this.gameObject);
             pont.SetActive(false);
             ParticleSystem crashExplosionClone = Instantiate(explosionPont, pont.transform.position, Quaternion.identity);
-            crashExplosionClone.transform.localScale = pont.transform.localScale * 40;
+            crashExplosionClone.transform.localScale = pont.transform.localScale * 4;
         }
     }
 }
