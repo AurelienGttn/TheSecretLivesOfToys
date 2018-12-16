@@ -911,10 +911,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1115410920954386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55c2bc99915288c47a9c72db40349258, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e2006896b77bdd4783dd6a10a8a1921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectif: {fileID: 114482408025162938}
+  objectif: {fileID: 0}
 --- !u!114 &114825962196143938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1013,7 +1013,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelPause: {fileID: 1761955798567600}
-  soldier: {fileID: 0}
 --- !u!114 &114908095836328854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1026,7 +1025,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelPause: {fileID: 1761955798567600}
-  soldier: {fileID: 0}
 --- !u!114 &114918306235860774
 MonoBehaviour:
   m_ObjectHideFlags: 1
